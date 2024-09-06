@@ -47,9 +47,9 @@ export default function Home() {
           </div>
         </nav>
       </div>
-      <div className='flex flex-col px-0 md:px-[15%] gap-6 w-full'>
+      <div className='flex flex-col px-0 md:px-[15%] gap-6 w-full py-8 md:py-0'>
         <div className='flex flex-1 flex-col'>
-          <div className='flex flex-col flex-1 px-4 md:px-24 py-2 md:py-12 h-full items-center space-y-6 md:space-y-12'>
+          <div className='flex flex-col flex-1 px-4 md:px-24 py-2 md:py-12 h-full items-center space-y-8 md:space-y-12'>
             <div className='flex flex-row bg-white px-2 py-2 rounded-full items-center gap-2 pr-4 shadow-xl w-auto relative'>
               <div className='text-xs px-2 py-1  bg-gradient-to-r from-[#FFCE9E] to-[#FD7A6E] hover:bg-[#FD7A6E]/80 text-white rounded-full'>Nuevo</div>
               <div className='flex flex-1 justify-start md:justify-end'>
@@ -76,7 +76,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className='flex flex-col w-full items-center justify-center py-0 md:py-4 gap-2'>
+        <div className='flex flex-col w-full items-center justify-center py-12 md:py-4 gap-2'>
           <div className='flex flex-row gap-2 w-full items-center justify-center '>
             <div className='p-2 rounded-full border-4 border-white bg-[#FD7A6E]'>
               <InstagramLogoIcon className='h-6 w-6' color="#FFF" />
