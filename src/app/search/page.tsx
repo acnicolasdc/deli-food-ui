@@ -14,6 +14,14 @@ import river from '../../../public/river.png';
 import vegetables from '../../../public/vegetables.png';
 import spaghetti from '../../../public/spaghetti.png';
 import cheers from '../../../public/cheers.png';
+import bread from '../../../public/last-reviews/bread.png';
+import how from '../../../public/last-reviews/how.png';
+import cream from '../../../public/last-reviews/cream.png';
+import glamping from '../../../public/last-reviews/glamping.png';
+import me from '../../../public/last-reviews/me.png';
+
+
+
 import { HomeIcon, MagnifyingGlassIcon, MixerHorizontalIcon, RocketIcon, StarIcon } from '@radix-ui/react-icons'
 import { Alert, AlertTitle } from "@/components/ui/alert"
 import {
@@ -30,7 +38,7 @@ import { Label } from '@/components/ui/label';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col relative">
+    <main className="flex min-h-screen flex-col relative pb-12">
       <div className='px-0'>
         <nav className="w-full flex items-center gap-6 md:gap-8 relative justify-center py-4 md:py-2 px-2 md:px-8 flex-wrap md:border-b">
           <div className='flex h-full w-full md:w-auto items-center justify-center md:justify-start md:border-r md:pr-6'>
@@ -101,98 +109,172 @@ export default function Home() {
           <StarIcon className='mr-2' /> Recomendados
         </Toggle>
       </div>
-      <div className='flex flex-col gap-4 w-full  px-2 md:px-8'>
-        <Label className='hidden md:block font-semibold text-2xl'>Categorias</Label>
-        <div className='grid grid-cols-3 md:grid-cols-10 gap-2 md:gap-4'>
-          <div className='flex items-center justify-center flex-col space-y-4 max-h-[120px] max-w-[120px] bg-blue-100 border-2 border-blue-400 rounded-lg'>
-            <Image
-              src={cappuccino}
-              width={60}
-              height={60}
-              alt='Picture cappuccino'
-            />
-            <Label className='text-blue-400'>Tardeo</Label>
+      <div className='space-y-6 md:space-y-12'>
+        <div className='flex flex-col gap-4 w-full  px-2 md:px-8'>
+          <Label className='font-semibold text-xl md:text-2xl'>Categorias</Label>
+          <div className='grid grid-cols-3 md:grid-cols-10 gap-2 md:gap-4'>
+            <div className='flex items-center justify-center flex-col space-y-4 max-h-[120px] max-w-[120px] bg-blue-100 border-2 border-blue-400 rounded-lg'>
+              <Image
+                src={cappuccino}
+                width={60}
+                height={60}
+                alt='Picture cappuccino'
+              />
+              <Label className='text-blue-400'>Tardeo</Label>
+            </div>
+            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+              <Image
+                src={cocktail}
+                width={60}
+                height={60}
+                alt='Picture cappuccino'
+              />
+              <Label>Coctelear</Label>
+            </div>
+            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+              <Image
+                src={cottage}
+                width={60}
+                height={60}
+                alt='Picture cappuccino'
+              />
+              <Label>Glamping</Label>
+            </div>
+            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+              <Image
+                src={egg}
+                width={60}
+                height={60}
+                alt='Picture cappuccino'
+              />
+              <Label>Desayunos</Label>
+            </div>
+            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+              <Image
+                src={river}
+                width={60}
+                height={60}
+                alt='Picture cappuccino'
+              />
+              <Label>Aire Libre</Label>
+            </div>
+            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+              <Image
+                src={beagle}
+                width={60}
+                height={60}
+                alt='Picture cappuccino'
+              />
+              <Label>Pet Friendly</Label>
+            </div>
+            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+              <Image
+                src={burger}
+                width={60}
+                height={60}
+                alt='Picture cappuccino'
+              />
+              <Label>Cheat Meal</Label>
+            </div>
+            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+              <Image
+                src={cheers}
+                width={60}
+                height={60}
+                alt='Picture cappuccino'
+              />
+              <Label>Celebraciones</Label>
+            </div>
+            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+              <Image
+                src={vegetables}
+                width={60}
+                height={60}
+                alt='Picture cappuccino'
+              />
+              <Label>Saludable</Label>
+            </div>
+            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+              <Image
+                src={spaghetti}
+                width={60}
+                height={60}
+                alt='Picture cappuccino'
+              />
+              <Label>Almuerzos</Label>
+            </div>
           </div>
-          <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
-            <Image
-              src={cocktail}
-              width={60}
-              height={60}
-              alt='Picture cappuccino'
-            />
-            <Label>Coctelear</Label>
+        </div>
+        <div className='flex flex-col gap-4 w-full  px-2 md:px-8'>
+          <Label className='font-semibold text-xl md:text-2xl'>Ultimos Videos</Label>
+          <div className='flex flex-row overflow-hidden overflow-x-auto space-x-4 no-scrollbar'>
+            <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] rounded-lg relative overflow-hidden'
+              style={{
+                backgroundImage: `url(${bread.src})`,
+                backgroundSize: 'cover'
+              }}
+            >
+              <div className='absolute left-0 py-1 bg-white top-[60%] w-[50%] rounded-e-full pl-4 pr-6'>
+                <Label className='text-blue-400 font-semibold'>Pastel Pizza</Label>
+              </div>
+
+            </div>
+            <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] border rounded-lg relative'
+              style={{
+                backgroundImage: `url(${me.src})`,
+                backgroundSize: 'cover'
+              }}
+            >
+
+            </div>
+            <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] border rounded-lg relative'
+              style={{
+                backgroundImage: `url(${glamping.src})`,
+                backgroundSize: 'cover'
+              }}
+            >
+
+            </div>
+            <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] border rounded-lg relative'
+              style={{
+                backgroundImage: `url(${cream.src})`,
+                backgroundSize: 'cover'
+              }}
+            >
+
+            </div>
+            <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] border rounded-lg relative'
+              style={{
+                backgroundImage: `url(${how.src})`,
+                backgroundSize: 'cover'
+              }}
+            >
+
+            </div>
+
           </div>
-          <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
-            <Image
-              src={cottage}
-              width={60}
-              height={60}
-              alt='Picture cappuccino'
-            />
-            <Label>Glamping</Label>
-          </div>
-          <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
-            <Image
-              src={egg}
-              width={60}
-              height={60}
-              alt='Picture cappuccino'
-            />
-            <Label>Desayunos</Label>
-          </div>
-          <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
-            <Image
-              src={river}
-              width={60}
-              height={60}
-              alt='Picture cappuccino'
-            />
-            <Label>Aire Libre</Label>
-          </div>
-          <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
-            <Image
-              src={beagle}
-              width={60}
-              height={60}
-              alt='Picture cappuccino'
-            />
-            <Label>Pet Friendly</Label>
-          </div>
-          <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
-            <Image
-              src={burger}
-              width={60}
-              height={60}
-              alt='Picture cappuccino'
-            />
-            <Label>Cheat Meal</Label>
-          </div>
-          <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
-            <Image
-              src={cheers}
-              width={60}
-              height={60}
-              alt='Picture cappuccino'
-            />
-            <Label>Celebraciones</Label>
-          </div>
-          <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
-            <Image
-              src={vegetables}
-              width={60}
-              height={60}
-              alt='Picture cappuccino'
-            />
-            <Label>Saludable</Label>
-          </div>
-          <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
-            <Image
-              src={spaghetti}
-              width={60}
-              height={60}
-              alt='Picture cappuccino'
-            />
-            <Label>Almuerzos</Label>
+        </div>
+        <div className='flex flex-col gap-4 w-full  px-2 md:px-8'>
+          <Label className='font-semibold text-xl md:text-2xl'>Lugares</Label>
+          <div className='flex flex-row overflow-hidden overflow-x-auto space-x-4 no-scrollbar'>
+            <div className='h-[160px] min-w-[300px] border rounded-lg'>
+
+            </div>
+            <div className='h-[160px] min-w-[300px] border rounded-lg'>
+
+            </div>
+            <div className='h-[160px] min-w-[300px] border rounded-lg'>
+
+            </div>
+            <div className='h-[160px] min-w-[300px] border rounded-lg'>
+
+            </div>
+            <div className='h-[160px] min-w-[300px] border rounded-lg'>
+
+            </div>
+            <div className='h-[160px] min-w-[300px] border rounded-lg'>
+
+            </div>
           </div>
         </div>
       </div>
