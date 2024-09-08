@@ -19,10 +19,22 @@ import how from '../../../public/last-reviews/how.png';
 import cream from '../../../public/last-reviews/cream.png';
 import glamping from '../../../public/last-reviews/glamping.png';
 import me from '../../../public/last-reviews/me.png';
+import paso from '../../../public/restaurant/paso.jpg';
+import chef from '../../../public/restaurant/chef.webp';
+import faro from '../../../public/restaurant/faro.jpg';
+import gringo from '../../../public/restaurant/gringo.jpg';
+import nk from '../../../public/restaurant/nk.png';
+import tdt from '../../../public/restaurant/tdt.jpg';
 
 
 
-import { HomeIcon, MagnifyingGlassIcon, MixerHorizontalIcon, RocketIcon, StarIcon } from '@radix-ui/react-icons'
+
+
+
+
+
+
+import { InstagramLogoIcon, HomeIcon, MagnifyingGlassIcon, MixerHorizontalIcon, RocketIcon, StarIcon } from '@radix-ui/react-icons'
 import { Alert, AlertTitle } from "@/components/ui/alert"
 import {
   Drawer,
@@ -113,14 +125,14 @@ export default function Home() {
         <div className='flex flex-col gap-4 w-full  px-2 md:px-8'>
           <Label className='font-semibold text-xl md:text-2xl'>Categorias</Label>
           <div className='grid grid-cols-3 md:grid-cols-10 gap-2 md:gap-4'>
-            <div className='flex items-center justify-center flex-col space-y-4 max-h-[120px] max-w-[120px] bg-blue-100 border-2 border-blue-400 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-4 max-h-[120px] bg-slate-100 max-w-[120px] rounded-lg'>
               <Image
                 src={cappuccino}
                 width={60}
                 height={60}
                 alt='Picture cappuccino'
               />
-              <Label className='text-blue-400'>Tardeo</Label>
+              <Label>Tardeo</Label>
             </div>
             <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
               <Image
@@ -167,14 +179,14 @@ export default function Home() {
               />
               <Label>Pet Friendly</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-blue-100 border-2 border-blue-400 rounded-lg'>
               <Image
                 src={burger}
                 width={60}
                 height={60}
                 alt='Picture cappuccino'
               />
-              <Label>Cheat Meal</Label>
+              <Label className='text-blue-400'>Cheat Meal</Label>
             </div>
             <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
               <Image
@@ -205,6 +217,91 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className='flex flex-col gap-6 w-full'>
+          <div className='bg-slate-100 py-6 px-2 md:px-8'>
+            <Label className='font-semibold text-xl md:text-2xl'>{`Resultados Top para "Cheat Meal"`}</Label>
+          </div>
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-4 no-scrollbar px-2 md:px-8'>
+            <div className=' space-y-2'>
+              <div className='w-full h-[150px] rounded-lg overflow-hidden'
+                style={{
+                  backgroundImage: `url(${paso.src})`,
+                  backgroundSize: 'cover'
+                }}
+              >
+              </div>
+              <div className='px-2'>
+                <Label className='text-md font-semibold'>El Paso Hamburguesas</Label>
+                <p className='text-muted-foreground'>Carrera 54# 5a 52</p>
+              </div>
+            </div>
+            <div className=' space-y-2'>
+              <div className='w-full h-[150px] rounded-lg overflow-hidden'
+                style={{
+                  backgroundImage: `url(${chef.src})`,
+                  backgroundSize: 'cover'
+                }}
+              >
+              </div>
+              <div className='px-2'>
+                <Label className='text-md font-semibold'>Chef Burgers</Label>
+                <p className='text-muted-foreground'>Carrera 54# 5a 52</p>
+              </div>
+            </div>
+            <div className=' space-y-2'>
+              <div className='w-full h-[150px] rounded-lg overflow-hidden'
+                style={{
+                  backgroundImage: `url(${tdt.src})`,
+                  backgroundSize: 'cover'
+                }}
+              >
+              </div>
+              <div className='px-2'>
+                <Label className='text-md font-semibold'>Tierra de Todos</Label>
+                <p className='text-muted-foreground'>Carrera 54# 5a 52</p>
+              </div>
+            </div>
+            <div className=' space-y-2'>
+              <div className='w-full h-[150px] rounded-lg overflow-hidden'
+                style={{
+                  backgroundImage: `url(${faro.src})`,
+                  backgroundSize: 'cover'
+                }}
+              >
+              </div>
+              <div className='px-2'>
+                <Label className='text-md font-semibold'>El Faro Bar</Label>
+                <p className='text-muted-foreground'>Carrera 54# 5a 52</p>
+              </div>
+            </div>
+            <div className=' space-y-2'>
+              <div className='w-full h-[150px] rounded-lg overflow-hidden'
+                style={{
+                  backgroundImage: `url(${nk.src})`,
+                  backgroundSize: 'cover'
+                }}
+              >
+              </div>
+              <div className='px-2'>
+                <Label className='text-md font-semibold'>NK Hamburguesas</Label>
+                <p className='text-muted-foreground'>Carrera 54# 5a 52</p>
+              </div>
+            </div>
+            <div className=' space-y-2'>
+              <div className='w-full h-[150px] rounded-lg overflow-hidden'
+                style={{
+                  backgroundImage: `url(${gringo.src})`,
+                  backgroundSize: 'cover'
+                }}
+              >
+              </div>
+              <div className='px-2'>
+                <Label className='text-md font-semibold'>El Gringo</Label>
+                <p className='text-muted-foreground'>Carrera 54# 5a 52</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className='flex flex-col gap-4 w-full  px-2 md:px-8'>
           <Label className='font-semibold text-xl md:text-2xl'>Ultimos Videos</Label>
           <div className='flex flex-row overflow-hidden overflow-x-auto space-x-4 no-scrollbar'>
@@ -214,67 +311,73 @@ export default function Home() {
                 backgroundSize: 'cover'
               }}
             >
-              <div className='absolute left-0 py-1 bg-white top-[60%] w-[50%] rounded-e-full pl-4 pr-6'>
+              <div className='absolute left-0 py-2 bg-white top-[60%] w-[65%] rounded-e-full pl-2 pr-6 flex flex-row items-center gap-2'>
+                <div className="bg-[#FD7A6E] p-1 rounded-full">
+
+                  <InstagramLogoIcon color='#FFF' />
+                </div>
+
                 <Label className='text-blue-400 font-semibold'>Pastel Pizza</Label>
               </div>
-
             </div>
-            <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] border rounded-lg relative'
+            <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] rounded-lg relative overflow-hidden'
               style={{
                 backgroundImage: `url(${me.src})`,
                 backgroundSize: 'cover'
               }}
             >
+              <div className='absolute left-0 py-2 bg-white top-[60%] w-[65%] rounded-e-full pl-2 pr-6 flex flex-row items-center gap-2'>
+                <div className="bg-[#FD7A6E] p-1 rounded-full">
 
+                  <InstagramLogoIcon color='#FFF' />
+                </div>
+
+                <Label className='text-blue-400 font-semibold'>El Mercado</Label>
+              </div>
             </div>
-            <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] border rounded-lg relative'
+            <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] rounded-lg relative overflow-hidden'
               style={{
                 backgroundImage: `url(${glamping.src})`,
                 backgroundSize: 'cover'
               }}
             >
+              <div className='absolute left-0 py-2 bg-white top-[60%] w-[65%] rounded-e-full pl-2 pr-6 flex flex-row items-center gap-2'>
+                <div className="bg-[#FD7A6E] p-1 rounded-full">
 
+                  <InstagramLogoIcon color='#FFF' />
+                </div>
+
+                <Label className='text-blue-400 font-semibold'>En la montaña</Label>
+              </div>
             </div>
-            <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] border rounded-lg relative'
+            <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] rounded-lg relative overflow-hidden'
               style={{
                 backgroundImage: `url(${cream.src})`,
                 backgroundSize: 'cover'
               }}
             >
+              <div className='absolute left-0 py-2 bg-white top-[60%] w-[65%] rounded-e-full pl-2 pr-6 flex flex-row items-center gap-2'>
+                <div className="bg-[#FD7A6E] p-1 rounded-full">
+                  <InstagramLogoIcon color='#FFF' />
+                </div>
 
+                <Label className='text-blue-400 font-semibold'>Fresas con crema</Label>
+              </div>
             </div>
-            <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] border rounded-lg relative'
+            <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] rounded-lg relative overflow-hidden'
               style={{
                 backgroundImage: `url(${how.src})`,
                 backgroundSize: 'cover'
               }}
             >
-
+              <div className='absolute left-0 py-2 bg-white top-[60%] w-[65%] rounded-e-full pl-2 pr-6 flex flex-row items-center gap-2'>
+                <div className="bg-[#FD7A6E] p-1 rounded-full">
+                  <InstagramLogoIcon color='#FFF' />
+                </div>
+                <Label className='text-blue-400 font-semibold'>La Receta</Label>
+              </div>
             </div>
 
-          </div>
-        </div>
-        <div className='flex flex-col gap-4 w-full  px-2 md:px-8'>
-          <Label className='font-semibold text-xl md:text-2xl'>Lugares</Label>
-          <div className='flex flex-row overflow-hidden overflow-x-auto space-x-4 no-scrollbar'>
-            <div className='h-[160px] min-w-[300px] border rounded-lg'>
-
-            </div>
-            <div className='h-[160px] min-w-[300px] border rounded-lg'>
-
-            </div>
-            <div className='h-[160px] min-w-[300px] border rounded-lg'>
-
-            </div>
-            <div className='h-[160px] min-w-[300px] border rounded-lg'>
-
-            </div>
-            <div className='h-[160px] min-w-[300px] border rounded-lg'>
-
-            </div>
-            <div className='h-[160px] min-w-[300px] border rounded-lg'>
-
-            </div>
           </div>
         </div>
       </div>
