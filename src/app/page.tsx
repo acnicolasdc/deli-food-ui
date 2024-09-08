@@ -24,13 +24,13 @@ export default function Home() {
           <div className='flex flex-1 h-full items-center justify-center md:justify-start'>
             <div className='flex items-center justify-center'>
               <Image src={logoDeliFood} alt='Picture of the author' width={0}
-                height={0}
-                style={{ width: '70%', height: 'auto' }} />
+                height={20}
+              />
             </div>
           </div>
           <div className='flex-row gap-14 h-full hidden sm:flex'>
             <div className='flex justify-center items-center'>
-              <a href="/html/" className='text-md font-medium'>Inicio</a>
+              <a href="/search/" className='text-md font-medium'>Inicio</a>
             </div>
             <div className='flex justify-center items-center'>
               <a href="/css/" className='text-md'>Lugares</a>
@@ -66,8 +66,8 @@ export default function Home() {
               <div className='flex flex-row bg-white w-full md:w-[80%] px-2 py-2 rounded-full shadow-xl'>
                 <div className='flex flex-1 justify-start items-center'>
                   <MagnifyingGlassIcon className='w-4 h-4 ml-2 md:ml-4 mr-2' />
-                  <Input placeholder='Busca por el nombre o tu ubicacion...' className='border-none focus-visible:ring-0'/>
-               {/*    <p className='text-xs md:text-base text-slate-500 block md:hidden'>Nombre o tu ubicacion...</p> */}
+                  <Input placeholder='Busca por el nombre o tu ubicacion...' className='border-none focus-visible:ring-0' />
+                  {/*    <p className='text-xs md:text-base text-slate-500 block md:hidden'>Nombre o tu ubicacion...</p> */}
                 </div>
                 <Button variant="cartoon" className='rounded-full text-xs md:text-base'>
                   <p className='hidden sm:block'>Buscar ahora</p>
