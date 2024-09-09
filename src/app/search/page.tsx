@@ -126,114 +126,114 @@ export default function Home() {
                     <div className='space-y-4 w-full'>
                       <Label>A que zona quieres ir?</Label>
                       <div className='flex flex-row overflow-hidden overflow-x-auto space-x-4 no-scrollbar w-full'>
-                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
                           <Image
                             src={sanFernando}
-                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            className="w-10 h-10 md:w-12 md:h-12"
                             alt='Picture san fernando'
                           />
                           <Label className="text-xs md:text-sm">San Fernando</Label>
                         </div>
-                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
                           <Image
                             src={jardin}
-                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            className="w-10 h-10 md:w-12 md:h-12"
                             alt='Picture jardin'
                           />
                           <Label className="text-xs md:text-sm">Ciudad Jardin</Label>
                         </div>
-                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
                           <Image
                             src={flora}
-                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            className="w-10 h-10 md:w-12 md:h-12"
                             alt='Picture flora'
                           />
                           <Label className="text-xs md:text-sm">La Flora</Label>
                         </div>
-                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
                           <Image
                             src={granada}
-                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            className="w-10 h-10 md:w-12 md:h-12"
                             alt='Picture granada'
                           />
                           <Label className="text-xs md:text-sm">Granada</Label>
                         </div>
-                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
                           <Image
                             src={sanAntonio}
-                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            className="w-10 h-10 md:w-12 md:h-12"
                             alt='Picture san antonio'
                           />
                           <Label className="text-xs md:text-sm">San Antonio</Label>
                         </div>
-                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
                           <Image
                             src={penon}
-                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            className="w-10 h-10 md:w-12 md:h-12"
                             alt='Picture penon'
                           />
                           <Label className="text-xs md:text-sm">Peñon</Label>
                         </div>
-                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-blue-100 border-2 border-blue-400 rounded-lg'>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-blue-100 border-2 border-blue-400 rounded-lg'>
                           <Image
                             src={novena}
-                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            className="w-10 h-10 md:w-12 md:h-12"
                             alt='Picture novena'
                           />
                           <Label className='text-blue-400'>La Novena</Label>
                         </div>
-                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
                           <Image
                             src={ingenio}
-                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            className="w-10 h-10 md:w-12 md:h-12"
                             alt='Picture ingenio'
                           />
                           <Label className="text-xs md:text-sm">Ingenio</Label>
                         </div>
-                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
                           <Image
                             src={bocha}
-                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            className="w-10 h-10 md:w-12 md:h-12"
                             alt='Picture bocha'
                           />
                           <Label className="text-xs md:text-sm">Bochalema</Label>
                         </div>
-                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
                           <Image
                             src={pance}
-                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            className="w-10 h-10 md:w-12 md:h-12"
                             alt='Picture pance'
                           />
                           <Label className="text-xs md:text-sm">Pance</Label>
                         </div>
-                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
                           <Image
                             src={jamundi}
-                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            className="w-10 h-10 md:w-12 md:h-12"
                             alt='Picture jamundi'
                           />
                           <Label className="text-xs md:text-sm">Jamundi</Label>
                         </div>
-                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
                           <Image
                             src={dapa}
-                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            className="w-10 h-10 md:w-12 md:h-12"
                             alt='Picture dapa'
                           />
                           <Label className="text-xs md:text-sm">Dapa</Label>
                         </div>
-                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
                           <Image
                             src={km}
-                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            className="w-10 h-10 md:w-12 md:h-12"
                             alt='Picture km'
                           />
                           <Label className="text-xs md:text-sm">KM 18</Label>
                         </div>
-                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
                           <Image
                             src={afueras}
-                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            className="w-10 h-10 md:w-12 md:h-12"
                             alt='Picture afueras'
                           />
                           <Label className="text-xs md:text-sm">A las Afueras</Label>
@@ -347,95 +347,85 @@ export default function Home() {
         </div>
       </div>
       <div className='space-y-6 md:space-y-12'>
-        <div className='flex flex-col gap-4 w-full  px-2 md:px-8'>
+        <div className='flex flex-col gap-4 w-full px-2 md:px-8'>
           <Label className='font-semibold text-xl md:text-2xl'>Categorias</Label>
-          <div className='grid grid-cols-3 md:grid-cols-10 gap-2 md:gap-4'>
-            <div className='flex items-center justify-center flex-col space-y-4 max-h-[120px] bg-slate-100 max-w-[120px] rounded-lg'>
+          <div className='flex flex-row overflow-hidden overflow-x-auto space-x-4 no-scrollbar w-full'>
+            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={cappuccino}
-                width={60}
-                height={60}
+                className="w-10 h-10 md:w-12 md:h-12"
                 alt='Picture cappuccino'
               />
               <Label>Tardeo</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={cocktail}
-                width={60}
-                height={60}
+                className="w-10 h-10 md:w-12 md:h-12"
                 alt='Picture cappuccino'
               />
               <Label>Coctelear</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={cottage}
-                width={60}
-                height={60}
+                className="w-10 h-10 md:w-12 md:h-12"
                 alt='Picture cappuccino'
               />
               <Label>Glamping</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={egg}
-                width={60}
-                height={60}
+                className="w-10 h-10 md:w-12 md:h-12"
                 alt='Picture cappuccino'
               />
               <Label>Desayunos</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={river}
-                width={60}
-                height={60}
+                className="w-10 h-10 md:w-12 md:h-12"
                 alt='Picture cappuccino'
               />
               <Label>Aire Libre</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={beagle}
-                width={60}
-                height={60}
+                className="w-10 h-10 md:w-12 md:h-12"
                 alt='Picture cappuccino'
               />
               <Label>Pet Friendly</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-blue-100 border-2 border-blue-400 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-blue-100 border-2 border-blue-400 rounded-lg'>
               <Image
                 src={burger}
-                width={60}
-                height={60}
+                className="w-10 h-10 md:w-12 md:h-12"
                 alt='Picture cappuccino'
               />
               <Label className='text-blue-400'>Cheat Meal</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={cheers}
-                width={60}
-                height={60}
+                className="w-10 h-10 md:w-12 md:h-12"
                 alt='Picture cappuccino'
               />
               <Label>Celebraciones</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={vegetables}
-                width={60}
-                height={60}
+                className="w-10 h-10 md:w-12 md:h-12"
                 alt='Picture cappuccino'
               />
               <Label>Saludable</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-[120px] w-[120px] bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={spaghetti}
-                width={60}
-                height={60}
+                className="w-10 h-10 md:w-12 md:h-12"
                 alt='Picture cappuccino'
               />
               <Label>Almuerzos</Label>
