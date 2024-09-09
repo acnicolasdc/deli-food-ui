@@ -67,7 +67,6 @@ export default function Home() {
                 <div className='flex flex-1 justify-start items-center'>
                   <MagnifyingGlassIcon className='w-4 h-4 ml-2 md:ml-4 mr-2' />
                   <Input placeholder='Busca por el nombre o tu ubicacion...' className='border-none focus-visible:ring-0' />
-                  {/*    <p className='text-xs md:text-base text-slate-500 block md:hidden'>Nombre o tu ubicacion...</p> */}
                 </div>
                 <Button variant="cartoon" className='rounded-full text-xs md:text-base'>
                   <p className='hidden sm:block'>Buscar ahora</p>

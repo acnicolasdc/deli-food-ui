@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import { Button } from "@/components/ui/button"
-import { Toggle } from "@/components/ui/toggle"
+import { Toggle } from "@/components/ui/toggle";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Separator } from "@/components/ui/separator"
 import logoDeliFood from '../../../public/logo.png';
 import location from '../../../public/your-location.png';
 import cappuccino from '../../../public/cappuccino.png';
@@ -42,20 +43,38 @@ import jamundi from '../../../public/places/jamundi.png';
 import afueras from '../../../public/places/afueras.png';
 import km from '../../../public/places/km.png';
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
-import { InstagramLogoIcon, HomeIcon, MagnifyingGlassIcon, RocketIcon, StarIcon } from '@radix-ui/react-icons'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
+import { InstagramLogoIcon, HomeIcon, MagnifyingGlassIcon, RocketIcon, StarIcon, MixerHorizontalIcon, HeartIcon } from '@radix-ui/react-icons'
 import { Alert, AlertTitle } from "@/components/ui/alert"
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
 import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 export default function Home() {
   return (
@@ -86,134 +105,145 @@ export default function Home() {
                 <div className="mx-auto w-full">
                   <DrawerHeader>
                     <DrawerTitle>A donde quieres ir?</DrawerTitle>
-                    <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+                    <DrawerDescription>Asi podemos recomendar un lugar que se ajuste a lo que buscas</DrawerDescription>
                   </DrawerHeader>
-                  <div className="p-4 pb-0 w-full">
-                    <div className='flex flex-row overflow-hidden overflow-x-auto space-x-4 no-scrollbar w-full'>
-                      <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
-                        <Image
-                          src={sanFernando}
-                          className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
-                          alt='Picture san fernando'
-                        />
-                        <Label className="text-xs md:text-sm">San Fernando</Label>
-                      </div>
-                      <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
-                        <Image
-                          src={jardin}
-                          className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
-                          alt='Picture jardin'
-                        />
-                        <Label className="text-xs md:text-sm">Ciudad Jardin</Label>
-                      </div>
-                      <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
-                        <Image
-                          src={flora}
-                          className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
-                          alt='Picture flora'
-                        />
-                        <Label className="text-xs md:text-sm">La Flora</Label>
-                      </div>
-                      <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
-                        <Image
-                          src={granada}
-                          className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
-                          alt='Picture granada'
-                        />
-                        <Label className="text-xs md:text-sm">Granada</Label>
-                      </div>
-                      <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
-                        <Image
-                          src={sanAntonio}
-                          className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
-                          alt='Picture san antonio'
-                        />
-                        <Label className="text-xs md:text-sm">San Antonio</Label>
-                      </div>
-                      <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
-                        <Image
-                          src={penon}
-                          className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
-                          alt='Picture penon'
-                        />
-                        <Label className="text-xs md:text-sm">Peñon</Label>
-                      </div>
-                      <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-blue-100 border-2 border-blue-400 rounded-lg'>
-                        <Image
-                          src={novena}
-                          className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
-                          alt='Picture novena'
-                        />
-                        <Label className='text-blue-400'>La Novena</Label>
-                      </div>
-                      <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
-                        <Image
-                          src={ingenio}
-                          className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
-                          alt='Picture ingenio'
-                        />
-                        <Label className="text-xs md:text-sm">Ingenio</Label>
-                      </div>
-                      <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
-                        <Image
-                          src={bocha}
-                          className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
-                          alt='Picture bocha'
-                        />
-                        <Label className="text-xs md:text-sm">Bochalema</Label>
-                      </div>
-                      <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
-                        <Image
-                          src={pance}
-                          className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
-                          alt='Picture pance'
-                        />
-                        <Label className="text-xs md:text-sm">Pance</Label>
-                      </div>
-                      <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
-                        <Image
-                          src={jamundi}
-                          className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
-                          alt='Picture jamundi'
-                        />
-                        <Label className="text-xs md:text-sm">Jamundi</Label>
-                      </div>
-                      <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
-                        <Image
-                          src={dapa}
-                          className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
-                          alt='Picture dapa'
-                        />
-                        <Label className="text-xs md:text-sm">Dapa</Label>
-                      </div>
-                      <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
-                        <Image
-                          src={km}
-                          className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
-                          alt='Picture km'
-                        />
-                        <Label className="text-xs md:text-sm">KM 18</Label>
-                      </div>
-                      <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
-                        <Image
-                          src={afueras}
-                          className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
-                          alt='Picture afueras'
-                        />
-                        <Label className="text-xs md:text-sm">A las Afueras</Label>
+                  <div className="flex flex-col p-4 pb-12 w-full gap-6">
+                    <div className='space-y-4'>
+                      <Label>En que ciudad estas?</Label>
+                      <Select defaultValue='apple'>
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="Selecciona tu ciudad" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectGroup>
+                            <SelectItem value="apple">Cali</SelectItem>
+                            <SelectItem value="banana">Medellin</SelectItem>
+                            <SelectItem value="blueberry">Bogota</SelectItem>
+                          </SelectGroup>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className='space-y-4 w-full'>
+                      <Label>A que zona quieres ir?</Label>
+                      <div className='flex flex-row overflow-hidden overflow-x-auto space-x-4 no-scrollbar w-full'>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                          <Image
+                            src={sanFernando}
+                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            alt='Picture san fernando'
+                          />
+                          <Label className="text-xs md:text-sm">San Fernando</Label>
+                        </div>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                          <Image
+                            src={jardin}
+                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            alt='Picture jardin'
+                          />
+                          <Label className="text-xs md:text-sm">Ciudad Jardin</Label>
+                        </div>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                          <Image
+                            src={flora}
+                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            alt='Picture flora'
+                          />
+                          <Label className="text-xs md:text-sm">La Flora</Label>
+                        </div>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                          <Image
+                            src={granada}
+                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            alt='Picture granada'
+                          />
+                          <Label className="text-xs md:text-sm">Granada</Label>
+                        </div>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                          <Image
+                            src={sanAntonio}
+                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            alt='Picture san antonio'
+                          />
+                          <Label className="text-xs md:text-sm">San Antonio</Label>
+                        </div>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                          <Image
+                            src={penon}
+                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            alt='Picture penon'
+                          />
+                          <Label className="text-xs md:text-sm">Peñon</Label>
+                        </div>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-blue-100 border-2 border-blue-400 rounded-lg'>
+                          <Image
+                            src={novena}
+                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            alt='Picture novena'
+                          />
+                          <Label className='text-blue-400'>La Novena</Label>
+                        </div>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                          <Image
+                            src={ingenio}
+                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            alt='Picture ingenio'
+                          />
+                          <Label className="text-xs md:text-sm">Ingenio</Label>
+                        </div>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                          <Image
+                            src={bocha}
+                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            alt='Picture bocha'
+                          />
+                          <Label className="text-xs md:text-sm">Bochalema</Label>
+                        </div>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                          <Image
+                            src={pance}
+                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            alt='Picture pance'
+                          />
+                          <Label className="text-xs md:text-sm">Pance</Label>
+                        </div>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                          <Image
+                            src={jamundi}
+                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            alt='Picture jamundi'
+                          />
+                          <Label className="text-xs md:text-sm">Jamundi</Label>
+                        </div>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                          <Image
+                            src={dapa}
+                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            alt='Picture dapa'
+                          />
+                          <Label className="text-xs md:text-sm">Dapa</Label>
+                        </div>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                          <Image
+                            src={km}
+                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            alt='Picture km'
+                          />
+                          <Label className="text-xs md:text-sm">KM 18</Label>
+                        </div>
+                        <div className='flex items-center justify-center flex-col space-y-4 h-[105px] min-w-[105px] md:h-[120px] md:min-w-[120px] bg-slate-100 rounded-lg'>
+                          <Image
+                            src={afueras}
+                            className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]"
+                            alt='Picture afueras'
+                          />
+                          <Label className="text-xs md:text-sm">A las Afueras</Label>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <DrawerFooter>
-                    <Button>Submit</Button>
-                    <DrawerClose asChild>
-                      <Button variant="outline">Cancel</Button>
-                    </DrawerClose>
-                  </DrawerFooter>
                 </div>
               </DrawerContent>
             </Drawer>
-            {/*  <Button variant="outline"><MixerHorizontalIcon /></Button> */}
           </div>
         </nav>
       </div>
@@ -229,16 +259,92 @@ export default function Home() {
         </Alert>
       </div>
       <div className='flex flex-row gap-2 w-full items-center py-4 px-2 md:px-8'>
-        <Label className='hidden md:block font-semibold'>Filtros rapidos: </Label>
-        <Toggle variant="outline" aria-label="Toggle italic" size="sm">
-          <RocketIcon className='mr-2' />Promos
-        </Toggle>
-        <Toggle variant="outline" aria-label="Toggle italic" size="sm">
-          <HomeIcon className='mr-2' />Nuevos
-        </Toggle>
-        <Toggle variant="outline" aria-label="Toggle italic" size="sm">
-          <StarIcon className='mr-2' /> Recomendados
-        </Toggle>
+        <Label className='hidden md:block font-semibold'>Filtros: </Label>
+        <Dialog>
+          <DialogTrigger>
+            <Button variant="outline" size="sm">
+              <MixerHorizontalIcon />
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Filtros</DialogTitle>
+            </DialogHeader>
+            <div className='flex flex-col w-full px-2 gap-4 pb-4'>
+              <div className='gap-2'>
+                <Label className='font-semibold'>
+                  Rango de precio
+                </Label>
+                <p className='text-xs mb-4 text-muted-foreground'>Selecciona el valor minimo y maximo a pagar</p>
+                <div className='flex flex-row items-center gap-4'>
+                  <Input placeholder='Minimo' /><Separator className='w-5' /><Input placeholder='Maximo' />
+                </div>
+              </div>
+              <Separator />
+              <div className='gap-2'>
+                <Label className='font-semibold'>
+                  Metodos de Pago
+                </Label>
+                <p className='text-xs mb-4 text-muted-foreground'>Selecciona el valor minimo y maximo a pagar</p>
+                <div className='flex flex-col gap-4'>
+                  <div className="items-center flex space-x-2">
+                    <div className="flex flex-1">
+                      <Label
+                        htmlFor="terms1"
+                        className='font-normal'
+                      >
+                        Efectivo
+                      </Label>
+                    </div>
+                    <Checkbox id="terms1" />
+                  </div>
+                  <div className="items-center flex space-x-2">
+                    <div className="flex flex-1">
+                      <Label
+                        htmlFor="terms2"
+                        className='font-normal'
+                      >
+                        Transferencia
+                      </Label>
+                    </div>
+                    <Checkbox id="terms2"/>
+                  </div>
+                  <div className="items-center flex space-x-2">
+                    <div className="flex flex-1">
+                      <Label
+                        htmlFor="terms3"
+                        className='font-normal'
+                      >
+                        Tarjetas credito / cebito
+                      </Label>
+                    </div>
+                    <Checkbox id="terms3" />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <DialogFooter>
+              <Button variant="delifood">Aplicar</Button>
+            </DialogFooter>
+          </DialogContent>
+
+        </Dialog>
+        <Separator orientation="vertical" className='h-6 mx-2' />
+        <div className='flex flex-row overflow-hidden overflow-x-auto space-x-2 no-scrollbar flex-1'>
+          <Toggle variant="outline" aria-label="Toggle italic" size="sm">
+            <HeartIcon className='mr-2' /> Delifood
+          </Toggle>
+          <Toggle variant="outline" aria-label="Toggle italic" size="sm">
+            <RocketIcon className='mr-2' />Promos
+          </Toggle>
+          <Toggle variant="outline" aria-label="Toggle italic" size="sm">
+            <HomeIcon className='mr-2' />Nuevos
+          </Toggle>
+          <Toggle variant="outline" aria-label="Toggle italic" size="sm">
+            <StarIcon className='mr-2' /> Recomendados
+          </Toggle>
+        </div>
       </div>
       <div className='space-y-6 md:space-y-12'>
         <div className='flex flex-col gap-4 w-full  px-2 md:px-8'>
@@ -350,8 +456,8 @@ export default function Home() {
               >
               </div>
               <div className='px-2'>
-                <Label className='text-md font-semibold'>El Paso Hamburguesas</Label>
-                <p className='text-muted-foreground'>Carrera 54# 5a 52</p>
+                <Label className='text-sm md:text-md font-semibold'>El Paso Hamburguesas</Label>
+                <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
               </div>
             </div>
             <div className=' space-y-2'>
@@ -363,8 +469,8 @@ export default function Home() {
               >
               </div>
               <div className='px-2'>
-                <Label className='text-md font-semibold'>Chef Burgers</Label>
-                <p className='text-muted-foreground'>Carrera 54# 5a 52</p>
+                <Label className='text-sm md:text-md font-semibold'>Chef Burgers</Label>
+                <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
               </div>
             </div>
             <div className=' space-y-2'>
@@ -376,8 +482,8 @@ export default function Home() {
               >
               </div>
               <div className='px-2'>
-                <Label className='text-md font-semibold'>Tierra de Todos</Label>
-                <p className='text-muted-foreground'>Carrera 54# 5a 52</p>
+                <Label className='text-sm md:text-md font-semibold'>Tierra de Todos</Label>
+                <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
               </div>
             </div>
             <div className=' space-y-2'>
@@ -389,8 +495,8 @@ export default function Home() {
               >
               </div>
               <div className='px-2'>
-                <Label className='text-md font-semibold'>El Faro Bar</Label>
-                <p className='text-muted-foreground'>Carrera 54# 5a 52</p>
+                <Label className='text-sm md:text-md font-semibold'>El Faro Bar</Label>
+                <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
               </div>
             </div>
             <div className=' space-y-2'>
@@ -402,8 +508,8 @@ export default function Home() {
               >
               </div>
               <div className='px-2'>
-                <Label className='text-md font-semibold'>NK Hamburguesas</Label>
-                <p className='text-muted-foreground'>Carrera 54# 5a 52</p>
+                <Label className='text-sm md:text-md font-semibold'>NK Hamburguesas</Label>
+                <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
               </div>
             </div>
             <div className=' space-y-2'>
@@ -415,8 +521,8 @@ export default function Home() {
               >
               </div>
               <div className='px-2'>
-                <Label className='text-md font-semibold'>El Gringo</Label>
-                <p className='text-muted-foreground'>Carrera 54# 5a 52</p>
+                <Label className='text-sm md:text-md font-semibold'>El Gringo</Label>
+                <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
               </div>
             </div>
           </div>
