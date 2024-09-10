@@ -88,7 +88,7 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className='flex flex-row flex-1 h-full gap-2 md:gap-4 items-center'>
+          <div className='flex flex-row flex-1 h-full gap-2 md:gap-4 justify-center'>
             <Drawer>
               <DrawerTrigger asChild>
                 <div className='flex flex-row bg-slate-100 px-1 py-2 rounded-full flex-1'>
@@ -98,6 +98,7 @@ export default function Home() {
                       <p className='text-sm font-medium'>A donde quieres ir ?</p>
                       <p className='text-xs text-muted-foreground'>San Antonio • Pance • Granada </p>
                     </div>
+
                   </div>
                 </div>
               </DrawerTrigger>
@@ -244,6 +245,76 @@ export default function Home() {
                 </div>
               </DrawerContent>
             </Drawer>
+            <Dialog>
+              <DialogTrigger>
+                <Button variant="outline" className='rounded-full h-12' >
+                  <MixerHorizontalIcon />
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Filtros</DialogTitle>
+                </DialogHeader>
+                <div className='flex flex-col w-full px-2 gap-4 pb-4'>
+                  <div className='gap-2'>
+                    <Label className='font-semibold'>
+                      Rango de precio
+                    </Label>
+                    <p className='text-xs mb-4 text-muted-foreground'>Selecciona el valor minimo y maximo a pagar</p>
+                    <div className='flex flex-row items-center gap-4'>
+                      <Input placeholder='Minimo' /><Separator className='w-5' /><Input placeholder='Maximo' />
+                    </div>
+                  </div>
+                  <Separator />
+                  <div className='gap-2'>
+                    <Label className='font-semibold'>
+                      Metodos de Pago
+                    </Label>
+                    <p className='text-xs mb-4 text-muted-foreground'>Selecciona el valor minimo y maximo a pagar</p>
+                    <div className='flex flex-col gap-4'>
+                      <div className="items-center flex space-x-2">
+                        <div className="flex flex-1">
+                          <Label
+                            htmlFor="terms1"
+                            className='font-normal'
+                          >
+                            Efectivo
+                          </Label>
+                        </div>
+                        <Checkbox id="terms1" />
+                      </div>
+                      <div className="items-center flex space-x-2">
+                        <div className="flex flex-1">
+                          <Label
+                            htmlFor="terms2"
+                            className='font-normal'
+                          >
+                            Transferencia
+                          </Label>
+                        </div>
+                        <Checkbox id="terms2" />
+                      </div>
+                      <div className="items-center flex space-x-2">
+                        <div className="flex flex-1">
+                          <Label
+                            htmlFor="terms3"
+                            className='font-normal'
+                          >
+                            Tarjetas credito / cebito
+                          </Label>
+                        </div>
+                        <Checkbox id="terms3" />
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <DialogFooter>
+                  <Button variant="delifood">Aplicar</Button>
+                </DialogFooter>
+              </DialogContent>
+
+            </Dialog>
           </div>
         </nav>
       </div>
@@ -259,78 +330,7 @@ export default function Home() {
         </Alert>
       </div>
       <div className='flex flex-row gap-2 w-full items-center py-4 px-2 md:px-8'>
-        <Label className='hidden md:block font-semibold'>Filtros: </Label>
-        <Dialog>
-          <DialogTrigger>
-            <Button variant="outline" size="sm">
-              <MixerHorizontalIcon />
-            </Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Filtros</DialogTitle>
-            </DialogHeader>
-            <div className='flex flex-col w-full px-2 gap-4 pb-4'>
-              <div className='gap-2'>
-                <Label className='font-semibold'>
-                  Rango de precio
-                </Label>
-                <p className='text-xs mb-4 text-muted-foreground'>Selecciona el valor minimo y maximo a pagar</p>
-                <div className='flex flex-row items-center gap-4'>
-                  <Input placeholder='Minimo' /><Separator className='w-5' /><Input placeholder='Maximo' />
-                </div>
-              </div>
-              <Separator />
-              <div className='gap-2'>
-                <Label className='font-semibold'>
-                  Metodos de Pago
-                </Label>
-                <p className='text-xs mb-4 text-muted-foreground'>Selecciona el valor minimo y maximo a pagar</p>
-                <div className='flex flex-col gap-4'>
-                  <div className="items-center flex space-x-2">
-                    <div className="flex flex-1">
-                      <Label
-                        htmlFor="terms1"
-                        className='font-normal'
-                      >
-                        Efectivo
-                      </Label>
-                    </div>
-                    <Checkbox id="terms1" />
-                  </div>
-                  <div className="items-center flex space-x-2">
-                    <div className="flex flex-1">
-                      <Label
-                        htmlFor="terms2"
-                        className='font-normal'
-                      >
-                        Transferencia
-                      </Label>
-                    </div>
-                    <Checkbox id="terms2"/>
-                  </div>
-                  <div className="items-center flex space-x-2">
-                    <div className="flex flex-1">
-                      <Label
-                        htmlFor="terms3"
-                        className='font-normal'
-                      >
-                        Tarjetas credito / cebito
-                      </Label>
-                    </div>
-                    <Checkbox id="terms3" />
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <DialogFooter>
-              <Button variant="delifood">Aplicar</Button>
-            </DialogFooter>
-          </DialogContent>
-
-        </Dialog>
-        <Separator orientation="vertical" className='h-6 mx-2' />
+        <Label className='hidden md:block font-semibold'>Filtros rapidos: </Label>
         <div className='flex flex-row overflow-hidden overflow-x-auto space-x-2 no-scrollbar flex-1'>
           <Toggle variant="outline" aria-label="Toggle italic" size="sm">
             <HeartIcon className='mr-2' /> Delifood
@@ -433,8 +433,24 @@ export default function Home() {
           </div>
         </div>
         <div className='flex flex-col gap-6 w-full'>
-          <div className='bg-slate-100 py-6 px-2 md:px-8'>
-            <Label className='font-semibold text-xl md:text-2xl'>{`Resultados Top para "Cheat Meal"`}</Label>
+          <div className='bg-slate-100 py-4 md:py-6 px-2 md:px-8 flex flex-row items-center'>
+            <Label className='font-semibold text-md md:text-lg md:block hidden'>{`Resultados Top para "Cheat Meal"`}</Label>
+            <Label className='font-semibold text-lg block md:hidden'>Resultados Top</Label>
+            <div className='flex flex-1 justify-end items-center gap-4'>
+              <Label className='hidden md:block font-semibold'>Ordenar por: </Label>
+              <Select defaultValue='apple'>
+                <SelectTrigger className="w-[180px] rounded-full">
+                  <SelectValue placeholder="Selecciona tu ciudad" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value="apple">Menor precio</SelectItem>
+                    <SelectItem value="banana">Mayor precio</SelectItem>
+                    <SelectItem value="blueberry">Recien agregado</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
           <div className='grid grid-cols-2 md:grid-cols-4 gap-4 no-scrollbar px-2 md:px-8'>
             <div className=' space-y-2'>
@@ -592,7 +608,6 @@ export default function Home() {
                 <Label className='text-blue-400 font-semibold'>La Receta</Label>
               </div>
             </div>
-
           </div>
         </div>
       </div>
