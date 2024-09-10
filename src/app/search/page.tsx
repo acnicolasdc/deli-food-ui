@@ -78,8 +78,8 @@ export default function Home() {
                   <MixerHorizontalIcon />
                 </Button>
               </DialogTrigger>
-              <DialogContent className='flex flex-col max-h-[90%] px-0'>
-                <DialogHeader>
+              <DialogContent className='flex flex-col max-h-[100%] md:max-h-[90%] px-0'>
+                <DialogHeader className='px-6'>
                   <DialogTitle className='text-lg'>Filtros</DialogTitle>
                 </DialogHeader>
                 <div className='flex flex-col w-full gap-4 pb-4 overflow-hidden overflow-y-auto no-scrollbar  px-6'>
