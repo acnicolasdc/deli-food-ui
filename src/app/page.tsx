@@ -10,6 +10,7 @@ import burger from "../../public/burger.png";
 import hotdog from "../../public/hotdog.png";
 import popsicle from "../../public/popsicle.png";
 import { Input } from '@/components/ui/input';
+import { FieldDrawerLocation } from '@/components/custom/field/field-drawer-location';
 
 export default function Home() {
   return (
@@ -63,16 +64,7 @@ export default function Home() {
               <p className='text-center text-slate-700 text-sm md:text-base'>En esta plataforma puedes buscar cualquier lugar, por su nombre, ubicacion y otros datos.</p>
             </div>
             <div className='flex flex-row gap-8 w-full items-center justify-center'>
-              <div className='flex flex-row bg-white w-full md:w-[80%] px-2 py-2 rounded-full shadow-xl'>
-                <div className='flex flex-1 justify-start items-center'>
-                  <MagnifyingGlassIcon className='w-4 h-4 ml-2 md:ml-4 mr-2' />
-                  <Input placeholder='Busca por el nombre o tu ubicacion...' className='border-none focus-visible:ring-0' />
-                </div>
-                <Button variant="cartoon" className='rounded-full text-xs md:text-base'>
-                  <p className='hidden sm:block'>Buscar ahora</p>
-                  <p className='block sm:hidden'>Buscar</p>
-                </Button>
-              </div>
+              <FieldDrawerLocation className='bg-white shadow-xl'/>
             </div>
           </div>
         </div>
