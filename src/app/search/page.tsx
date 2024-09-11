@@ -228,14 +228,13 @@ export default function Home() {
                     <Label className='font-semibold text-md'>
                       Amenidades
                     </Label>
-                    <div className='flex flex-row flex-wra gap-2 pt-4'>
+                    <div className='flex flex-row flex-wrap gap-2 pt-4'>
                       <Toggle variant="outline" aria-label="Toggle italic" size="sm" className='rounded-full'>Wifi</Toggle>
                       <Toggle variant="outline" aria-label="Toggle italic" size="sm" className='rounded-full'>Parqueadero</Toggle>
                       <Toggle variant="outline" aria-label="Toggle italic" size="sm" className='rounded-full'>Zona VIP</Toggle>
                       <Toggle variant="outline" aria-label="Toggle italic" size="sm" className='rounded-full'>Aire acondicionado</Toggle>
                     </div>
                   </div>
-
                 </div>
                 <DialogFooter className='px-6'>
                   <Button variant="delifood">Aplicar</Button>
