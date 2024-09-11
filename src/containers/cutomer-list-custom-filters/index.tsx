@@ -1,0 +1,1 @@
+export { CustomerListCustomFilters } from './customer-list-custom-filters.component';
