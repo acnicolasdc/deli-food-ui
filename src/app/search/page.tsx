@@ -1,7 +1,9 @@
+'use client'
 import Image from 'next/image';
 import { Toggle } from "@/components/ui/toggle";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator"
+import { Badge } from "@/components/ui/badge"
 import logoDeliFood from '../../../public/logo.png';
 import location from '../../../public/your-location.png';
 import cappuccino from '../../../public/cappuccino.png';
@@ -129,7 +131,7 @@ export default function Home() {
                         />
                         <Label className="text-xs">Vegana</Label>
                       </div>
-                      
+
                     </div>
                   </div>
                   <Separator />
@@ -219,6 +221,18 @@ export default function Home() {
                         </div>
                         <Checkbox className='w-5 h-5' id="terms3" />
                       </div>
+                    </div>
+                  </div>
+                  <Separator />
+                  <div className='gap-2'>
+                    <Label className='font-semibold text-md'>
+                      Amenidades
+                    </Label>
+                    <div className='flex flex-row flex-wra gap-2 pt-4'>
+                      <Toggle variant="outline" aria-label="Toggle italic" size="sm" className='rounded-full'>Wifi</Toggle>
+                      <Toggle variant="outline" aria-label="Toggle italic" size="sm" className='rounded-full'>Parqueadero</Toggle>
+                      <Toggle variant="outline" aria-label="Toggle italic" size="sm" className='rounded-full'>Zona VIP</Toggle>
+                      <Toggle variant="outline" aria-label="Toggle italic" size="sm" className='rounded-full'>Aire acondicionado</Toggle>
                     </div>
                   </div>
 

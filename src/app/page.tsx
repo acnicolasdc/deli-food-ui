@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { Button, buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import logoDeliFood from '../../public/logo.png';
-import { InstagramLogoIcon, MagnifyingGlassIcon } from '@radix-ui/react-icons'
+import { InstagramLogoIcon } from '@radix-ui/react-icons'
 import { cn } from '@/lib/utils';
 import mainBackground from "../../public/main-background.png";
 import gardenLeft from "../../public/garden-left.png";
@@ -9,7 +9,6 @@ import gardenRight from "../../public/garden-right.png";
 import burger from "../../public/burger.png";
 import hotdog from "../../public/hotdog.png";
 import popsicle from "../../public/popsicle.png";
-import { Input } from '@/components/ui/input';
 import { FieldDrawerLocation } from '@/components/custom/field/field-drawer-location';
 
 export default function Home() {
@@ -64,7 +63,7 @@ export default function Home() {
               <p className='text-center text-slate-700 text-sm md:text-base'>En esta plataforma puedes buscar cualquier lugar, por su nombre, ubicacion y otros datos.</p>
             </div>
             <div className='flex flex-row gap-8 w-full items-center justify-center'>
-              <FieldDrawerLocation className='bg-white shadow-xl'/>
+              <FieldDrawerLocation className='bg-white shadow-xl' />
             </div>
           </div>
         </div>
