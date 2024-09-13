@@ -194,7 +194,7 @@ export default function Customer() {
                             </div>
                             <div className='flex flex-col gap-4'>
                                 <Label className='text-base'>Recomendaciones</Label>
-                                <div className='grid gap-4 grid-cols-2 md:gap-6'>
+                                <div className='grid gap-4 grid-cols-1 md:grid-cols-2 md:gap-6'>
                                     <div className='flex flex-row gap-6'>
                                         <Image
                                             src={entrance}
