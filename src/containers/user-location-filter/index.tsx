@@ -1,0 +1,1 @@
+export { UserLocationFilter } from './user-location-filter.component';

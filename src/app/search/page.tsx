@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import { Toggle } from "@/components/ui/toggle";
 import logoDeliFood from '../../../public/logo.png';
-import location from '../../../public/your-location.png';
 import cappuccino from '../../../public/cappuccino.png';
 import cocktail from '../../../public/cocktail.png';
 import cottage from '../../../public/cottage.png';
@@ -35,17 +34,18 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { InstagramLogoIcon, HomeIcon, RocketIcon, StarIcon, HeartIcon } from '@radix-ui/react-icons'
-import { Alert, AlertTitle } from "@/components/ui/alert"
+import { InstagramLogoIcon, HomeIcon, RocketIcon, StarIcon, HeartIcon, HeartFilledIcon } from '@radix-ui/react-icons'
 import { Label } from '@/components/ui/label';
-import { FieldDrawerLocation } from '@/components/custom/field/field-drawer-location';
-import { CustomerListCustomFilters } from '@/containers/cutomer-list-custom-filters';
+import { CustomerListCustomFilters } from '@/containers/customer-list-custom-filters';
+import { UserLocationFilter } from '@/containers/user-location-filter';
+import { Badge } from '@/components/ui/badge';
+import { SelectLabel } from '@radix-ui/react-select';
 
-export default function Home() {
+export default function Search() {
   return (
     <main className="flex min-h-screen flex-col relative pb-12">
       <div className='px-0'>
-        <nav className="w-full flex items-center gap-6 md:gap-8 relative justify-center py-4 md:py-2 px-2 md:px-8 flex-wrap md:border-b">
+        <nav className="w-full flex items-center gap-6 md:gap-8 relative justify-center py-4 md:py-2 px-4 md:px-8 flex-wrap md:border-b">
           <div className='flex h-full w-full md:w-auto items-center justify-center md:justify-start md:border-r md:pr-6'>
             <div className='flex items-center justify-center'>
               <Image src={logoDeliFood} alt='Picture of the author' width={0}
@@ -54,133 +54,116 @@ export default function Home() {
             </div>
           </div>
           <div className='flex flex-row flex-1 h-full gap-2 md:gap-4 justify-center'>
-            <FieldDrawerLocation />
+            <UserLocationFilter />
             <CustomerListCustomFilters />
           </div>
         </nav>
       </div>
-      <div className='flex flex-col gap-6 w-full'>
-        <Alert className='border-none bg-blue-600 rounded-none px-8 flex flex-row justify-center items-center gap-2'>
-          <Image
-            src={location}
-            width={30}
-            height={30}
-            alt='Picture burger'
-          />
-          <AlertTitle className='md:text-md text-white font-semibold text-left mb-0'> El filtro de ubicacion incia por defecto en <b>Cali</b>.</AlertTitle>
-        </Alert>
-      </div>
-      <div className='flex flex-row gap-2 w-full items-center py-4 px-2 md:px-8'>
-        <Label className='hidden md:block font-semibold'>Filtros rapidos: </Label>
-        <div className='flex flex-row overflow-hidden overflow-x-auto space-x-2 no-scrollbar flex-1'>
-          <Toggle variant="outline" aria-label="Toggle italic" size="sm">
-            <HeartIcon className='mr-2' /> Delifood
-          </Toggle>
-          <Toggle variant="outline" aria-label="Toggle italic" size="sm">
-            <RocketIcon className='mr-2' />Promos
-          </Toggle>
-          <Toggle variant="outline" aria-label="Toggle italic" size="sm">
-            <HomeIcon className='mr-2' />Nuevos
-          </Toggle>
-          <Toggle variant="outline" aria-label="Toggle italic" size="sm">
-            <StarIcon className='mr-2' /> Recomendados
-          </Toggle>
-        </div>
-      </div>
       <div className='space-y-6 md:space-y-12'>
-        <div className='flex flex-col gap-4 w-full px-2 md:px-8'>
-          <Label className='font-semibold text-xl md:text-2xl'>Categorias</Label>
+        <div className='flex flex-col gap-2 md:gap-4 pt-2 md:pt-6 px-4 md:px-6'>
           <div className='flex flex-row overflow-hidden overflow-x-auto space-x-4 no-scrollbar w-full'>
-            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={cappuccino}
-                className="w-10 h-10 md:w-12 md:h-12"
+                className="w-8 h-8 md:w-10 md:h-10"
                 alt='Picture cappuccino'
               />
-              <Label>Tardeo</Label>
+              <Label className="text-xs">Tardeo</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={cocktail}
-                className="w-10 h-10 md:w-12 md:h-12"
+                className="w-8 h-8 md:w-10 md:h-10"
                 alt='Picture cappuccino'
               />
-              <Label>Coctelear</Label>
+              <Label className="text-xs">Coctelear</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={cottage}
-                className="w-10 h-10 md:w-12 md:h-12"
+                className="w-8 h-8 md:w-10 md:h-10"
                 alt='Picture cappuccino'
               />
-              <Label>Glamping</Label>
+              <Label className="text-xs">Glamping</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={egg}
-                className="w-10 h-10 md:w-12 md:h-12"
+                className="w-8 h-8 md:w-10 md:h-10"
                 alt='Picture cappuccino'
               />
-              <Label>Desayunos</Label>
+              <Label className="text-xs">Desayunos</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={river}
-                className="w-10 h-10 md:w-12 md:h-12"
+                className="w-8 h-8 md:w-10 md:h-10"
                 alt='Picture cappuccino'
               />
-              <Label>Aire Libre</Label>
+              <Label className="text-xs">Aire Libre</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={beagle}
-                className="w-10 h-10 md:w-12 md:h-12"
+                className="w-8 h-8 md:w-10 md:h-10"
                 alt='Picture cappuccino'
               />
-              <Label>Pet Friendly</Label>
+              <Label className="text-xs">Pet Friendly</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-blue-100 border-2 border-blue-400 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-blue-100 border-2 border-blue-400 rounded-lg'>
               <Image
                 src={burger}
-                className="w-10 h-10 md:w-12 md:h-12"
+                className="w-8 h-8 md:w-10 md:h-10"
                 alt='Picture cappuccino'
               />
-              <Label className='text-blue-400'>Cheat Meal</Label>
+              <Label className='text-blue-400 text-xs'>Cheat Meal</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={cheers}
-                className="w-10 h-10 md:w-12 md:h-12"
+                className="w-8 h-8 md:w-10 md:h-10"
                 alt='Picture cappuccino'
               />
-              <Label>Celebraciones</Label>
+              <Label className="text-xs">Celebraciones</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={vegetables}
-                className="w-10 h-10 md:w-12 md:h-12"
+                className="w-8 h-8 md:w-10 md:h-10"
                 alt='Picture cappuccino'
               />
-              <Label>Saludable</Label>
+              <Label className="text-xs">Saludable</Label>
             </div>
-            <div className='flex items-center justify-center flex-col space-y-4 h-24 min-w-24 md:h-28 md:min-w-28 bg-slate-100 rounded-lg'>
+            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
               <Image
                 src={spaghetti}
-                className="w-10 h-10 md:w-12 md:h-12"
+                className="w-8 h-8 md:w-10 md:h-10"
                 alt='Picture cappuccino'
               />
-              <Label>Almuerzos</Label>
+              <Label className="text-xs">Almuerzos</Label>
             </div>
           </div>
-        </div>
-        <div className='flex flex-col gap-6 w-full'>
-          <div className='bg-slate-100 py-4 md:py-6 px-2 md:px-8 flex flex-row items-center'>
-            <Label className='font-semibold text-md md:text-lg md:block hidden'>{`Resultados Top para "Cheat Meal"`}</Label>
-            <Label className='font-semibold text-lg block md:hidden'>Resultados Top</Label>
-            <div className='flex flex-1 justify-end items-center gap-4'>
+
+          <div className='flex flex-row gap-2 w-full items-center pt-4'>
+            <Label className='hidden md:block font-semibold'>Filtros rapidos: </Label>
+            <div className='flex flex-row overflow-hidden overflow-x-auto gap-2 no-scrollbar flex-1'>
+              <Toggle variant="outline" aria-label="Toggle italic" size="sm">
+                <HeartIcon className='mr-2' /> Delifood
+              </Toggle>
+              <Toggle variant="outline" aria-label="Toggle italic" size="sm">
+                <RocketIcon className='mr-2' />Promos
+              </Toggle>
+              <Toggle variant="outline" aria-label="Toggle italic" size="sm">
+                <HomeIcon className='mr-2' />Nuevos
+              </Toggle>
+              <Toggle variant="outline" aria-label="Toggle italic" size="sm">
+                <StarIcon className='mr-2' /> Recomendados
+              </Toggle>
+            </div>
+            <div className='hidden justify-end items-center gap-4 md:flex'>
               <Label className='hidden md:block font-semibold'>Ordenar por: </Label>
               <Select defaultValue='apple'>
-                <SelectTrigger className="w-[180px] rounded-full">
+                <SelectTrigger className="md:w-[180px] rounded-full">
                   <SelectValue placeholder="Selecciona tu ciudad" />
                 </SelectTrigger>
                 <SelectContent>
@@ -193,9 +176,14 @@ export default function Home() {
               </Select>
             </div>
           </div>
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-4 no-scrollbar px-2 md:px-8'>
-            <div className=' space-y-2'>
-              <div className='w-full h-[150px] rounded-lg overflow-hidden'
+        </div>
+        <div className='flex flex-col gap-6 w-full'>
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-4 no-scrollbar px-4 md:px-8'>
+            <div className='relative flex flex-col gap-2'>
+              <Badge className='absolute left-2 top-2 md:left-5 md:top-5 bg-blue-500 shadow-lg text-sm font-normal'>
+                <HeartFilledIcon className='mr-1' /> Delifood
+              </Badge>
+              <div className='w-full h-[150px] md:h-[250px] rounded-xl overflow-hidden'
                 style={{
                   backgroundImage: `url(${paso.src})`,
                   backgroundSize: 'cover'
@@ -207,8 +195,8 @@ export default function Home() {
                 <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
               </div>
             </div>
-            <div className=' space-y-2'>
-              <div className='w-full h-[150px] rounded-lg overflow-hidden'
+            <div className='relative flex flex-col gap-2'>
+              <div className='w-full h-[150px] md:h-[250px] rounded-xl overflow-hidden'
                 style={{
                   backgroundImage: `url(${chef.src})`,
                   backgroundSize: 'cover'
@@ -220,8 +208,8 @@ export default function Home() {
                 <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
               </div>
             </div>
-            <div className=' space-y-2'>
-              <div className='w-full h-[150px] rounded-lg overflow-hidden'
+            <div className='relative flex flex-col gap-2'>
+              <div className='w-full h-[150px] md:h-[250px] rounded-xl overflow-hidden'
                 style={{
                   backgroundImage: `url(${tdt.src})`,
                   backgroundSize: 'cover'
@@ -233,8 +221,8 @@ export default function Home() {
                 <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
               </div>
             </div>
-            <div className=' space-y-2'>
-              <div className='w-full h-[150px] rounded-lg overflow-hidden'
+            <div className='relative flex flex-col gap-2'>
+              <div className='w-full h-[150px] md:h-[250px] rounded-xl overflow-hidden'
                 style={{
                   backgroundImage: `url(${faro.src})`,
                   backgroundSize: 'cover'
@@ -246,8 +234,8 @@ export default function Home() {
                 <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
               </div>
             </div>
-            <div className=' space-y-2'>
-              <div className='w-full h-[150px] rounded-lg overflow-hidden'
+            <div className='relative flex flex-col gap-2'>
+              <div className='w-full h-[150px] md:h-[250px] rounded-xl overflow-hidden'
                 style={{
                   backgroundImage: `url(${nk.src})`,
                   backgroundSize: 'cover'
@@ -259,8 +247,8 @@ export default function Home() {
                 <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
               </div>
             </div>
-            <div className=' space-y-2'>
-              <div className='w-full h-[150px] rounded-lg overflow-hidden'
+            <div className='relative flex flex-col gap-2'>
+              <div className='w-full h-[150px] md:h-[250px] rounded-xl overflow-hidden'
                 style={{
                   backgroundImage: `url(${gringo.src})`,
                   backgroundSize: 'cover'
@@ -274,7 +262,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className='flex flex-col gap-4 w-full  px-2 md:px-8'>
+        <div className='flex flex-col gap-4 w-full px-4 md:px-8'>
           <Label className='font-semibold text-xl md:text-2xl'>Ultimos Videos</Label>
           <div className='flex flex-row overflow-hidden overflow-x-auto space-x-4 no-scrollbar'>
             <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] rounded-lg relative overflow-hidden'
