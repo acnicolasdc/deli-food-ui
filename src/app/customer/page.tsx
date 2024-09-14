@@ -21,10 +21,11 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
+import { Button } from '@/components/ui/button';
 
 export default function Customer() {
     return (
-        <main className="flex min-h-screen flex-col">
+        <main className="flex min-h-screen flex-col pb-12">
             <div className='px-0'>
                 <nav className="w-full flex items-center gap-6 md:gap-8 relative justify-center py-4 md:py-2 px-2 md:px-8 flex-wrap md:border-b">
                     <div className='flex h-full w-full md:w-auto items-center justify-center md:justify-start md:border-r md:pr-6'>
@@ -42,7 +43,7 @@ export default function Customer() {
             </div>
             <div className='flex flex-col flex-1 px-4 gap-4 md:gap-6 md:px-[10%] py-2 md:py-12'>
                 <div className='flex flex-row w-full'>
-                    <h1 className='text-2xl font-semibold'>Cali, Pance, Comida Rapida</h1>
+                    <h1 className='md:text-2xl font-semibold'>Cali, Pance, Comida Rapida</h1>
                     <div className='flex flex-1 justify-end'> <Badge className='bg-blue-500 shadow-lg text-sm font-normal'>
                         <HeartFilledIcon className='mr-1' /> Delifood
                     </Badge></div>
@@ -61,35 +62,18 @@ export default function Customer() {
                             <p className='text-base'>Carrera 54a #5a - 52, Cali Colombia</p>
                         </div>
                         <Separator />
-                        <div className='flex flex-col gap-4'>
-                            <Label className='text-base'>Horarios de Servicio</Label>
-                            <div className='grid gap-4 grid-cols-2 md:gap-6'>
-                                <div>
-                                    <Label className='font-semibold'>Lunes a Viernes</Label>
-                                    <p className='text-muted-foreground'>12:00 PM - 10:00PM</p>
-                                </div>
-                                <div>
-                                    <Label className='font-semibold'>Fines de Semana</Label>
-                                    <p className='text-muted-foreground'>8:00 AM - 11:00PM</p>
-                                </div>
-                                <div>
-                                    <Label className='font-semibold'>Festivos</Label>
-                                    <p className='text-muted-foreground'>2:00 PM - 01:00AM</p>
-                                </div>
-                            </div>
-                        </div>
-                        <Separator />
+
                         <div className='flex flex-col gap-4'>
                             <Label className='text-base'>Informacion General</Label>
                             <div className='flex flex-col gap-6'>
-                                <div className='flex flex-row gap-6'>
+                                <div className='flex flex-row gap-4'>
                                     <ClockIcon className='h-6 w-6' />
                                     <div>
                                         <Label className='font-semibold'>Tiempo Estimado de atencion</Label>
                                         <p className='text-muted-foreground'>De 20 a 30 Minutos</p>
                                     </div>
                                 </div>
-                                <div className='flex flex-row gap-6'>
+                                <div className='flex flex-row gap-4'>
                                     <ScissorsIcon className='h-6 w-6' />
                                     <div>
                                         <Label className='font-semibold'>Precio Promedio por Persona</Label>
@@ -154,9 +138,45 @@ export default function Customer() {
                             </div>
                         </div>
                     </div>
-                    <div className='w-full md:w-[380px] flex justify-center items-start flex-grow-0'>
-                        <div className='shadow-lg rounded-xl border w-full h-[400px]'>
-
+                    <Separator  className='md:hidden'/>
+                    <div className='w-full md:w-[380px] flex justify-center items-start flex-grow-0 relative'>
+                        <div className='flex flex-col shadow-lg rounded-xl border w-full md:sticky top-5 px-6 py-8 gap-6'>
+                            <div className='flex flex-col gap-4'>
+                                <Label className='text-base md:text-lg md:font-semibold'>Horarios de Servicio</Label>
+                                <div className='grid gap-4 grid-cols-2 md:gap-4'>
+                                    <div>
+                                        <Label className='font-semibold'>Lunes a Viernes</Label>
+                                        <p className='text-muted-foreground'>12:00 PM - 10:00PM</p>
+                                    </div>
+                                    <div>
+                                        <Label className='font-semibold'>Fines de Semana</Label>
+                                        <p className='text-muted-foreground'>8:00 AM - 11:00PM</p>
+                                    </div>
+                                    <div>
+                                        <Label className='font-semibold'>Festivos</Label>
+                                        <p className='text-muted-foreground'>2:00 PM - 01:00AM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <Separator />
+                            <div className='flex flex-col gap-4'>
+                                <Label className='text-base md:text-lg md:font-semibold'>Sedes</Label>
+                                <div className='grid gap-4 grid-cols-1'>
+                                    <div className='flex flex-row justify-between items-center'>
+                                        <Label className='font-semibold'>Pance</Label>
+                                        <p className='text-muted-foreground'>Carrera 54a #5a - 52</p>
+                                    </div>
+                                    <div className='flex flex-row justify-between items-center'>
+                                        <Label className='font-semibold'>La Novena</Label>
+                                        <p className='text-muted-foreground'>Calle 1a #10 - 02</p>
+                                    </div>
+                                    <div className='flex flex-row justify-between items-center'>
+                                        <Label className='font-semibold'>Valle de Lilli</Label>
+                                        <p className='text-muted-foreground'>Avenida 456 #34c - 06</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <Button variant="cartoon">Reservar</Button>
                         </div>
                     </div>
                 </div>
@@ -176,8 +196,8 @@ export default function Customer() {
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
-                        <CarouselPrevious className='hidden md:flex'/>
-                        <CarouselNext className='hidden md:flex'/>
+                        <CarouselPrevious className='hidden md:flex' />
+                        <CarouselNext className='hidden md:flex' />
                     </Carousel>
                 </div>
 
@@ -195,48 +215,48 @@ export default function Customer() {
                             <div className='flex flex-col gap-4'>
                                 <Label className='text-base'>Recomendaciones</Label>
                                 <div className='grid gap-4 grid-cols-1 md:grid-cols-2 md:gap-6'>
-                                    <div className='flex flex-row gap-6'>
+                                    <div className='flex flex-row gap-4'>
                                         <Image
                                             src={entrance}
-                                            className="h-6 w-6"
+                                            className="h-8 w-8"
                                             alt='Picture cappuccino'
                                         />
                                         <div>
                                             <Label className='font-semibold'>Entradas</Label>
-                                            <p className='text-muted-foreground'>Papas Bravas con Tocineta</p>
+                                            <p className='text-muted-foreground text-sm md:text-base'>Papas Bravas con Tocineta</p>
                                         </div>
                                     </div>
-                                    <div className='flex flex-row gap-6'>
+                                    <div className='flex flex-row gap-4'>
                                         <Image
                                             src={main}
-                                            className="h-6 w-6"
+                                            className="h-8 w-8"
                                             alt='Picture cappuccino'
                                         />
                                         <div>
                                             <Label className='font-semibold'>Fuerte</Label>
-                                            <p className='text-muted-foreground'>Hamburguesa Tricentenario</p>
+                                            <p className='text-muted-foreground text-sm md:text-base'>Hamburguesa Tricentenario</p>
                                         </div>
                                     </div>
-                                    <div className='flex flex-row gap-6'>
+                                    <div className='flex flex-row gap-4'>
                                         <Image
                                             src={candy}
-                                            className="h-6 w-6"
+                                            className="h-8 w-8"
                                             alt='Picture cappuccino'
                                         />
                                         <div>
                                             <Label className='font-semibold'>Postres</Label>
-                                            <p className='text-muted-foreground'>Helado de Tocino</p>
+                                            <p className='text-muted-foreground text-sm md:text-base'>Helado de Tocino</p>
                                         </div>
                                     </div>
-                                    <div className='flex flex-row gap-6'>
+                                    <div className='flex flex-row gap-4'>
                                         <Image
                                             src={drink}
-                                            className="h-6 w-6"
+                                            className="h-8 w-8"
                                             alt='Picture cappuccino'
                                         />
                                         <div>
                                             <Label className='font-semibold'>Bebidas</Label>
-                                            <p className='text-muted-foreground'>Malteada de Milo</p>
+                                            <p className='text-muted-foreground text-sm md:text-base'>Malteada de Milo</p>
                                         </div>
                                     </div>
                                 </div>
