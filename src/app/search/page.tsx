@@ -2,28 +2,11 @@
 import Image from 'next/image';
 import { Toggle } from "@/components/ui/toggle";
 import logoDeliFood from '../../../public/logo.png';
-import cappuccino from '../../../public/cappuccino.png';
-import cocktail from '../../../public/cocktail.png';
-import cottage from '../../../public/cottage.png';
-
-import egg from '../../../public/egg.png';
-import beagle from '../../../public/beagle.png';
-import burger from '../../../public/burger.png';
-import river from '../../../public/river.png';
-import vegetables from '../../../public/vegetables.png';
-import spaghetti from '../../../public/spaghetti.png';
-import cheers from '../../../public/cheers.png';
 import bread from '../../../public/last-reviews/bread.png';
 import how from '../../../public/last-reviews/how.png';
 import cream from '../../../public/last-reviews/cream.png';
 import glamping from '../../../public/last-reviews/glamping.png';
 import me from '../../../public/last-reviews/me.png';
-import paso from '../../../public/restaurant/paso.jpg';
-import chef from '../../../public/restaurant/chef.webp';
-import faro from '../../../public/restaurant/faro.jpg';
-import gringo from '../../../public/restaurant/gringo.jpg';
-import nk from '../../../public/restaurant/nk.png';
-import tdt from '../../../public/restaurant/tdt.jpg';
 
 import {
   Select,
@@ -34,13 +17,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { InstagramLogoIcon, HomeIcon, RocketIcon, StarIcon, HeartIcon, HeartFilledIcon } from '@radix-ui/react-icons'
+import { InstagramLogoIcon, HomeIcon, RocketIcon, StarIcon, HeartIcon } from '@radix-ui/react-icons'
 import { Label } from '@/components/ui/label';
 import { CustomerListCustomFilters } from '@/containers/customer-list-custom-filters';
 import { UserLocationFilter } from '@/module/user-location-filter';
-import { Badge } from '@/components/ui/badge';
-import { SelectLabel } from '@radix-ui/react-select';
 import { CategorySlideSelectFilter } from '@/containers/category-slide-select-filter';
+import { CustomerCardList } from '@/containers/customer-card-list';
 
 export default function Search() {
   return (
@@ -97,89 +79,7 @@ export default function Search() {
           </div>
         </div>
         <div className='flex flex-col gap-6 w-full'>
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-4 no-scrollbar px-4 md:px-8'>
-            <div className='relative flex flex-col gap-2'>
-              <Badge className='absolute left-2 top-2 md:left-5 md:top-5 bg-blue-500 shadow-lg text-sm font-normal'>
-                <HeartFilledIcon className='mr-1' /> Delifood
-              </Badge>
-              <div className='w-full h-[150px] md:h-[250px] rounded-xl overflow-hidden'
-                style={{
-                  backgroundImage: `url(${paso.src})`,
-                  backgroundSize: 'cover'
-                }}
-              >
-              </div>
-              <div className='px-2'>
-                <Label className='text-sm md:text-md font-semibold'>El Paso Hamburguesas</Label>
-                <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
-              </div>
-            </div>
-            <div className='relative flex flex-col gap-2'>
-              <div className='w-full h-[150px] md:h-[250px] rounded-xl overflow-hidden'
-                style={{
-                  backgroundImage: `url(${chef.src})`,
-                  backgroundSize: 'cover'
-                }}
-              >
-              </div>
-              <div className='px-2'>
-                <Label className='text-sm md:text-md font-semibold'>Chef Burgers</Label>
-                <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
-              </div>
-            </div>
-            <div className='relative flex flex-col gap-2'>
-              <div className='w-full h-[150px] md:h-[250px] rounded-xl overflow-hidden'
-                style={{
-                  backgroundImage: `url(${tdt.src})`,
-                  backgroundSize: 'cover'
-                }}
-              >
-              </div>
-              <div className='px-2'>
-                <Label className='text-sm md:text-md font-semibold'>Tierra de Todos</Label>
-                <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
-              </div>
-            </div>
-            <div className='relative flex flex-col gap-2'>
-              <div className='w-full h-[150px] md:h-[250px] rounded-xl overflow-hidden'
-                style={{
-                  backgroundImage: `url(${faro.src})`,
-                  backgroundSize: 'cover'
-                }}
-              >
-              </div>
-              <div className='px-2'>
-                <Label className='text-sm md:text-md font-semibold'>El Faro Bar</Label>
-                <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
-              </div>
-            </div>
-            <div className='relative flex flex-col gap-2'>
-              <div className='w-full h-[150px] md:h-[250px] rounded-xl overflow-hidden'
-                style={{
-                  backgroundImage: `url(${nk.src})`,
-                  backgroundSize: 'cover'
-                }}
-              >
-              </div>
-              <div className='px-2'>
-                <Label className='text-sm md:text-md font-semibold'>NK Hamburguesas</Label>
-                <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
-              </div>
-            </div>
-            <div className='relative flex flex-col gap-2'>
-              <div className='w-full h-[150px] md:h-[250px] rounded-xl overflow-hidden'
-                style={{
-                  backgroundImage: `url(${gringo.src})`,
-                  backgroundSize: 'cover'
-                }}
-              >
-              </div>
-              <div className='px-2'>
-                <Label className='text-sm md:text-md font-semibold'>El Gringo</Label>
-                <p className='text-xs md:text-sm text-muted-foreground'>Carrera 54# 5a 52</p>
-              </div>
-            </div>
-          </div>
+          <CustomerCardList />
         </div>
         <div className='flex flex-col gap-4 w-full px-4 md:px-8'>
           <Label className='font-semibold text-xl md:text-2xl'>Ultimos Videos</Label>

@@ -20,6 +20,7 @@ import {
 import { UserLocationInput } from "./components/user-location-input";
 import { CitySelectFilter } from "./containers/city-select-filter";
 import { ZoneSlideSelectFilter } from "./containers/zone-slide-select-filter";
+import { EFieldSlideSelectType } from "@/components/field/field-slide-select";
 
 export interface IUserLocationFilterProps {
     className?: string
@@ -41,7 +42,7 @@ export function UserLocationFilter({ className }: IUserLocationFilterProps) {
                     <div className="px-2 flex overflow-y-auto overflow-hidden no-scrollbar">
                         <div className="flex flex-col p-4 pb-12 w-full gap-6 pt-0">
                             <CitySelectFilter />
-                            <ZoneSlideSelectFilter />
+                            <ZoneSlideSelectFilter type={EFieldSlideSelectType.grid}/>
                         </div>
                     </div>
                     <DialogFooter className='px-6'>
@@ -64,7 +65,7 @@ export function UserLocationFilter({ className }: IUserLocationFilterProps) {
                     </DrawerHeader>
                     <div className="flex flex-col p-4 pb-12 w-full gap-6">
                         <CitySelectFilter />
-                        <ZoneSlideSelectFilter />
+                        <ZoneSlideSelectFilter type={EFieldSlideSelectType.slide}/>
                     </div>
                 </div>
             </DrawerContent>

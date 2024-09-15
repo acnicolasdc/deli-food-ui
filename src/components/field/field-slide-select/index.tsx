@@ -1,1 +1,1 @@
-export { FieldSlideSelect } from './field-slide-select.component';
+export { FieldSlideSelect, EFieldSlideSelectType } from './field-slide-select.component';

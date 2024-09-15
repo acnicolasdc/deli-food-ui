@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Label } from "@/components/ui/label";
-import { FieldSlideSelect } from "@/components/field/field-slide-select";
+import { FieldSlideSelect, EFieldSlideSelectType } from "@/components/field/field-slide-select";
 
 import flora from '../../../../../public/places/flora.png';
 import granada from '../../../../../public/places/granada.png';
@@ -90,11 +90,15 @@ const MOCK_DATA = [
     }
 ];
 
-export function ZoneSlideSelectFilter() {
+export interface IZoneSlideSelectFilterProps {
+    type: EFieldSlideSelectType;
+}
+
+export function ZoneSlideSelectFilter({ type }: IZoneSlideSelectFilterProps) {
     return (
         <div className='space-y-4 w-full'>
             <Label>A que zona quieres ir?</Label>
-            <FieldSlideSelect data={MOCK_DATA} variant="outline" />
+            <FieldSlideSelect data={MOCK_DATA} variant="outline" type={type}/>
         </div>
     )
 }

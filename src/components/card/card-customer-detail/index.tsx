@@ -1,0 +1,1 @@
+export { CardCustomerDetail } from './card-customer-detail.component';

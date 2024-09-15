@@ -71,6 +71,6 @@ const MOCK_DATA = [
 
 export function CategorySlideSelectFilter() {
   return (
-    <FieldSlideSelect data={MOCK_DATA} />
+    <FieldSlideSelect data={MOCK_DATA} variant="outline"/>
   );
 }
