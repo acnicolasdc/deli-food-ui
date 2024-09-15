@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import { buttonVariants } from "@/components/ui/button"
 import logoDeliFood from '../../public/logo.png';
@@ -9,7 +10,7 @@ import gardenRight from "../../public/garden-right.png";
 import burger from "../../public/burger.png";
 import hotdog from "../../public/hotdog.png";
 import popsicle from "../../public/popsicle.png";
-import { FieldDrawerLocation } from '@/components/custom/field/field-drawer-location';
+import { UserLocationFilter } from '@/module/user-location-filter'; 
 
 export default function Home() {
   return (
@@ -63,7 +64,7 @@ export default function Home() {
               <p className='text-center text-slate-700 text-sm md:text-base'>En esta plataforma puedes buscar cualquier lugar, por su nombre, ubicacion y otros datos.</p>
             </div>
             <div className='flex flex-row gap-8 w-full items-center justify-center'>
-              <FieldDrawerLocation className='bg-white shadow-xl' />
+              <UserLocationFilter className='bg-white shadow-xl' />
             </div>
           </div>
         </div>

@@ -1,0 +1,1 @@
+export { CategorySlideSelectFilter } from './category-slide-select-filter.component';

@@ -37,9 +37,10 @@ import {
 import { InstagramLogoIcon, HomeIcon, RocketIcon, StarIcon, HeartIcon, HeartFilledIcon } from '@radix-ui/react-icons'
 import { Label } from '@/components/ui/label';
 import { CustomerListCustomFilters } from '@/containers/customer-list-custom-filters';
-import { UserLocationFilter } from '@/containers/user-location-filter';
+import { UserLocationFilter } from '@/module/user-location-filter';
 import { Badge } from '@/components/ui/badge';
 import { SelectLabel } from '@radix-ui/react-select';
+import { CategorySlideSelectFilter } from '@/containers/category-slide-select-filter';
 
 export default function Search() {
   return (
@@ -61,89 +62,7 @@ export default function Search() {
       </div>
       <div className='space-y-6 md:space-y-12'>
         <div className='flex flex-col gap-2 md:gap-4 pt-2 md:pt-6 px-4 md:px-6'>
-          <div className='flex flex-row overflow-hidden overflow-x-auto space-x-4 no-scrollbar w-full'>
-            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
-              <Image
-                src={cappuccino}
-                className="w-8 h-8 md:w-10 md:h-10"
-                alt='Picture cappuccino'
-              />
-              <Label className="text-xs">Tardeo</Label>
-            </div>
-            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
-              <Image
-                src={cocktail}
-                className="w-8 h-8 md:w-10 md:h-10"
-                alt='Picture cappuccino'
-              />
-              <Label className="text-xs">Coctelear</Label>
-            </div>
-            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
-              <Image
-                src={cottage}
-                className="w-8 h-8 md:w-10 md:h-10"
-                alt='Picture cappuccino'
-              />
-              <Label className="text-xs">Glamping</Label>
-            </div>
-            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
-              <Image
-                src={egg}
-                className="w-8 h-8 md:w-10 md:h-10"
-                alt='Picture cappuccino'
-              />
-              <Label className="text-xs">Desayunos</Label>
-            </div>
-            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
-              <Image
-                src={river}
-                className="w-8 h-8 md:w-10 md:h-10"
-                alt='Picture cappuccino'
-              />
-              <Label className="text-xs">Aire Libre</Label>
-            </div>
-            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
-              <Image
-                src={beagle}
-                className="w-8 h-8 md:w-10 md:h-10"
-                alt='Picture cappuccino'
-              />
-              <Label className="text-xs">Pet Friendly</Label>
-            </div>
-            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-blue-100 border-2 border-blue-400 rounded-lg'>
-              <Image
-                src={burger}
-                className="w-8 h-8 md:w-10 md:h-10"
-                alt='Picture cappuccino'
-              />
-              <Label className='text-blue-400 text-xs'>Cheat Meal</Label>
-            </div>
-            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
-              <Image
-                src={cheers}
-                className="w-8 h-8 md:w-10 md:h-10"
-                alt='Picture cappuccino'
-              />
-              <Label className="text-xs">Celebraciones</Label>
-            </div>
-            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
-              <Image
-                src={vegetables}
-                className="w-8 h-8 md:w-10 md:h-10"
-                alt='Picture cappuccino'
-              />
-              <Label className="text-xs">Saludable</Label>
-            </div>
-            <div className='flex items-center justify-center flex-col space-y-2 h-24 min-w-24 md:h-26 md:min-w-28 bg-slate-100 rounded-lg'>
-              <Image
-                src={spaghetti}
-                className="w-8 h-8 md:w-10 md:h-10"
-                alt='Picture cappuccino'
-              />
-              <Label className="text-xs">Almuerzos</Label>
-            </div>
-          </div>
-
+          <CategorySlideSelectFilter />
           <div className='flex flex-row gap-2 w-full items-center pt-4'>
             <Label className='hidden md:block font-semibold'>Filtros rapidos: </Label>
             <div className='flex flex-row overflow-hidden overflow-x-auto gap-2 no-scrollbar flex-1'>
