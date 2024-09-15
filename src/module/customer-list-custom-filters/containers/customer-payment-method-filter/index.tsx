@@ -1,0 +1,1 @@
+export { CustomerPaymentMethodFilter}  from './customer-payment-method-filter.component';

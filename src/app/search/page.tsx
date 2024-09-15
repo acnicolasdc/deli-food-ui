@@ -19,7 +19,7 @@ import {
 
 import { InstagramLogoIcon, HomeIcon, RocketIcon, StarIcon, HeartIcon } from '@radix-ui/react-icons'
 import { Label } from '@/components/ui/label';
-import { CustomerListCustomFilters } from '@/containers/customer-list-custom-filters';
+import { CustomerListCustomFilters } from '@/module/customer-list-custom-filters';
 import { UserLocationFilter } from '@/module/user-location-filter';
 import { CategorySlideSelectFilter } from '@/containers/category-slide-select-filter';
 import { CustomerCardList } from '@/containers/customer-card-list';

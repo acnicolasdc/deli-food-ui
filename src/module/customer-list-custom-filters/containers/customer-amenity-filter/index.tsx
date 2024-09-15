@@ -1,0 +1,1 @@
+export { CustomerAmenityFilter } from './customer-amenity-filter.component';

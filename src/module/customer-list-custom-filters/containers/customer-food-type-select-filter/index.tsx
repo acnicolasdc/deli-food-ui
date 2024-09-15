@@ -1,0 +1,1 @@
+export { CustomerFoodTypeSelectFilter } from './customer-food-type-select-filter.component';

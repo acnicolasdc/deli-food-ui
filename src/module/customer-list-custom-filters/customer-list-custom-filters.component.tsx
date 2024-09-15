@@ -19,8 +19,12 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer"
 import { MixerHorizontalIcon } from '@radix-ui/react-icons';
+import { CustomerFoodTypeSelectFilter } from "./containers/customer-food-type-select-filter"
+import { CustomerBudgetFilter } from "./containers/customer-budget-filter"
+import { CustomerPaymentMethodFilter } from "./containers/customer-payment-method-filter"
+import { CustomerAmenityFilter } from "./containers/customer-amenity-filter"
+import { Separator } from "@/components/ui/separator"
 
-import { CustomerCustomFiltersForm } from "./components/customer-custom-filters-form"
 
 export function CustomerListCustomFilters() {
     const [open, setOpen] = React.useState(false)
@@ -38,7 +42,15 @@ export function CustomerListCustomFilters() {
                     <DialogHeader className='px-6'>
                         <DialogTitle className='text-lg'>Filtros</DialogTitle>
                     </DialogHeader>
-                    <CustomerCustomFiltersForm />
+                    <div className="flex flex-col w-full gap-6 pb-4 overflow-hidden overflow-y-auto no-scrollbar px-6">
+                        <CustomerFoodTypeSelectFilter />
+                        <Separator />
+                        <CustomerBudgetFilter />
+                        <Separator />
+                        <CustomerPaymentMethodFilter />
+                        <Separator />
+                        <CustomerAmenityFilter />
+                    </div>
                     <DialogFooter className='px-6'>
                         <Button variant="delifood">Aplicar</Button>
                     </DialogFooter>
@@ -58,7 +70,15 @@ export function CustomerListCustomFilters() {
                 <DrawerHeader className="text-left">
                     <DrawerTitle>Filtros</DrawerTitle>
                 </DrawerHeader>
-                <CustomerCustomFiltersForm />
+                <div className="flex flex-col w-full gap-6 pb-4 overflow-hidden overflow-y-auto no-scrollbar px-6">
+                    <CustomerFoodTypeSelectFilter />
+                    <Separator />
+                    <CustomerBudgetFilter />
+                    <Separator />
+                    <CustomerPaymentMethodFilter />
+                    <Separator />
+                    <CustomerAmenityFilter />
+                </div>
                 <DrawerFooter className="pt-2">
                     <DrawerClose asChild>
                         <Button variant="outline">Cancelar</Button>

@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import logoDeliFood from '../../../public/logo.png';
 import { UserLocationFilter } from '@/module/user-location-filter';
-import { CustomerListCustomFilters } from '@/containers/customer-list-custom-filters';
+import { CustomerListCustomFilters } from '@/module/customer-list-custom-filters';
 import paso from '../../../public/restaurant/paso.jpg';
 import candy from '../../../public/candy.png';
 import drink from '../../../public/drink.png';
