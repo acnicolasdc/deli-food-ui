@@ -1,8 +1,4 @@
 'use client'
-import { HeartFilledIcon } from '@radix-ui/react-icons'
-import { Label } from '@/components/ui/label';
-import { Badge } from '@/components/ui/badge';
-
 import paso from '../../../public/restaurant/paso.jpg';
 import chef from '../../../public/restaurant/chef.webp';
 import faro from '../../../public/restaurant/faro.jpg';
@@ -12,6 +8,7 @@ import tdt from '../../../public/restaurant/tdt.jpg';
 import { CardCustomerDetail } from '@/components/card/card-customer-detail';
 import Link from 'next/link';
 import { CustomerCardListLoadingIndicator } from './components/customer-card-list-loading-indicator';
+import { CustomerCardListEmptyIndicator } from './components/customer-card-list-empty-indicator';
 
 const MOCK_DATA = [
     {
@@ -62,18 +59,20 @@ const MOCK_DATA = [
 export function CustomerCardList() {
     return (
         <CustomerCardListLoadingIndicator>
-            <div className='grid grid-cols-2 md:grid-cols-4 gap-4 no-scrollbar px-4 md:px-8'>
-                {MOCK_DATA.map(({ image, isFavorite, name, address, id }) => (
-                    <Link href="/customer" key={id}>
-                        <CardCustomerDetail
-                            name={name}
-                            image={image}
-                            address={address}
-                            isFavorite={isFavorite}
-                        />
-                    </Link>
-                ))}
-            </div>
+            <CustomerCardListEmptyIndicator>
+                <div className='grid grid-cols-2 md:grid-cols-4 gap-4 no-scrollbar px-4 md:px-8'>
+                    {MOCK_DATA.map(({ image, isFavorite, name, address, id }) => (
+                        <Link href="/customer" key={id}>
+                            <CardCustomerDetail
+                                name={name}
+                                image={image}
+                                address={address}
+                                isFavorite={isFavorite}
+                            />
+                        </Link>
+                    ))}
+                </div>
+            </CustomerCardListEmptyIndicator>
         </CustomerCardListLoadingIndicator>
     );
 }
