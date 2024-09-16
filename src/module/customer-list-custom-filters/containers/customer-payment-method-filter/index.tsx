@@ -1,1 +1,1 @@
-export { CustomerPaymentMethodFilter}  from './customer-payment-method-filter.component';
+export { CustomerPaymentMethodFilter, customerPaymentMethodFilterAtom } from './customer-payment-method-filter.component';

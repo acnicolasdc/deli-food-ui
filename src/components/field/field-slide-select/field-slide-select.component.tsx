@@ -29,7 +29,6 @@ const fieldSlideSelectItemVariants = cva(
                 default: "w-6 h-6 md:w-8 md:h-8",
                 outline: "w-6 h-6 md:w-8 md:h-8",
                 selected: "w-6 h-6 md:w-8 md:h-8",
-
             },
         },
         defaultVariants: {
@@ -55,17 +54,21 @@ export interface FieldSlideSelectProps
     data: TFieldSlideSelectItem[]
     type?: EFieldSlideSelectType;
     value?: string | null;
-    onValueChange?: (value: { label: string, id: string }) => void
+    onValueChange?: (value?: { label: string, id: string }) => void
 }
 
 function FieldSlideSelect({ className, type = EFieldSlideSelectType.slide, variant, data, onValueChange, value: controlValue, ...props }: FieldSlideSelectProps) {
     const style = type === EFieldSlideSelectType.slide ? 'flex flex-row overflow-hidden overflow-x-auto space-x-4 no-scrollbar w-full' : 'w-full grid grid-cols-3 md:grid-cols-4 gap-2';
+    const handleOnClickItem = ({ name, value }: Omit<TFieldSlideSelectItem, 'image'>) => {
+        const itemValue = controlValue === value ? undefined : { label: name, id: value };
+        onValueChange?.(itemValue)
+    }
     return (
         <div className={style}>
             {data.map(({ name, value, image }) => {
                 const variantStyle = value === controlValue ? fieldSlideSelectVariants({ variant: 'selected' }) : fieldSlideSelectVariants({ variant });
                 return (
-                    <div className={cn(variantStyle, className)} {...props} key={value} onClick={() => onValueChange?.({ label: name, id: value })}>
+                    <div className={cn(variantStyle, className)} {...props} key={value} onClick={() => handleOnClickItem({ name, value })}>
                         <Image
                             src={image}
                             className={cn(fieldSlideSelectItemVariants({ variant }), className)}

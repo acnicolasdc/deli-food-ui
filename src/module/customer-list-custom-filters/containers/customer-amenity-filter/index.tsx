@@ -1,1 +1,1 @@
-export { CustomerAmenityFilter } from './customer-amenity-filter.component';
+export { CustomerAmenityFilter, customerAmenityFilterAtom } from './customer-amenity-filter.component';

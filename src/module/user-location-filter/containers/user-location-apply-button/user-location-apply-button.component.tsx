@@ -5,7 +5,7 @@ import { citySelectAtom } from "../city-select-filter";
 import { zoneSlideAtom } from "../zone-slide-select-filter";
 
 import type { TCitySelectAtom } from "../city-select-filter";
-import type { TSoneSlideAtom } from "../zone-slide-select-filter";
+import type { TZoneSlideAtom } from "../zone-slide-select-filter";
 
 const defaultUserLocationFilterValue = { zone: undefined, city: undefined }
 
@@ -14,7 +14,7 @@ export interface IUserLocationApplyButtonProps {
     onError?: () => void
 }
 
-export type TUserLocationApplyButtonAtom = { zone: TSoneSlideAtom | undefined, city: TCitySelectAtom | undefined };
+export type TUserLocationApplyButtonAtom = { zone: TZoneSlideAtom | undefined, city: TCitySelectAtom | undefined };
 
 export const userLocationFilterAtom = atom<TUserLocationApplyButtonAtom>(defaultUserLocationFilterValue);
 export function UserLocationApplyButton({ onSuccess }: IUserLocationApplyButtonProps) {

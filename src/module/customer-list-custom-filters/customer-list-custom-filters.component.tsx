@@ -1,4 +1,5 @@
 import * as React from "react"
+import { atom, useAtom } from "jotai"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { Button } from "@/components/ui/button"
 import {
@@ -24,19 +25,19 @@ import { CustomerBudgetFilter } from "./containers/customer-budget-filter"
 import { CustomerPaymentMethodFilter } from "./containers/customer-payment-method-filter"
 import { CustomerAmenityFilter } from "./containers/customer-amenity-filter"
 import { Separator } from "@/components/ui/separator"
+import { CustomerFiltersApplyButton } from "./containers/customer-filters-apply-button"
+import { CustomerFilterModalTrigger } from "./containers/customer-filter-modal-trigger/customer-filter-modal-trigger.component"
 
-
+export const customerListCustomFiltersStatusAtom = atom<boolean>(false);
 export function CustomerListCustomFilters() {
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = useAtom(customerListCustomFiltersStatusAtom);
     const isDesktop = useMediaQuery("(min-width: 768px)")
-
+    const handleCloseModal = () => setOpen(false);
     if (isDesktop) {
         return (
-            <Dialog>
+            <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger>
-                    <Button variant="outline" className='rounded-full h-12' >
-                        <MixerHorizontalIcon />
-                    </Button>
+                    <CustomerFilterModalTrigger />
                 </DialogTrigger>
                 <DialogContent className='flex flex-col max-h-[100%] md:max-h-[90%] px-0'>
                     <DialogHeader className='px-6'>
@@ -52,7 +53,7 @@ export function CustomerListCustomFilters() {
                         <CustomerAmenityFilter />
                     </div>
                     <DialogFooter className='px-6'>
-                        <Button variant="delifood">Aplicar</Button>
+                        <CustomerFiltersApplyButton onSuccess={handleCloseModal} />
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
@@ -62,9 +63,7 @@ export function CustomerListCustomFilters() {
     return (
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
-                <Button variant="outline" className='rounded-full h-12' >
-                    <MixerHorizontalIcon />
-                </Button>
+                <CustomerFilterModalTrigger />
             </DrawerTrigger>
             <DrawerContent className='flex flex-col max-h-[95%] px-0'>
                 <DrawerHeader className="text-left">
@@ -80,9 +79,7 @@ export function CustomerListCustomFilters() {
                     <CustomerAmenityFilter />
                 </div>
                 <DrawerFooter className="pt-2">
-                    <DrawerClose asChild>
-                        <Button variant="outline">Cancelar</Button>
-                    </DrawerClose>
+                    <CustomerFiltersApplyButton onSuccess={handleCloseModal} />
                 </DrawerFooter>
             </DrawerContent>
         </Drawer>
