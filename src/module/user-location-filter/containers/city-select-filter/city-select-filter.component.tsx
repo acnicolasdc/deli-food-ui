@@ -8,9 +8,11 @@ export type TCityItem = {
     name: string;
     value: string;
 }
+export type TCitySelectAtom = { label: string, id: string };
 
-export const citySelectAtom = atom<{ label: string, id: string } | undefined>(undefined);
-const DATA_MOCK: TCityItem[] = [{ name: 'Cali', value: '1' }];
+export const citySelectAtom = atom<TCitySelectAtom | undefined>(undefined);
+
+const DATA_MOCK: TCityItem[] = [{ name: 'Santiago de Cali', value: '1' }];
 
 export function CitySelectFilter() {
     const [city, setCity] = useAtom(citySelectAtom);

@@ -1,9 +1,9 @@
 import * as React from "react"
-import { useAtomValue } from "jotai";
+import { atom, useAtom, useAtomValue } from "jotai";
 import { useMediaQuery } from "@/hooks/use-media-query"
-import { Button } from "@/components/ui/button"
 import {
     Dialog,
+    DialogClose,
     DialogContent,
     DialogFooter,
     DialogHeader,
@@ -14,27 +14,33 @@ import {
     Drawer,
     DrawerContent,
     DrawerDescription,
+    DrawerFooter,
     DrawerHeader,
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer";
 import { UserLocationInput } from "./components/user-location-input";
-import { CitySelectFilter, citySelectAtom } from "./containers/city-select-filter";
-import { ZoneSlideSelectFilter, zoneSlideAtom } from "./containers/zone-slide-select-filter";
+import { CitySelectFilter } from "./containers/city-select-filter";
+import { ZoneSlideSelectFilter } from "./containers/zone-slide-select-filter";
 import { EFieldSlideSelectType } from "@/components/field/field-slide-select";
+import { UserLocationApplyButton, userLocationFilterAtom } from "./containers/user-location-apply-button";
 
 export interface IUserLocationFilterProps {
     className?: string
 }
 
+export const userLocationFilterStatusAtom = atom<boolean>(false);
 export function UserLocationFilter({ className }: IUserLocationFilterProps) {
-    const zone = useAtomValue(zoneSlideAtom);
-    const city = useAtomValue(citySelectAtom);
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useAtom(userLocationFilterStatusAtom);
+    const { city, zone } = useAtomValue(userLocationFilterAtom);
+    
     const isDesktop = useMediaQuery("(min-width: 768px)");
+
+    const handleCloseModal = () => setOpen(false);
+
     if (isDesktop) {
         return (
-            <Dialog>
+            <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger className="w-full">
                     <UserLocationInput zone={zone?.label} city={city?.label} className={className} />
                 </DialogTrigger>
@@ -45,11 +51,11 @@ export function UserLocationFilter({ className }: IUserLocationFilterProps) {
                     <div className="px-2 flex overflow-y-auto overflow-hidden no-scrollbar">
                         <div className="flex flex-col p-4 pb-12 w-full gap-6 pt-0">
                             <CitySelectFilter />
-                            <ZoneSlideSelectFilter type={EFieldSlideSelectType.grid}/>
+                            <ZoneSlideSelectFilter type={EFieldSlideSelectType.grid} />
                         </div>
                     </div>
                     <DialogFooter className='px-6'>
-                        <Button variant="delifood">Aplicar</Button>
+                        <UserLocationApplyButton onSuccess={handleCloseModal} />
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
@@ -68,9 +74,12 @@ export function UserLocationFilter({ className }: IUserLocationFilterProps) {
                     </DrawerHeader>
                     <div className="flex flex-col p-4 pb-12 w-full gap-6">
                         <CitySelectFilter />
-                        <ZoneSlideSelectFilter type={EFieldSlideSelectType.slide}/>
+                        <ZoneSlideSelectFilter type={EFieldSlideSelectType.slide} />
                     </div>
                 </div>
+                <DrawerFooter>
+                    <UserLocationApplyButton onSuccess={handleCloseModal} />
+                </DrawerFooter>
             </DrawerContent>
         </Drawer>
     )

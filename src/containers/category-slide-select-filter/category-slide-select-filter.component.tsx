@@ -15,6 +15,7 @@ import concert from '../../../public/concert.png';
 import ideas from '../../../public/ideas.png';
 
 import { FieldSlideSelect } from '@/components/field/field-slide-select';
+import { atom, useAtom } from 'jotai';
 
 const MOCK_DATA = [
     {
@@ -84,9 +85,16 @@ const MOCK_DATA = [
     }
 ];
 
-
+export type TCategorySlideSelectFilterAtom = { label: string, id: string };
+export const categorySlideSelectFilterAtom = atom<TCategorySlideSelectFilterAtom | undefined>(undefined);
 export function CategorySlideSelectFilter() {
+    const [category, setCategory] = useAtom(categorySlideSelectFilterAtom);
     return (
-        <FieldSlideSelect data={MOCK_DATA} variant="outline" />
+        <FieldSlideSelect
+            data={MOCK_DATA}
+            variant="outline"
+            value={category?.id}
+            onValueChange={setCategory}
+        />
     );
 }

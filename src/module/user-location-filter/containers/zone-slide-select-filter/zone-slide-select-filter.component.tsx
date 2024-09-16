@@ -94,7 +94,9 @@ export interface IZoneSlideSelectFilterProps {
     type: EFieldSlideSelectType;
 }
 
-export const zoneSlideAtom = atom<{label:string, id:string} | null>(null);
+export type TSoneSlideAtom = { label: string, id: string };
+
+export const zoneSlideAtom = atom<TSoneSlideAtom | undefined>(undefined);
 
 export function ZoneSlideSelectFilter({ type }: IZoneSlideSelectFilterProps) {
     const [zone, setZone] = useAtom(zoneSlideAtom);
