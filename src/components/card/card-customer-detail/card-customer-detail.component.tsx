@@ -1,6 +1,4 @@
-'use client'
-import paso from '../../../public/restaurant/paso.jpg';
-import { HeartFilledIcon } from '@radix-ui/react-icons'
+import { HeartFilledIcon } from '@radix-ui/react-icons';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 

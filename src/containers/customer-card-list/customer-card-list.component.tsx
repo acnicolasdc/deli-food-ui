@@ -10,6 +10,8 @@ import gringo from '../../../public/restaurant/gringo.jpg';
 import nk from '../../../public/restaurant/nk.png';
 import tdt from '../../../public/restaurant/tdt.jpg';
 import { CardCustomerDetail } from '@/components/card/card-customer-detail';
+import Link from 'next/link';
+import { CustomerCardListLoadingIndicator } from './components/customer-card-list-loading-indicator';
 
 const MOCK_DATA = [
     {
@@ -59,16 +61,19 @@ const MOCK_DATA = [
 
 export function CustomerCardList() {
     return (
-        <div className='grid grid-cols-2 md:grid-cols-4 gap-4 no-scrollbar px-4 md:px-8'>
-            {MOCK_DATA.map(({ image, isFavorite, name, address, id }) => (
-                <CardCustomerDetail
-                    key={id}
-                    name={name}
-                    image={image}
-                    address={address}
-                    isFavorite={isFavorite}
-                />
-            ))}
-        </div>
+        <CustomerCardListLoadingIndicator>
+            <div className='grid grid-cols-2 md:grid-cols-4 gap-4 no-scrollbar px-4 md:px-8'>
+                {MOCK_DATA.map(({ image, isFavorite, name, address, id }) => (
+                    <Link href="/customer" key={id}>
+                        <CardCustomerDetail
+                            name={name}
+                            image={image}
+                            address={address}
+                            isFavorite={isFavorite}
+                        />
+                    </Link>
+                ))}
+            </div>
+        </CustomerCardListLoadingIndicator>
     );
 }

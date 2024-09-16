@@ -1,5 +1,5 @@
 import * as React from "react"
-import { EFieldSlideSelectType, FieldSlideSelect } from "@/components/field/field-slide-select";
+import { EFieldSlideSelectType, FieldSlideSelect, FieldSlideSelectLoadingIndicator } from "@/components/field/field-slide-select";
 
 import collard from '../../../../../public/collard.png';
 import international from '../../../../../public/international.png';
@@ -52,10 +52,14 @@ export function CustomerFoodTypeSelectFilter() {
                 Tipo de producto
             </Label>
             <p className='text-xs mb-4 text-muted-foreground'>Selecciona que producto buscas</p>
-            <FieldSlideSelect data={MOCK_DATA} variant="outline"
-                value={foodType?.id}
-                onValueChange={setFoodType}
-            />
+            <FieldSlideSelectLoadingIndicator>
+                <FieldSlideSelect
+                    data={MOCK_DATA}
+                    variant="outline"
+                    value={foodType?.id}
+                    onValueChange={setFoodType}
+                />
+            </FieldSlideSelectLoadingIndicator>
         </div>
     )
 }
