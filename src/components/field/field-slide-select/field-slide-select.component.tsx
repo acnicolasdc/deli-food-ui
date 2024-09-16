@@ -12,6 +12,7 @@ const fieldSlideSelectVariants = cva(
             variant: {
                 default: "bg-slate-50 hover:bg-slate-100",
                 outline: "border border-slate-200 hover:bg-slate-50",
+                selected: "border border-blue-400 border-2 bg-blue-50 hover:bg-blue-100 font-medium text-blue-400"
             },
         },
         defaultVariants: {
@@ -27,13 +28,15 @@ const fieldSlideSelectItemVariants = cva(
             variant: {
                 default: "w-6 h-6 md:w-8 md:h-8",
                 outline: "w-6 h-6 md:w-8 md:h-8",
+                selected: "w-6 h-6 md:w-8 md:h-8",
+
             },
         },
         defaultVariants: {
             variant: "default",
         },
     }
-)
+);
 
 export enum EFieldSlideSelectType {
     slide = 'slide',
@@ -50,22 +53,27 @@ export interface FieldSlideSelectProps
     extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof fieldSlideSelectVariants> {
     data: TFieldSlideSelectItem[]
-    type?: EFieldSlideSelectType
+    type?: EFieldSlideSelectType;
+    value?: string | null;
+    onValueChange?: (value: { label: string, id: string }) => void
 }
 
-function FieldSlideSelect({ className, type = EFieldSlideSelectType.slide, variant, data, ...props }: FieldSlideSelectProps) {
+function FieldSlideSelect({ className, type = EFieldSlideSelectType.slide, variant, data, onValueChange, value: controlValue, ...props }: FieldSlideSelectProps) {
     const style = type === EFieldSlideSelectType.slide ? 'flex flex-row overflow-hidden overflow-x-auto space-x-4 no-scrollbar w-full' : 'w-full grid grid-cols-3 md:grid-cols-4 gap-2';
     return (
         <div className={style}>
-            {data.map(({ name, value, image }) => (
-                <div className={cn(fieldSlideSelectVariants({ variant }), className)} {...props} key={value}>
-                    <Image
-                        src={image}
-                        className={cn(fieldSlideSelectItemVariants({ variant }), className)}
-                        alt={`'Picture ${name}`}
-                    />
-                    <Label className="text-xs">{name}</Label>
-                </div>))}
+            {data.map(({ name, value, image }) => {
+                const variantStyle = value === controlValue ? fieldSlideSelectVariants({ variant: 'selected' }) : fieldSlideSelectVariants({ variant });
+                return (
+                    <div className={cn(variantStyle, className)} {...props} key={value} onClick={() => onValueChange?.({ label: name, id: value })}>
+                        <Image
+                            src={image}
+                            className={cn(fieldSlideSelectItemVariants({ variant }), className)}
+                            alt={`'Picture ${name}`}
+                        />
+                        <Label className="text-xs">{name}</Label>
+                    </div>)
+            })}
         </div>
     )
 }

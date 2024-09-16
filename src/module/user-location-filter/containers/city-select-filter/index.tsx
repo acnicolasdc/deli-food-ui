@@ -1,1 +1,1 @@
-export { CitySelectFilter } from './city-select-filter.component';
+export { CitySelectFilter, citySelectAtom } from './city-select-filter.component';

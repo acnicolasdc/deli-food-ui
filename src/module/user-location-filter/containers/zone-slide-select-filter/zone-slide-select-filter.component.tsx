@@ -1,7 +1,7 @@
 import * as React from "react"
+import { atom, useAtom } from 'jotai';
 import { Label } from "@/components/ui/label";
 import { FieldSlideSelect, EFieldSlideSelectType } from "@/components/field/field-slide-select";
-
 import flora from '../../../../../public/places/flora.png';
 import granada from '../../../../../public/places/granada.png';
 import jardin from '../../../../../public/places/jardin.png';
@@ -40,52 +40,52 @@ const MOCK_DATA = [
     },
     {
         name: 'San Antonio',
-        value: '4',
+        value: '5',
         image: sanAntonio
     },
     {
         name: 'Peñon',
-        value: '5',
+        value: '6',
         image: penon
     },
     {
         name: 'Novena',
-        value: '6',
+        value: '7',
         image: novena
     },
     {
         name: 'Ingenio',
-        value: '7',
+        value: '8',
         image: ingenio
     },
     {
         name: 'Bochalema',
-        value: '8',
+        value: '9',
         image: bocha
     },
     {
         name: 'Pance',
-        value: '9',
+        value: '10',
         image: pance
     },
     {
         name: 'Jamundi',
-        value: '10',
+        value: '11',
         image: jamundi
     },
     {
         name: 'Dapa',
-        value: '11',
+        value: '12',
         image: dapa
     },
     {
         name: 'KM 18',
-        value: '12',
+        value: '13',
         image: km
     },
     {
         name: 'Afueras',
-        value: '13',
+        value: '14',
         image: afueras
     }
 ];
@@ -94,11 +94,20 @@ export interface IZoneSlideSelectFilterProps {
     type: EFieldSlideSelectType;
 }
 
+export const zoneSlideAtom = atom<{label:string, id:string} | null>(null);
+
 export function ZoneSlideSelectFilter({ type }: IZoneSlideSelectFilterProps) {
+    const [zone, setZone] = useAtom(zoneSlideAtom);
     return (
         <div className='space-y-4 w-full'>
             <Label>A que zona quieres ir?</Label>
-            <FieldSlideSelect data={MOCK_DATA} variant="outline" type={type}/>
+            <FieldSlideSelect
+                data={MOCK_DATA}
+                variant="outline"
+                type={type}
+                value={zone?.id}
+                onValueChange={setZone}
+            />
         </div>
     )
 }

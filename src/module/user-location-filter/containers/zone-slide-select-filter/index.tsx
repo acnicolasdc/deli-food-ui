@@ -1,1 +1,1 @@
-export { ZoneSlideSelectFilter } from './zone-slide-select-filter.component';
+export { ZoneSlideSelectFilter, zoneSlideAtom } from './zone-slide-select-filter.component';

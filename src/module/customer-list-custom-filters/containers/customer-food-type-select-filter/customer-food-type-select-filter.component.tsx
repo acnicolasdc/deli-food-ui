@@ -31,7 +31,7 @@ const MOCK_DATA = [
     },
     {
         name: 'Rapida',
-        value: '4',
+        value: '5',
         image: burger
     },
 ];

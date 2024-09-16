@@ -1,4 +1,5 @@
 import * as React from "react"
+import { useAtomValue } from "jotai";
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { Button } from "@/components/ui/button"
 import {
@@ -18,8 +19,8 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer";
 import { UserLocationInput } from "./components/user-location-input";
-import { CitySelectFilter } from "./containers/city-select-filter";
-import { ZoneSlideSelectFilter } from "./containers/zone-slide-select-filter";
+import { CitySelectFilter, citySelectAtom } from "./containers/city-select-filter";
+import { ZoneSlideSelectFilter, zoneSlideAtom } from "./containers/zone-slide-select-filter";
 import { EFieldSlideSelectType } from "@/components/field/field-slide-select";
 
 export interface IUserLocationFilterProps {
@@ -27,13 +28,15 @@ export interface IUserLocationFilterProps {
 }
 
 export function UserLocationFilter({ className }: IUserLocationFilterProps) {
-    const [open, setOpen] = React.useState(false)
-    const isDesktop = useMediaQuery("(min-width: 768px)")
+    const zone = useAtomValue(zoneSlideAtom);
+    const city = useAtomValue(citySelectAtom);
+    const [open, setOpen] = React.useState(false);
+    const isDesktop = useMediaQuery("(min-width: 768px)");
     if (isDesktop) {
         return (
             <Dialog>
                 <DialogTrigger className="w-full">
-                    <UserLocationInput className={className} />
+                    <UserLocationInput zone={zone?.label} city={city?.label} className={className} />
                 </DialogTrigger>
                 <DialogContent className='flex flex-col max-h-[100%] md:max-h-[95%] px-0'>
                     <DialogHeader className='px-6'>
@@ -55,7 +58,7 @@ export function UserLocationFilter({ className }: IUserLocationFilterProps) {
     return (
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
-                <UserLocationInput className={className} />
+                <UserLocationInput zone={zone?.label} city={city?.label} className={className} />
             </DrawerTrigger>
             <DrawerContent>
                 <div className="mx-auto w-full">

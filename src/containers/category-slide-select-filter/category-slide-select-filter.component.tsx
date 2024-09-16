@@ -39,7 +39,7 @@ const MOCK_DATA = [
     },
     {
         name: 'Aire Libre',
-        value: '4',
+        value: '44',
         image: river
     },
     {
