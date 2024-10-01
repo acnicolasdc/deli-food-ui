@@ -1,6 +1,5 @@
 'use client'
 import Image from 'next/image';
-import { Toggle } from "@/components/ui/toggle";
 import logoDeliFood from '../../../public/logo.png';
 import bread from '../../../public/last-reviews/bread.png';
 import how from '../../../public/last-reviews/how.png';
@@ -17,12 +16,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { InstagramLogoIcon, HomeIcon, RocketIcon, StarIcon, HeartIcon } from '@radix-ui/react-icons'
+import { InstagramLogoIcon } from '@radix-ui/react-icons'
 import { Label } from '@/components/ui/label';
 import { CustomerListCustomFilters } from '@/module/customer-list-custom-filters';
 import { UserLocationFilter } from '@/module/user-location-filter';
-import { CategorySlideSelectFilter } from '@/containers/category-slide-select-filter';
 import { CustomerCardList } from '@/containers/customer-card-list';
+import { TagToggleSelectFilter } from '@/containers/tag-toggle-select-filter';
+import { CustomerCategorySelectFilter } from '@/module/customer-category-select-filter';
 
 export default function Search() {
   return (
@@ -44,24 +44,14 @@ export default function Search() {
       </div>
       <div className='space-y-6 md:space-y-12'>
         <div className='flex flex-col gap-2 md:gap-4 pt-2 md:pt-6 px-4 md:px-6'>
-          <CategorySlideSelectFilter />
-          <div className='flex flex-row gap-2 w-full items-center pt-4'>
+          <CustomerCategorySelectFilter />
+          <div className='flex flex-row gap-2 items-center'>
             <Label className='hidden md:block font-semibold'>Filtros rapidos: </Label>
             <div className='flex flex-row overflow-hidden overflow-x-auto gap-2 no-scrollbar flex-1'>
-              <Toggle variant="outline" aria-label="Toggle italic" size="sm">
-                <HeartIcon className='mr-2' /> Delifood
-              </Toggle>
-              <Toggle variant="outline" aria-label="Toggle italic" size="sm">
-                <RocketIcon className='mr-2' />Promos
-              </Toggle>
-              <Toggle variant="outline" aria-label="Toggle italic" size="sm">
-                <HomeIcon className='mr-2' />Nuevos
-              </Toggle>
-              <Toggle variant="outline" aria-label="Toggle italic" size="sm">
-                <StarIcon className='mr-2' /> Recomendados
-              </Toggle>
+              <TagToggleSelectFilter onValueChange={() => { }} />
+
             </div>
-            <div className='hidden justify-end items-center gap-4 md:flex'>
+            <div className='hidden justify-end items-center gap-4 md:flex md:flex-1'>
               <Label className='hidden md:block font-semibold'>Ordenar por: </Label>
               <Select defaultValue='apple'>
                 <SelectTrigger className="md:w-[180px] rounded-full">

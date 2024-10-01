@@ -1,9 +1,7 @@
-import * as React from "react"
-import { atom, useAtom, useAtomValue } from "jotai";
+import * as React from "react";
 import { useMediaQuery } from "@/hooks/use-media-query"
 import {
     Dialog,
-    DialogClose,
     DialogContent,
     DialogFooter,
     DialogHeader,
@@ -19,30 +17,26 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer";
-import { UserLocationInput } from "./components/user-location-input";
 import { CitySelectFilter } from "./containers/city-select-filter";
 import { ZoneSlideSelectFilter } from "./containers/zone-slide-select-filter";
 import { EFieldSlideSelectType } from "@/components/field/field-slide-select";
-import { UserLocationApplyButton, userLocationFilterAtom } from "./containers/user-location-apply-button";
+import { UserLocationApplyButton } from "./containers/user-location-apply-button";
+import { useUserLocationFilter } from "./use-user-location-filter";
+import { UserLocationInputTrigger } from "./containers/user-location-input-trigger";
 
 export interface IUserLocationFilterProps {
     className?: string
 }
-
-export const userLocationFilterStatusAtom = atom<boolean>(false);
 export function UserLocationFilter({ className }: IUserLocationFilterProps) {
-    const [open, setOpen] = useAtom(userLocationFilterStatusAtom);
-    const { city, zone } = useAtomValue(userLocationFilterAtom);
-    
+    const { open, setOpen } = useUserLocationFilter();
     const isDesktop = useMediaQuery("(min-width: 768px)");
-
     const handleCloseModal = () => setOpen(false);
 
     if (isDesktop) {
         return (
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger className="w-full">
-                    <UserLocationInput zone={zone?.label} city={city?.label} className={className} />
+                    <UserLocationInputTrigger className={className} />
                 </DialogTrigger>
                 <DialogContent className='flex flex-col max-h-[100%] md:max-h-[95%] px-0'>
                     <DialogHeader className='px-6'>
@@ -64,7 +58,7 @@ export function UserLocationFilter({ className }: IUserLocationFilterProps) {
     return (
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
-                <UserLocationInput zone={zone?.label} city={city?.label} className={className} />
+                <UserLocationInputTrigger className={className} />
             </DrawerTrigger>
             <DrawerContent>
                 <div className="mx-auto w-full">

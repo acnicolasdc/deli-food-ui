@@ -1,0 +1,1 @@
+export { TagToggleSelectFilter } from './tag-toggle-select-filter.component';

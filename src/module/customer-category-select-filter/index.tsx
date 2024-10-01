@@ -1,0 +1,1 @@
+export { CustomerCategorySelectFilter } from './customer-category-select-filter.component';

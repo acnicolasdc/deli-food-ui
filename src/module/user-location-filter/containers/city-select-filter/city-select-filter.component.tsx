@@ -1,34 +1,37 @@
 'use client';
 import * as React from "react"
+import { atom } from "jotai";
 import { Label } from "@/components/ui/label"
+import useCityFindMany from "@/hooks/infrastructure/city/use-city-find-many";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { atom, useAtom } from "jotai";
+import { useCitySelectFilter } from "./use-city-select-filter";
 
-export type TCityItem = {
-    name: string;
-    value: string;
-}
-export type TCitySelectAtom = { label: string, id: string };
 
+export type TCitySelectAtom = { name: string, id: string };
 export const citySelectAtom = atom<TCitySelectAtom | undefined>(undefined);
 
-const DATA_MOCK: TCityItem[] = [{ name: 'Santiago de Cali', value: '1' }];
-
 export function CitySelectFilter() {
-    const [city, setCity] = useAtom(citySelectAtom);
+    const { city, setCity } = useCitySelectFilter();
+    const { data, isFetching } = useCityFindMany();
+    const handleOnValueChange = (value: string) => {
+        const foundCity = data.find((city) => city.id === parseInt(value));
+        if (foundCity) {
+            setCity({ id: value, name: foundCity.name })
+        }
+    }
     return (
         <div className='space-y-4'>
             <Label>En que ciudad estas?</Label>
-            <Select value={city?.id} onValueChange={(value) => {
-                const foundCity = DATA_MOCK.find((city) => city.value === value);
-                if (foundCity) setCity({ id: foundCity.value, label: foundCity.name })
-            }}>
+            <Select
+                value={city?.id}
+                disabled={isFetching}
+                onValueChange={handleOnValueChange}>
                 <SelectTrigger className="w-full">
                     <SelectValue placeholder="Selecciona tu ciudad" />
                 </SelectTrigger>
                 <SelectContent>
                     <SelectGroup>
-                        {DATA_MOCK.map(({ name, value }) => <SelectItem value={value} key={name}>{name}</SelectItem>)}
+                        {data.map(({ name, id }) => <SelectItem value={String(id)} key={id}>{name}</SelectItem>)}
                     </SelectGroup>
                 </SelectContent>
             </Select>

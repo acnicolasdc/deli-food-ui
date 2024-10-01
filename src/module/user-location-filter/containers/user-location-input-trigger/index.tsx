@@ -1,0 +1,1 @@
+export { UserLocationInputTrigger } from './user-location-input-trigger.component';

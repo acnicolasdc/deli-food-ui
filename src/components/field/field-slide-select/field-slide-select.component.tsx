@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 import Image, { StaticImageData } from "next/image"
 import { Label } from "@/components/ui/label"
 import { Skeleton } from "@/components/ui/skeleton"
+import { AnimationFadeIn } from "@/components/animation/animation-fade-in"
 
 const fieldSlideSelectVariants = cva(
     "flex items-center justify-center flex-col space-y-2 rounded-lg cursor-pointer h-20 min-w-24 md:h-20 md:min-w-24",
@@ -59,8 +60,8 @@ export enum EFieldSlideSelectType {
 
 export type TFieldSlideSelectItem = {
     name: string;
-    value: string;
-    image: StaticImageData;
+    value: string | number;
+    image: StaticImageData | string;
 }
 
 export interface IFieldSlideSelectProps
@@ -68,8 +69,8 @@ export interface IFieldSlideSelectProps
     VariantProps<typeof fieldSlideSelectVariants> {
     data: TFieldSlideSelectItem[]
     type?: EFieldSlideSelectType;
-    value?: string | null;
-    onValueChange?: (value?: { label: string, id: string }) => void
+    value?: string | null | number;
+    onValueChange?: (value?: { name: string, value: string | number }) => void
 }
 
 export interface IFieldSlideSelectLoadingIndicatorProps
@@ -102,24 +103,26 @@ function FieldSlideSelectLoadingIndicator({ isLoading, className, type = EFieldS
 
 function FieldSlideSelect({ className, type = EFieldSlideSelectType.slide, variant, data, onValueChange, value: controlValue, ...props }: IFieldSlideSelectProps) {
     const handleOnClickItem = ({ name, value }: Omit<TFieldSlideSelectItem, 'image'>) => {
-        const itemValue = controlValue === value ? undefined : { label: name, id: value };
+        const itemValue = controlValue === value ? undefined : { name, value };
         onValueChange?.(itemValue)
     }
     return (
-        <div className={cn(fieldSlideSelectGridVariants({ variant: type }), className)}>
+        <AnimationFadeIn className={cn(fieldSlideSelectGridVariants({ variant: type }), className)} code={type}>
             {data.map(({ name, value, image }) => {
                 const variantStyle = value === controlValue ? 'selected' : variant;
                 return (
                     <div className={cn(fieldSlideSelectVariants({ variant: variantStyle }), className)} {...props} key={value} onClick={() => handleOnClickItem({ name, value })}>
                         <Image
                             src={image}
+                            width={60}
+                            height={60}
                             className={cn(fieldSlideSelectItemVariants({ variant }), className)}
                             alt={`'Picture ${name}`}
                         />
                         <Label className="text-xs">{name}</Label>
                     </div>)
             })}
-        </div>
+        </AnimationFadeIn>
     )
 }
 

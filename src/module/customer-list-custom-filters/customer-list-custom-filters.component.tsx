@@ -1,7 +1,5 @@
 import * as React from "react"
-import { atom, useAtom } from "jotai"
 import { useMediaQuery } from "@/hooks/use-media-query"
-import { Button } from "@/components/ui/button"
 import {
     Dialog,
     DialogContent,
@@ -12,27 +10,23 @@ import {
 } from "@/components/ui/dialog"
 import {
     Drawer,
-    DrawerClose,
     DrawerContent,
     DrawerFooter,
     DrawerHeader,
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer"
-import { MixerHorizontalIcon } from '@radix-ui/react-icons';
-import { CustomerFoodTypeSelectFilter } from "./containers/customer-food-type-select-filter"
-import { CustomerBudgetFilter } from "./containers/customer-budget-filter"
-import { CustomerPaymentMethodFilter } from "./containers/customer-payment-method-filter"
-import { CustomerAmenityFilter } from "./containers/customer-amenity-filter"
-import { Separator } from "@/components/ui/separator"
 import { CustomerFiltersApplyButton } from "./containers/customer-filters-apply-button"
 import { CustomerFilterModalTrigger } from "./containers/customer-filter-modal-trigger/customer-filter-modal-trigger.component"
+import { CustomerListFilters } from "./containers/customer-list-filters"
+import { useCustomerListCustomFilters } from "./use-customer-list-custom-filters"
 
-export const customerListCustomFiltersStatusAtom = atom<boolean>(false);
 export function CustomerListCustomFilters() {
-    const [open, setOpen] = useAtom(customerListCustomFiltersStatusAtom);
+    const { open, setOpen } = useCustomerListCustomFilters();
+    
     const isDesktop = useMediaQuery("(min-width: 768px)")
     const handleCloseModal = () => setOpen(false);
+
     if (isDesktop) {
         return (
             <Dialog open={open} onOpenChange={setOpen}>
@@ -43,15 +37,7 @@ export function CustomerListCustomFilters() {
                     <DialogHeader className='px-6'>
                         <DialogTitle className='text-lg'>Filtros</DialogTitle>
                     </DialogHeader>
-                    <div className="flex flex-col w-full gap-6 pb-4 overflow-hidden overflow-y-auto no-scrollbar px-6">
-                        <CustomerFoodTypeSelectFilter />
-                        <Separator />
-                        <CustomerBudgetFilter />
-                        <Separator />
-                        <CustomerPaymentMethodFilter />
-                        <Separator />
-                        <CustomerAmenityFilter />
-                    </div>
+                    <CustomerListFilters />
                     <DialogFooter className='px-6'>
                         <CustomerFiltersApplyButton onSuccess={handleCloseModal} />
                     </DialogFooter>
@@ -69,15 +55,7 @@ export function CustomerListCustomFilters() {
                 <DrawerHeader className="text-left">
                     <DrawerTitle>Filtros</DrawerTitle>
                 </DrawerHeader>
-                <div className="flex flex-col w-full gap-6 pb-4 overflow-hidden overflow-y-auto no-scrollbar px-6">
-                    <CustomerFoodTypeSelectFilter />
-                    <Separator />
-                    <CustomerBudgetFilter />
-                    <Separator />
-                    <CustomerPaymentMethodFilter />
-                    <Separator />
-                    <CustomerAmenityFilter />
-                </div>
+                <CustomerListFilters />
                 <DrawerFooter className="pt-2">
                     <CustomerFiltersApplyButton onSuccess={handleCloseModal} />
                 </DrawerFooter>

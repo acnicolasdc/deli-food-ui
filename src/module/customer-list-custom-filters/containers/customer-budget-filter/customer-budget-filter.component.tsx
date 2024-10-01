@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { MinusIcon, PlusIcon } from '@radix-ui/react-icons';
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { formatToCOP, parseCOPToInt } from "./customer-budget-filter.feature";
+import { useCustomerBudgetFilter } from "./use-customer-budget-filter";
+import { ServiceTypeSelectFilter, EServiceTypeSelectFilterMode } from "@/containers/service-type-select-filter";
 
 export const MAX_COUNT = 10;
 export const MIN_COUNT = 0;
@@ -15,18 +16,19 @@ export const MIN_PRICE_BUDGET = 30000;
 export const defaultCustomerBudgetFilterAtomValue = {
     count: 0,
     price: '',
-    type: undefined,
+    type: [],
 }
 
 export type TCustomerBudgetFilterAtom = {
     price: string;
     count: number;
-    type: string | undefined;
+    type: string[];
 }
 
 export const customerBudgetFilterAtom = atom<TCustomerBudgetFilterAtom>(defaultCustomerBudgetFilterAtomValue);
 export function CustomerBudgetFilter() {
     const [budget, setBudget] = useAtom(customerBudgetFilterAtom);
+    const { data, isFetching } = useCustomerBudgetFilter();
     const handleSetPriceBudget = (event: React.ChangeEvent<HTMLInputElement>) => {
         const cleanString = parseCOPToInt(event.target.value);
         isNaN(cleanString)
@@ -45,13 +47,9 @@ export function CustomerBudgetFilter() {
         if (budget.count <= MIN_COUNT) return;
         setBudget((prevValue) => ({ ...prevValue, count: prevValue.count - 1 }));
     }
-    const handleSetTypeBudget = (type: string) => {
-        setBudget({ ...budget, type });
-    }
-
     const disableFormDependency = !budget.price || parseCOPToInt(budget.price) < MIN_PRICE_BUDGET;
     return (
-        <div className='space-y-4'>
+        <div className='space-y-6'>
             <div>
                 <Label className='font-semibold text-md'>
                     Presupuesto
@@ -83,18 +81,14 @@ export function CustomerBudgetFilter() {
                 </Label>
                 <p className='text-xs mb-4 text-muted-foreground'>Cuentanos que esperas conseguir con el presupuesto</p>
                 <div>
-                    <Select value={budget.type} onValueChange={handleSetTypeBudget} disabled={disableFormDependency}>
-                        <SelectTrigger className="w-full">
-                            <SelectValue placeholder="Selecciona el plan" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectGroup>
-                                <SelectItem value="apple">Plato + Bebida</SelectItem>
-                                <SelectItem value="banana">Plato + Bebida + Postre</SelectItem>
-                                <SelectItem value="blueberry">Plato + Bebida + Postre + Entrada</SelectItem>
-                            </SelectGroup>
-                        </SelectContent>
-                    </Select>
+                    <ServiceTypeSelectFilter
+                        disabled={disableFormDependency}
+                        mode={EServiceTypeSelectFilterMode.multiSelect}
+                        onValueChange={(value) => {
+                            if (Array.isArray(value)) {
+                                setBudget({ ...budget, type: value })
+                            }
+                        }} />
                 </div>
             </div>
         </div>

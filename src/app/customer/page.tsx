@@ -69,7 +69,7 @@ export default function Customer() {
                                 <div className='flex flex-row gap-4'>
                                     <ClockIcon className='h-6 w-6' />
                                     <div>
-                                        <Label className='font-semibold'>Tiempo Estimado de atencion</Label>
+                                        <Label className='font-semibold'>Tiempo Estimado de Atencion</Label>
                                         <p className='text-muted-foreground'>De 20 a 30 Minutos</p>
                                     </div>
                                 </div>

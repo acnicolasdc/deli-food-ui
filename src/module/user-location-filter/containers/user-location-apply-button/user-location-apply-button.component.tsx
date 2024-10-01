@@ -1,7 +1,7 @@
 import * as React from "react"
-import { atom, useAtom, useAtomValue } from "jotai";
+import { atom, useAtom, useSetAtom } from "jotai";
 import { Button } from "@/components/ui/button"
-import { citySelectAtom } from "../city-select-filter";
+import { useCitySelectFilter } from "../city-select-filter";
 import { zoneSlideAtom } from "../zone-slide-select-filter";
 
 import type { TCitySelectAtom } from "../city-select-filter";
@@ -18,21 +18,21 @@ export type TUserLocationApplyButtonAtom = { zone: TZoneSlideAtom | undefined, c
 
 export const userLocationFilterAtom = atom<TUserLocationApplyButtonAtom>(defaultUserLocationFilterValue);
 export function UserLocationApplyButton({ onSuccess }: IUserLocationApplyButtonProps) {
-    const [_, serParams] = useAtom(userLocationFilterAtom);
+    const setParams = useSetAtom(userLocationFilterAtom);
     const [zone, setZone] = useAtom(zoneSlideAtom);
-    const [city, setCity] = useAtom(citySelectAtom);
+    const { city, resetCity } = useCitySelectFilter();
     const shouldDisableButton = !zone && !city;
 
     const checkIfThereAreFilters = (callback: () => void) => {
         if (shouldDisableButton) return;
         callback();
     }
-    const handleApplyParams = () => checkIfThereAreFilters(() => serParams({ zone, city }));
-    
+    const handleApplyParams = () => checkIfThereAreFilters(() => setParams({ zone, city }));
+
     const handleClearParams = () => checkIfThereAreFilters(() => {
-        serParams(defaultUserLocationFilterValue);
+        setParams(defaultUserLocationFilterValue);
         setZone(undefined);
-        setCity(undefined);
+        resetCity();
         onSuccess?.();
     });
 
@@ -50,7 +50,6 @@ export function UserLocationApplyButton({ onSuccess }: IUserLocationApplyButtonP
             >
                 Limpiar Filtros
             </Button>
-
             <Button
                 variant="delifood"
                 disabled={shouldDisableButton}
