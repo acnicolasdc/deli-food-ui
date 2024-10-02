@@ -38,18 +38,18 @@ export function ServiceTypeSelectFilter({ onValueChange, value: services, disabl
     }
 
     if (mode === EServiceTypeSelectFilterMode.multiSelect) {
-        return <MultiSelect onValueChange={onValueChange} options={data} />
+        return <MultiSelect onValueChange={onValueChange} options={data} value={services as string[]}/>
     }
 
     if (mode === EServiceTypeSelectFilterMode.select) {
         return (
-            <Select disabled={isFetching} onValueChange={onValueChange}>
-                <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Seleccione el metodo de pago" />
+            <Select disabled={isFetching} onValueChange={onValueChange} value={services as string}>
+                <SelectTrigger className="w-full" value={services}>
+                    <SelectValue placeholder="Seleccione tipo de servicio" />
                 </SelectTrigger>
                 <SelectContent>
                     <SelectGroup>
-                        <SelectLabel>Metodos de Pago</SelectLabel>
+                        <SelectLabel>Tipos de servicio</SelectLabel>
                         {data.map(({ name, value }) => {
                             return <SelectItem key={value} value={String(value)}>{name}</SelectItem>
                         })}

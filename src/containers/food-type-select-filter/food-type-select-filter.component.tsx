@@ -24,20 +24,21 @@ export type TFoodTypeSelectAtom = { name: string, value: string | number };
 export interface IFoodTypeSelectFilterProps {
     type?: EFieldSlideSelectType;
     mode?: EFoodTypeSelectFilterMode;
-    value?: string | null | number;
+    value?: string | null | number | string[];
     onValueChange: (value?: { name: string, value: string | number } | string[]) => void
 }
 export function FoodTypeSelectFilter({ onValueChange, value, type, mode = EFoodTypeSelectFilterMode.slide }: IFoodTypeSelectFilterProps) {
     const { data, isFetching } = useCategoryFoodTypeSelectFilter();
 
     if (mode === EFoodTypeSelectFilterMode.multiSelect) {
-        return <MultiSelect onValueChange={onValueChange} options={data} />
+        return <MultiSelect onValueChange={onValueChange} options={data} value={value as string[]}/>
     }
 
     if (mode === EFoodTypeSelectFilterMode.select) {
         return (
             <Select
                 disabled={isFetching}
+                value={value as string}
                 onValueChange={(selected) => {
                     const foundFoodType = data.find(({ value }) => selected === value)
                     onValueChange(foundFoodType);
@@ -61,7 +62,7 @@ export function FoodTypeSelectFilter({ onValueChange, value, type, mode = EFoodT
             <FieldSlideSelect
                 data={data}
                 variant="outline"
-                value={value}
+                value={value as string}
                 type={type}
                 onValueChange={onValueChange}
             />

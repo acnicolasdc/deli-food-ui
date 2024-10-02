@@ -38,12 +38,12 @@ export function PaymentMethodSelectFilter({ onValueChange, value: payments, mode
     }
 
     if (mode === EPaymentMethodSelectFilterMode.multiSelect) {
-        return <MultiSelect onValueChange={onValueChange} options={data} />
+        return <MultiSelect onValueChange={onValueChange} options={data}  value={payments as string[]}/>
     }
 
     if (mode === EPaymentMethodSelectFilterMode.select) {
         return (
-            <Select disabled={isFetching} onValueChange={onValueChange}>
+            <Select disabled={isFetching} onValueChange={onValueChange} value={payments as string}>
                 <SelectTrigger className="w-full">
                     <SelectValue placeholder="Seleccione el metodo de pago" />
                 </SelectTrigger>

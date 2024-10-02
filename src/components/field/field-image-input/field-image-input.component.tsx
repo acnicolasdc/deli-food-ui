@@ -29,14 +29,15 @@ export interface IFieldImageInputProps {
 export function FieldImageInput({ value, onValueChange }: IFieldImageInputProps) {
   return (
     value?.preview ? (
-      <div className='rounded-lg border w-full px-4 py-3 flex flex-row gap-2 items-center'>
+      <div className='rounded-md border w-full px-4 py-3 flex flex-row gap-2 items-center'>
         <Image
           alt='selected image'
           src={value.preview}
           width={20}
           height={20}
+          className='max-h-[15px]'
         />
-        <Label className='font-normal'>Selected logo</Label>
+        <Label className='font-normal'>Imagen Seleccionada</Label>
         <div className='flex flex-1 justify-end'>
           <Cross1Icon
             className='h-3 w-3 cursor-pointer'

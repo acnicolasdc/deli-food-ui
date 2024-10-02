@@ -31,7 +31,7 @@ export function CitySelectFilter({ onValueChange, value, mode = ECitySelectFilte
     }
 
     if (mode === ECitySelectFilterMode.multiSelect) {
-        return <MultiSelect onValueChange={onValueChange} options={data} />
+        return <MultiSelect onValueChange={onValueChange} options={data} value={value as string[]}/>
     }
 
     return (

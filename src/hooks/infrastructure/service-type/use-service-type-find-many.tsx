@@ -6,7 +6,6 @@ import { atomWithQuery } from "jotai-tanstack-query";
 export type TServiceType = {
     id: number;
     name: string;
-    icon: string;
 }
 
 export const queryKey = 'service-type';

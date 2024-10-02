@@ -30,11 +30,12 @@ export function CategorySelectFilter({ onValueChange, value, type, mode = ECateg
     const { isFetching, data } = useCategorySelectFilter();
 
     if (mode === ECategorySelectFilterMode.multiSelect) {
-        return <MultiSelect onValueChange={onValueChange} options={data} />
+        return <MultiSelect onValueChange={onValueChange} options={data} value={value as string[]} />
     }
     if (mode === ECategorySelectFilterMode.select) {
         return (
             <Select disabled={isFetching}
+                value={value as string}
                 onValueChange={(selected) => {
                     const foundCategory = data.find(({ value }) => selected === value)
                     onValueChange(foundCategory);

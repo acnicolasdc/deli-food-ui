@@ -31,11 +31,13 @@ export function ZoneSelectFilter({ onValueChange, value, type, mode = EZoneSelec
     const { isFetching, data } = useZoneSlideSelectFilter();
 
     if (mode === EZoneSelectFilterMode.multiSelect) {
-        return <MultiSelect onValueChange={onValueChange} options={data} />
+        return <MultiSelect onValueChange={onValueChange} options={data} value={value as string[]} />
     }
     if (mode === EZoneSelectFilterMode.select) {
         return (
-            <Select disabled={isFetching}
+            <Select
+                disabled={isFetching}
+                value={value as string}
                 onValueChange={(selected) => {
                     const foundZone = data.find(({ value }) => selected === value)
                     onValueChange(foundZone);

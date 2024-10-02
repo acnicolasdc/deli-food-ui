@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { MinusIcon, PlusIcon } from '@radix-ui/react-icons';
-import { formatToCOP, parseCOPToInt } from "./customer-budget-filter.feature";
 import { useCustomerBudgetFilter } from "./use-customer-budget-filter";
 import { ServiceTypeSelectFilter, EServiceTypeSelectFilterMode } from "@/containers/service-type-select-filter";
+import { formatToCOP, parseCOPToInt } from "@/lib/money";
 
 export const MAX_COUNT = 10;
 export const MIN_COUNT = 0;

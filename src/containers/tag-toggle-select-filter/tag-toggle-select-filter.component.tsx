@@ -47,7 +47,7 @@ export const tagToggleSelectFilterAtom = atom<string | undefined>(undefined);
 export function TagToggleSelectFilter({ onValueChange, value, mode = ETagToggleSelectFilterMode.toggle }: ITagToggleSelectFilterProps) {
     const { data, isFetching } = useTagToggleSelectFilter();
     if (mode === ETagToggleSelectFilterMode.multiSelect) {
-        return <MultiSelect onValueChange={onValueChange} options={data} />
+        return <MultiSelect onValueChange={onValueChange} options={data} value={value as string[]}/>
     }
 
     if (mode === ETagToggleSelectFilterMode.select) {
