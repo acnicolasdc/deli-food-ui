@@ -3,15 +3,15 @@ import { atom, useAtom, useSetAtom } from "jotai";
 import { zoneFindManyCityIdAtom } from "@/hooks/infrastructure/zone/use-zone-find-by-city";
 
 
-export type TCitySelectAtom = { name: string, id: string };
-export const citySelectAtom = atom<TCitySelectAtom | undefined>(undefined);
+export type TUserCitySelectAtom = { name: string, value: string };
+export const userCitySelectAtom = atom<TUserCitySelectAtom | undefined>(undefined);
 
-export function useCitySelectFilter() {
-    const [city, setCity] = useAtom(citySelectAtom);
+export function useUserCitySelectFilter() {
+    const [city, setCity] = useAtom(userCitySelectAtom);
     const setCityParam = useSetAtom(zoneFindManyCityIdAtom);
-    const handleSetCity = (city: TCitySelectAtom) => {
+    const handleSetCity = (city: TUserCitySelectAtom) => {
         setCity(city)
-        setCityParam(city.id);
+        setCityParam(city.value);
     }
 
     const resetCity = () => {

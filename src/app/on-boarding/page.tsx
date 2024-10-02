@@ -5,11 +5,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AmenitySelectFilter, EAmenitySelectFilterMode } from "@/containers/amenity-select-filter";
 import { CategorySelectFilter, ECategorySelectFilterMode } from "@/containers/category-select-filter";
+import { CitySelectFilter } from "@/containers/city-select-filter";
 import { EFoodTypeSelectFilterMode, FoodTypeSelectFilter } from "@/containers/food-type-select-filter";
 import { PaymentMethodSelectFilter, EPaymentMethodSelectFilterMode } from "@/containers/payment-method-select-filter";
 import { EServiceTypeSelectFilterMode, ServiceTypeSelectFilter } from "@/containers/service-type-select-filter";
 import { TagToggleSelectFilter } from "@/containers/tag-toggle-select-filter";
 import { ETagToggleSelectFilterMode } from "@/containers/tag-toggle-select-filter/tag-toggle-select-filter.component";
+import { EZoneSelectFilterMode, ZoneSelectFilter } from "@/containers/zone-slide-select-filter/zone-slide-select-filter.component";
 
 export default function OnBoarding() {
   return (
@@ -56,6 +58,14 @@ export default function OnBoarding() {
         <div className="space-y-2">
           <Label>Tipos de servicios</Label>
           <ServiceTypeSelectFilter onValueChange={() => { }} mode={EServiceTypeSelectFilterMode.multiSelect} />
+        </div>
+        <div className="space-y-2">
+          <Label>Seleccione la Ciudad</Label>
+          <CitySelectFilter onValueChange={() => { }} />
+        </div>
+        <div className="space-y-2">
+          <Label>Seleccione la Zona</Label>
+          <ZoneSelectFilter onValueChange={() => { }} mode={EZoneSelectFilterMode.select} />
         </div>
       </div>
     </main>

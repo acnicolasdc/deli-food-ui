@@ -1,11 +1,11 @@
 import * as React from "react"
 import { atom, useAtom, useSetAtom } from "jotai";
 import { Button } from "@/components/ui/button"
-import { useCitySelectFilter } from "../city-select-filter";
-import { zoneSlideAtom } from "../zone-slide-select-filter";
+import { useUserCitySelectFilter } from "../user-city-select-filter";
+import { userZoneSlideAtom } from "../user-zone-slide-select-filter";
 
-import type { TCitySelectAtom } from "../city-select-filter";
-import type { TZoneSlideAtom } from "../zone-slide-select-filter";
+import type { TUserCitySelectAtom } from "../user-city-select-filter/use-user-city-select-filter";
+import type { TUserZoneSlideAtom } from "../user-zone-slide-select-filter";
 
 const defaultUserLocationFilterValue = { zone: undefined, city: undefined }
 
@@ -14,13 +14,13 @@ export interface IUserLocationApplyButtonProps {
     onError?: () => void
 }
 
-export type TUserLocationApplyButtonAtom = { zone: TZoneSlideAtom | undefined, city: TCitySelectAtom | undefined };
+export type TUserLocationApplyButtonAtom = { zone: TUserZoneSlideAtom | undefined, city: TUserCitySelectAtom | undefined };
 
 export const userLocationFilterAtom = atom<TUserLocationApplyButtonAtom>(defaultUserLocationFilterValue);
 export function UserLocationApplyButton({ onSuccess }: IUserLocationApplyButtonProps) {
     const setParams = useSetAtom(userLocationFilterAtom);
-    const [zone, setZone] = useAtom(zoneSlideAtom);
-    const { city, resetCity } = useCitySelectFilter();
+    const [zone, setZone] = useAtom(userZoneSlideAtom);
+    const { city, resetCity } = useUserCitySelectFilter();
     const shouldDisableButton = !zone && !city;
 
     const checkIfThereAreFilters = (callback: () => void) => {

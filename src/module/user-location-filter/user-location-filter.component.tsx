@@ -17,8 +17,8 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer";
-import { CitySelectFilter } from "./containers/city-select-filter";
-import { ZoneSlideSelectFilter } from "./containers/zone-slide-select-filter";
+import { UserCitySelectFilter } from "./containers/user-city-select-filter";
+import { UserZoneSlideSelectFilter } from "./containers/user-zone-slide-select-filter";
 import { EFieldSlideSelectType } from "@/components/field/field-slide-select";
 import { UserLocationApplyButton } from "./containers/user-location-apply-button";
 import { useUserLocationFilter } from "./use-user-location-filter";
@@ -44,8 +44,8 @@ export function UserLocationFilter({ className }: IUserLocationFilterProps) {
                     </DialogHeader>
                     <div className="px-2 flex overflow-y-auto overflow-hidden no-scrollbar">
                         <div className="flex flex-col p-4 pb-12 w-full gap-6 pt-0">
-                            <CitySelectFilter />
-                            <ZoneSlideSelectFilter type={EFieldSlideSelectType.grid} />
+                            <UserCitySelectFilter />
+                            <UserZoneSlideSelectFilter type={EFieldSlideSelectType.grid} />
                         </div>
                     </div>
                     <DialogFooter className='px-6'>
@@ -67,8 +67,8 @@ export function UserLocationFilter({ className }: IUserLocationFilterProps) {
                         <DrawerDescription>Asi podemos recomendar un lugar que se ajuste a lo que buscas</DrawerDescription>
                     </DrawerHeader>
                     <div className="flex flex-col p-4 pb-12 w-full gap-6">
-                        <CitySelectFilter />
-                        <ZoneSlideSelectFilter type={EFieldSlideSelectType.slide} />
+                        <UserCitySelectFilter />
+                        <UserZoneSlideSelectFilter type={EFieldSlideSelectType.slide} />
                     </div>
                 </div>
                 <DrawerFooter>

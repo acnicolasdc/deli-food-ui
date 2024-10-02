@@ -1,4 +1,4 @@
-'use client'
+import * as React from "react"
 import {
     Select,
     SelectContent,
@@ -9,35 +9,36 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { MultiSelect } from "@/components/ui/multi-select";
-import { EFieldSlideSelectType, FieldSlideSelect, FieldSlideSelectLoadingIndicator } from '@/components/field/field-slide-select';
-import { useCategorySelectFilter } from './use-category-select-filter';
+import { FieldSlideSelect, EFieldSlideSelectType, FieldSlideSelectLoadingIndicator } from "@/components/field/field-slide-select";
+import { useZoneSlideSelectFilter } from "./use-zone-slide-select-filter";
 
-export enum ECategorySelectFilterMode {
+export enum EZoneSelectFilterMode {
     select = 'select',
+    slide = 'slide',
     multiSelect = 'multi-select',
-    slide = 'slide'
 }
 
-export type TCategorySelectFilterValue = { name: string, value: string | number };
+export type TZoneSelectFilterValue = { value: string | number, name: string };
 
-export interface ICategorySelectFilterProps {
+export interface IZoneSelectFilterProps {
+    mode?: EZoneSelectFilterMode;
     type?: EFieldSlideSelectType;
-    mode?: ECategorySelectFilterMode;
     value?: string | null | number | string[];
-    onValueChange: (value?: TCategorySelectFilterValue | string[]) => void
+    onValueChange: (value?: TZoneSelectFilterValue | string[]) => void
 }
-export function CategorySelectFilter({ onValueChange, value, type, mode = ECategorySelectFilterMode.slide }: ICategorySelectFilterProps) {
-    const { isFetching, data } = useCategorySelectFilter();
 
-    if (mode === ECategorySelectFilterMode.multiSelect) {
+export function ZoneSelectFilter({ onValueChange, value, type, mode = EZoneSelectFilterMode.slide }: IZoneSelectFilterProps) {
+    const { isFetching, data } = useZoneSlideSelectFilter();
+
+    if (mode === EZoneSelectFilterMode.multiSelect) {
         return <MultiSelect onValueChange={onValueChange} options={data} />
     }
-    if (mode === ECategorySelectFilterMode.select) {
+    if (mode === EZoneSelectFilterMode.select) {
         return (
             <Select disabled={isFetching}
                 onValueChange={(selected) => {
-                    const foundCategory = data.find(({ value }) => selected === value)
-                    onValueChange(foundCategory);
+                    const foundZone = data.find(({ value }) => selected === value)
+                    onValueChange(foundZone);
                 }}
             >
                 <SelectTrigger className="w-full">
@@ -55,14 +56,14 @@ export function CategorySelectFilter({ onValueChange, value, type, mode = ECateg
         )
     }
     return (
-        <FieldSlideSelectLoadingIndicator isLoading={isFetching}>
+        <FieldSlideSelectLoadingIndicator type={type} isLoading={isFetching}>
             <FieldSlideSelect
                 data={data}
                 variant="outline"
-                value={value as string}
                 type={type}
+                value={value as string}
                 onValueChange={onValueChange}
             />
         </FieldSlideSelectLoadingIndicator>
-    );
+    )
 }
