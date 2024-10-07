@@ -31,7 +31,7 @@ export default function Customer() {
                     <div className='flex h-full w-full md:w-auto items-center justify-center md:justify-start md:border-r md:pr-6'>
                         <div className='flex items-center justify-center'>
                             <Image src={logoDeliFood} alt='Picture of the author' width={0}
-                                height={20}
+                                height={30}
                             />
                         </div>
                     </div>
@@ -44,7 +44,7 @@ export default function Customer() {
             <div className='flex flex-col flex-1 px-4 gap-4 md:gap-6 md:px-[10%] py-2 md:py-12'>
                 <div className='flex flex-row w-full'>
                     <h1 className='md:text-2xl font-semibold'>Cali, Pance, Comida Rapida</h1>
-                    <div className='flex flex-1 justify-end'> <Badge className='bg-blue-500 shadow-lg text-sm font-normal'>
+                    <div className='flex flex-1 justify-end'> <Badge className='bg-[#E9FB73] hover:bg-[#E9FB73] shadow-lg text-sm font-normal text-black'>
                         <HeartFilledIcon className='mr-1' /> Delifood
                     </Badge></div>
                 </div>

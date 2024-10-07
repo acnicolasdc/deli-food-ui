@@ -98,6 +98,12 @@ interface MultiSelectProps
     maxCount?: number;
 
     /**
+   * Maximum number of items to select.
+   * Optional, defaults to undefined.
+   */
+    maxSelect?: number;
+
+    /**
      * The modality of the popover. When set to true, interaction with outside elements
      * will be disabled and only popover content will be visible to screen readers.
      * Optional, defaults to false.
@@ -132,6 +138,7 @@ export const MultiSelect = React.forwardRef<
             maxCount = 3,
             modalPopover = false,
             asChild = false,
+            maxSelect,
             className,
             ...props
         },
@@ -187,7 +194,7 @@ export const MultiSelect = React.forwardRef<
                 onValueChange(allValues);
             }
         };
-
+        const shouldDisable = maxSelect ? selectedValues.length >= maxSelect ? true : false : false
         return (
             <Popover
                 open={isPopoverOpen}
@@ -294,6 +301,7 @@ export const MultiSelect = React.forwardRef<
                                 <CommandItem
                                     key="all"
                                     onSelect={toggleAll}
+                                    disabled={shouldDisable}
                                     className="cursor-pointer"
                                 >
                                     <div
@@ -313,6 +321,7 @@ export const MultiSelect = React.forwardRef<
                                     return (
                                         <CommandItem
                                             key={option.value}
+                                            disabled={shouldDisable && !isSelected}
                                             onSelect={() => toggleOption(option.value)}
                                             className="cursor-pointer"
                                         >
@@ -343,7 +352,7 @@ export const MultiSelect = React.forwardRef<
                                                 onSelect={handleClear}
                                                 className="flex-1 justify-center cursor-pointer"
                                             >
-                                                Clear
+                                                Limpiar
                                             </CommandItem>
                                             <Separator
                                                 orientation="vertical"

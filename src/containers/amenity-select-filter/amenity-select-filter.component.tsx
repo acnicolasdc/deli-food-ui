@@ -31,7 +31,7 @@ export interface IAmenitySelectFilterProps {
 export function AmenitySelectFilter({ onValueChange, value, mode = EAmenitySelectFilterMode.toggle }: IAmenitySelectFilterProps) {
     const { data, isFetching } = useAmenitySelectFilter();
     if (mode === EAmenitySelectFilterMode.multiSelect) {
-        return <MultiSelect onValueChange={onValueChange} options={data} value={value as string[]}/>
+        return <MultiSelect onValueChange={onValueChange} options={data} defaultValue={value as string[]}/>
     }
     if (mode === EAmenitySelectFilterMode.select) {
         return (

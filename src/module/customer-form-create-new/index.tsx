@@ -1,0 +1,1 @@
+export { CustomerFormCreateNew } from './customer-form-create-new.component';

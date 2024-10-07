@@ -1,16 +1,17 @@
 'use client';
-import { FunctionComponent, PropsWithChildren } from "react";
 import { cn } from "@/lib/utils"
+import { FunctionComponent, PropsWithChildren } from "react";
 import { WritableAtom } from "jotai";
 import { Provider } from 'jotai/react'
+import type { Viewport } from "next";
 import { useHydrateAtoms } from 'jotai/react/utils';
-import { Inter as FontSans } from "next/font/google"
+import { Inter as FontSans } from "next/font/google";
 import {
   QueryClient,
   QueryClientProvider,
-} from '@tanstack/react-query'
-import { queryClientAtom } from 'jotai-tanstack-query'
-import type { Metadata, Viewport } from "next";
+} from '@tanstack/react-query';
+import { queryClientAtom } from 'jotai-tanstack-query';
+import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 
 const queryClient = new QueryClient()
@@ -61,6 +62,7 @@ export default function RootLayout({
             </Provider>
           </QueryClientProvider>
         </div>
+        <Toaster />
       </body>
     </html>
   );

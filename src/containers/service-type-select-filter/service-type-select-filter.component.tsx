@@ -38,12 +38,12 @@ export function ServiceTypeSelectFilter({ onValueChange, value: services, disabl
     }
 
     if (mode === EServiceTypeSelectFilterMode.multiSelect) {
-        return <MultiSelect onValueChange={onValueChange} options={data} value={services as string[]}/>
+        return <MultiSelect onValueChange={onValueChange} options={data} defaultValue={services as string[]} disabled={isFetching || disabled}/>
     }
 
     if (mode === EServiceTypeSelectFilterMode.select) {
         return (
-            <Select disabled={isFetching} onValueChange={onValueChange} value={services as string}>
+            <Select disabled={isFetching || disabled} onValueChange={onValueChange} value={services as string}>
                 <SelectTrigger className="w-full" value={services}>
                     <SelectValue placeholder="Seleccione tipo de servicio" />
                 </SelectTrigger>
@@ -58,8 +58,6 @@ export function ServiceTypeSelectFilter({ onValueChange, value: services, disabl
             </Select>
         )
     }
-
-
     return (
         <AnimationCheckListLoadingIndicator isLoading={isFetching}>
             <div className='grid grid-cols-2 gap-4 gap-x-8'>

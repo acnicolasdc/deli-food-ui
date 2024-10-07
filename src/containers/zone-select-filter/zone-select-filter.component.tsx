@@ -9,8 +9,8 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { MultiSelect } from "@/components/ui/multi-select";
-import { FieldSlideSelect, EFieldSlideSelectType, FieldSlideSelectLoadingIndicator } from "@/components/field/field-slide-select";
-import { useZoneSlideSelectFilter } from "./use-zone-slide-select-filter";
+import { FieldSlideSelect, EFieldSlideSelectType, FieldSlideSelectLoadingIndicator, FieldSlideSelectEmptyIndicator } from "@/components/field/field-slide-select";
+import { useZoneSelectFilter } from "./use-zone-select-filter";
 
 export enum EZoneSelectFilterMode {
     select = 'select',
@@ -28,10 +28,10 @@ export interface IZoneSelectFilterProps {
 }
 
 export function ZoneSelectFilter({ onValueChange, value, type, mode = EZoneSelectFilterMode.slide }: IZoneSelectFilterProps) {
-    const { isFetching, data } = useZoneSlideSelectFilter();
+    const { isFetching, data } = useZoneSelectFilter();
 
     if (mode === EZoneSelectFilterMode.multiSelect) {
-        return <MultiSelect onValueChange={onValueChange} options={data} value={value as string[]} />
+        return <MultiSelect onValueChange={onValueChange} options={data} defaultValue={value as string[]} />
     }
     if (mode === EZoneSelectFilterMode.select) {
         return (
@@ -59,13 +59,15 @@ export function ZoneSelectFilter({ onValueChange, value, type, mode = EZoneSelec
     }
     return (
         <FieldSlideSelectLoadingIndicator type={type} isLoading={isFetching}>
-            <FieldSlideSelect
-                data={data}
-                variant="outline"
-                type={type}
-                value={value as string}
-                onValueChange={onValueChange}
-            />
+            <FieldSlideSelectEmptyIndicator isEmpty={!data.length} label="No hay zonas disponibles">
+                <FieldSlideSelect
+                    data={data}
+                    variant="outline"
+                    type={type}
+                    value={value as string}
+                    onValueChange={onValueChange}
+                />
+            </FieldSlideSelectEmptyIndicator>
         </FieldSlideSelectLoadingIndicator>
     )
 }

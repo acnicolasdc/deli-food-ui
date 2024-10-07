@@ -13,7 +13,7 @@ export interface ICardCustomerDetailProps {
 export function CardCustomerDetail({ isFavorite, name, address, image }: ICardCustomerDetailProps) {
     return (
         <div className='relative flex flex-col gap-2 cursor-pointer'>
-            {isFavorite ? <Badge className='absolute left-2 top-2 md:left-5 md:top-5 bg-blue-500 shadow-lg text-sm font-normal'>
+            {isFavorite ? <Badge className='absolute left-2 top-2 md:left-5 md:top-5 bg-[#E9FB73] hover:bg-[#E9FB73] text-black shadow-lg text-sm font-normal'>
                 <HeartFilledIcon className='mr-1' /> Delifood
             </Badge> : false}
             <div className='w-full h-[150px] md:h-[250px] rounded-xl overflow-hidden'

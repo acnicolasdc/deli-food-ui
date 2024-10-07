@@ -32,7 +32,7 @@ export default function Search() {
           <div className='flex h-full w-full md:w-auto items-center justify-center md:justify-start md:border-r md:pr-6'>
             <div className='flex items-center justify-center'>
               <Image src={logoDeliFood} alt='Picture of the author' width={0}
-                height={20}
+                height={30}
               />
             </div>
           </div>
@@ -86,7 +86,7 @@ export default function Search() {
                   <InstagramLogoIcon color='#FFF' />
                 </div>
 
-                <Label className='text-blue-400 font-semibold'>Pastel Pizza</Label>
+                <Label className='text-[#E9FB73] font-semibold'>Pastel Pizza</Label>
               </div>
             </div>
             <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] rounded-lg relative overflow-hidden'
@@ -101,7 +101,7 @@ export default function Search() {
                   <InstagramLogoIcon color='#FFF' />
                 </div>
 
-                <Label className='text-blue-400 font-semibold'>El Mercado</Label>
+                <Label className='text-[#E9FB73] font-semibold'>El Mercado</Label>
               </div>
             </div>
             <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] rounded-lg relative overflow-hidden'
@@ -116,7 +116,7 @@ export default function Search() {
                   <InstagramLogoIcon color='#FFF' />
                 </div>
 
-                <Label className='text-blue-400 font-semibold'>En la montaña</Label>
+                <Label className='text-[#E9FB73] font-semibold'>En la montaña</Label>
               </div>
             </div>
             <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] rounded-lg relative overflow-hidden'
@@ -130,7 +130,7 @@ export default function Search() {
                   <InstagramLogoIcon color='#FFF' />
                 </div>
 
-                <Label className='text-blue-400 font-semibold'>Fresas con crema</Label>
+                <Label className='text-[#E9FB73] font-semibold'>Fresas con crema</Label>
               </div>
             </div>
             <div className='h-[150px] md:h-[160px] min-w-[250px] md:min-w-[300px] rounded-lg relative overflow-hidden'
@@ -143,7 +143,7 @@ export default function Search() {
                 <div className="bg-[#FD7A6E] p-1 rounded-full">
                   <InstagramLogoIcon color='#FFF' />
                 </div>
-                <Label className='text-blue-400 font-semibold'>La Receta</Label>
+                <Label className='text-[#E9FB73] font-semibold'>La Receta</Label>
               </div>
             </div>
           </div>

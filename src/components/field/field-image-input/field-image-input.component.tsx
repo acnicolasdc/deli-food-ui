@@ -1,7 +1,6 @@
 'use client';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Checkbox } from '@/components/ui/checkbox';
 import { ChangeEvent } from 'react';
 import Image from 'next/image';
 import { Cross1Icon } from '@radix-ui/react-icons';
@@ -54,7 +53,7 @@ export function FieldImageInput({ value, onValueChange }: IFieldImageInputProps)
       <div className='relative flex flex-row items-center'>
         <Input
           type='file'
-          placeholder='Choose file'
+          placeholder='Selecciona una foto'
           onChange={(event) => {
             if (!event.target.files?.length) return;
             const { files, displayUrl } = getImageData(event);

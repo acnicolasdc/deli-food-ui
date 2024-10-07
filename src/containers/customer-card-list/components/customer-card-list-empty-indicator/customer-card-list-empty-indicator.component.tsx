@@ -18,7 +18,7 @@ export function CustomerCardListEmptyIndicator({ isEmpty, children }: ICustomerC
                     alt="Picture empty"
                 />
                 <div className="flex flex-col items-center gap-1">
-                    <h1 className="text-blue-400 text-lg md:text-2xl font-medium">No encontramos nada</h1>
+                    <h1 className="text-[#E9FB73] text-lg md:text-2xl font-medium">No encontramos nada</h1>
                     <p className="text-muted-foreground text-center text-xs md:text-base">La caracteristicas que buscas no estan disponibles en algun sitio</p>
                 </div>
             </div>

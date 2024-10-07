@@ -1,0 +1,1 @@
+export { CustomerFormNewStepper, CustomerFormNewStepperIndicator } from './customer-form-new-stepper.component';

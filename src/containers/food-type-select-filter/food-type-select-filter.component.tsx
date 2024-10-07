@@ -24,14 +24,15 @@ export type TFoodTypeSelectAtom = { name: string, value: string | number };
 export interface IFoodTypeSelectFilterProps {
     type?: EFieldSlideSelectType;
     mode?: EFoodTypeSelectFilterMode;
+    maxSelect?: number;
     value?: string | null | number | string[];
     onValueChange: (value?: { name: string, value: string | number } | string[]) => void
 }
-export function FoodTypeSelectFilter({ onValueChange, value, type, mode = EFoodTypeSelectFilterMode.slide }: IFoodTypeSelectFilterProps) {
+export function FoodTypeSelectFilter({ onValueChange, value, type, maxSelect, mode = EFoodTypeSelectFilterMode.slide }: IFoodTypeSelectFilterProps) {
     const { data, isFetching } = useCategoryFoodTypeSelectFilter();
 
     if (mode === EFoodTypeSelectFilterMode.multiSelect) {
-        return <MultiSelect onValueChange={onValueChange} options={data} value={value as string[]}/>
+        return <MultiSelect onValueChange={onValueChange} options={data} defaultValue={value as string[]} maxSelect={maxSelect} />
     }
 
     if (mode === EFoodTypeSelectFilterMode.select) {

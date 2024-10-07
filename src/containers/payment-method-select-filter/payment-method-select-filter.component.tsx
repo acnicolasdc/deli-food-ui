@@ -38,7 +38,7 @@ export function PaymentMethodSelectFilter({ onValueChange, value: payments, mode
     }
 
     if (mode === EPaymentMethodSelectFilterMode.multiSelect) {
-        return <MultiSelect onValueChange={onValueChange} options={data}  value={payments as string[]}/>
+        return <MultiSelect onValueChange={onValueChange} options={data}  defaultValue={payments as string[]}/>
     }
 
     if (mode === EPaymentMethodSelectFilterMode.select) {

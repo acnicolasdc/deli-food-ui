@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils"
 import Image, { StaticImageData } from "next/image"
 import { Label } from "@/components/ui/label"
 import { Skeleton } from "@/components/ui/skeleton"
-import { AnimationFadeIn } from "@/components/animation/animation-fade-in"
+import { AnimationFadeIn } from "@/components/animation/animation-fade-in";
+import empty from '../../../../public/empty-box.png';
 
 const fieldSlideSelectVariants = cva(
     "flex items-center justify-center flex-col space-y-2 rounded-lg cursor-pointer h-20 min-w-24 md:h-20 md:min-w-24",
@@ -13,7 +14,7 @@ const fieldSlideSelectVariants = cva(
             variant: {
                 default: "bg-slate-50 hover:bg-slate-100",
                 outline: "border border-slate-200 hover:bg-slate-50",
-                selected: "border border-blue-400 border-2 bg-blue-50 hover:bg-blue-100 font-medium text-blue-400"
+                selected: "border-none font-semibold bg-[#786EEF] hover:bg-[#786EEF]/70 text-white"
             },
         },
         defaultVariants: {
@@ -81,6 +82,15 @@ export interface IFieldSlideSelectLoadingIndicatorProps
     children: React.ReactNode;
 }
 
+export interface IFieldSlideSelectEmptyIndicatorProps
+    extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof fieldSlideSelectVariants> {
+    isEmpty?: boolean;
+    label: string;
+    type?: EFieldSlideSelectType;
+    children: React.ReactNode;
+}
+
 function FieldSlideSelectLoadingIndicator({ isLoading, className, type = EFieldSlideSelectType.slide, children }: IFieldSlideSelectLoadingIndicatorProps) {
     if (isLoading) {
         return (<div className={cn(fieldSlideSelectGridVariants({ variant: type }), className)}>
@@ -96,6 +106,20 @@ function FieldSlideSelectLoadingIndicator({ isLoading, className, type = EFieldS
             <Skeleton className="h-20 min-w-24 md:h-20 md:min-w-24" />
             <Skeleton className="h-20 min-w-24 md:h-20 md:min-w-24" />
             <Skeleton className="h-20 min-w-24 md:h-20 md:min-w-24" />
+        </div>)
+    }
+    return children;
+}
+
+function FieldSlideSelectEmptyIndicator({ isEmpty, label, children }: IFieldSlideSelectEmptyIndicatorProps) {
+    if (isEmpty) {
+        return (<div className="w-full gap-2 border border-dashed min-h-24 rounded-lg bg-neutral-50 flex flex-col items-center justify-center py-6 px-4">
+                <Image
+                    src={empty}
+                    className="h-16 w-16 opacity-70"
+                    alt="Picture empty"
+                />
+            <p className="text-muted-foreground text-sm">{label}</p>
         </div>)
     }
     return children;
@@ -126,4 +150,4 @@ function FieldSlideSelect({ className, type = EFieldSlideSelectType.slide, varia
     )
 }
 
-export { FieldSlideSelect, fieldSlideSelectVariants, FieldSlideSelectLoadingIndicator }
+export { FieldSlideSelect, fieldSlideSelectVariants, FieldSlideSelectLoadingIndicator, FieldSlideSelectEmptyIndicator }

@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { MinusIcon, PlusIcon } from '@radix-ui/react-icons';
-import { useCustomerBudgetFilter } from "./use-customer-budget-filter";
 import { ServiceTypeSelectFilter, EServiceTypeSelectFilterMode } from "@/containers/service-type-select-filter";
 import { formatToCOP, parseCOPToInt } from "@/lib/money";
 
@@ -14,7 +13,7 @@ export const MAX_PRICE_BUDGET = 10000000;
 export const MIN_PRICE_BUDGET = 30000;
 
 export const defaultCustomerBudgetFilterAtomValue = {
-    count: 0,
+    count: 1,
     price: '',
     type: [],
 }
@@ -28,10 +27,8 @@ export type TCustomerBudgetFilterAtom = {
 export const customerBudgetFilterAtom = atom<TCustomerBudgetFilterAtom>(defaultCustomerBudgetFilterAtomValue);
 export function CustomerBudgetFilter() {
     const [budget, setBudget] = useAtom(customerBudgetFilterAtom);
-    const { data, isFetching } = useCustomerBudgetFilter();
     const handleSetPriceBudget = (event: React.ChangeEvent<HTMLInputElement>) => {
         const cleanString = parseCOPToInt(event.target.value);
-        isNaN(cleanString)
         if (!isNaN(cleanString)) {
             const price = cleanString < MAX_PRICE_BUDGET ? formatToCOP(cleanString) : budget.price;
             setBudget({ ...budget, price });

@@ -10,21 +10,21 @@ export type TZone = {
 }
 
 export const queryKey = 'zone';
-export const zoneFindManyCityIdAtom = atom<string | undefined>(undefined)
+export const zoneFindManyCardinalPointIdAtom = atom<string | undefined>(undefined)
 export const zoneFindManyAtom = atomWithQuery((get) => ({
-    queryKey: [queryKey, get(zoneFindManyCityIdAtom)],
+    queryKey: [queryKey, get(zoneFindManyCardinalPointIdAtom)],
     initialData: [],
     refetchOnWindowFocus: false,
-    queryFn: async ({ queryKey: [url, cityId] }): Promise<TZone[]> => {
-        if (cityId === undefined) {
+    queryFn: async ({ queryKey: [url, cardinalPointId] }): Promise<TZone[]> => {
+        if (cardinalPointId === undefined) {
             return [];
         }
-        const res = await http.get(`${url}?cityId=${cityId}`);
+        const res = await http.get(`${url}?cardinalPointId=${cardinalPointId}`);
         return res.data
     },
 }))
 
-export default function useZoneFindByCity() {
+export default function useZoneFindByCardinalPoint() {
     const [{ data, isPending, isError, isFetching }] = useAtom(zoneFindManyAtom);
     return { data, isPending, isError, isFetching }
 }

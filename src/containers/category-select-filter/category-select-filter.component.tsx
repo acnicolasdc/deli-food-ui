@@ -24,13 +24,14 @@ export interface ICategorySelectFilterProps {
     type?: EFieldSlideSelectType;
     mode?: ECategorySelectFilterMode;
     value?: string | null | number | string[];
+    maxSelect?: number;
     onValueChange: (value?: TCategorySelectFilterValue | string[]) => void
 }
-export function CategorySelectFilter({ onValueChange, value, type, mode = ECategorySelectFilterMode.slide }: ICategorySelectFilterProps) {
+export function CategorySelectFilter({ onValueChange, value, type, maxSelect, mode = ECategorySelectFilterMode.slide }: ICategorySelectFilterProps) {
     const { isFetching, data } = useCategorySelectFilter();
 
     if (mode === ECategorySelectFilterMode.multiSelect) {
-        return <MultiSelect onValueChange={onValueChange} options={data} value={value as string[]} />
+        return <MultiSelect onValueChange={onValueChange} options={data} defaultValue={value as string[]} maxSelect={maxSelect}/>
     }
     if (mode === ECategorySelectFilterMode.select) {
         return (

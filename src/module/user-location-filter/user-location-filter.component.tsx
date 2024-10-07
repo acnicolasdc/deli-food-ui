@@ -23,6 +23,7 @@ import { EFieldSlideSelectType } from "@/components/field/field-slide-select";
 import { UserLocationApplyButton } from "./containers/user-location-apply-button";
 import { useUserLocationFilter } from "./use-user-location-filter";
 import { UserLocationInputTrigger } from "./containers/user-location-input-trigger";
+import { UserCardinalPointSelectFilter } from "./containers/user-cardinal-point-select-filter";
 
 export interface IUserLocationFilterProps {
     className?: string
@@ -45,6 +46,7 @@ export function UserLocationFilter({ className }: IUserLocationFilterProps) {
                     <div className="px-2 flex overflow-y-auto overflow-hidden no-scrollbar">
                         <div className="flex flex-col p-4 pb-12 w-full gap-6 pt-0">
                             <UserCitySelectFilter />
+                            <UserCardinalPointSelectFilter />
                             <UserZoneSlideSelectFilter type={EFieldSlideSelectType.grid} />
                         </div>
                     </div>
@@ -68,6 +70,7 @@ export function UserLocationFilter({ className }: IUserLocationFilterProps) {
                     </DrawerHeader>
                     <div className="flex flex-col p-4 pb-12 w-full gap-6">
                         <UserCitySelectFilter />
+                        <UserCardinalPointSelectFilter />
                         <UserZoneSlideSelectFilter type={EFieldSlideSelectType.slide} />
                     </div>
                 </div>

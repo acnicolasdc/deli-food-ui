@@ -38,21 +38,22 @@ export type TTagToggleSelectAtom = { name: string, value: string | number };
 export interface ITagToggleSelectFilterProps {
     mode?: ETagToggleSelectFilterMode;
     value?: string | string[];
+    disabled?: boolean;
     onValueChange: (value?: string | string[]) => void
 }
 
 
 export const tagToggleSelectFilterAtom = atom<string | undefined>(undefined);
 
-export function TagToggleSelectFilter({ onValueChange, value, mode = ETagToggleSelectFilterMode.toggle }: ITagToggleSelectFilterProps) {
+export function TagToggleSelectFilter({ onValueChange, value, disabled, mode = ETagToggleSelectFilterMode.toggle }: ITagToggleSelectFilterProps) {
     const { data, isFetching } = useTagToggleSelectFilter();
     if (mode === ETagToggleSelectFilterMode.multiSelect) {
-        return <MultiSelect onValueChange={onValueChange} options={data} value={value as string[]}/>
+        return <MultiSelect onValueChange={onValueChange} options={data} defaultValue={value as string[]} disabled={disabled}/>
     }
 
     if (mode === ETagToggleSelectFilterMode.select) {
         return (
-            <Select disabled={isFetching} onValueChange={onValueChange} value={value as string}>
+            <Select disabled={isFetching || disabled} onValueChange={onValueChange} value={value as string}>
                 <SelectTrigger className="w-full">
                     <SelectValue placeholder="Seleccione Etiqueta" />
                 </SelectTrigger>

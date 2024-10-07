@@ -19,8 +19,8 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         cartoon:
-          "bg-gradient-to-r from-[#9CDD5F] to-[#3FAF50] hover:bg-[#3FAF50]/80 text-white",
-        delifood: "bg-blue-600 text-primary-foreground hover:bg-blue-600/90",
+          "bg-[#E9FB73] hover:bg-[#E9FB73]/80 text-black",
+        delifood: "bg-[#786EEF] text-primary-foreground hover:bg-[#786EEF]/90",
       },
       size: {
         default: "h-10 px-4 py-2",
