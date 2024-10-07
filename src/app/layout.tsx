@@ -13,6 +13,7 @@ import {
 import { queryClientAtom } from 'jotai-tanstack-query';
 import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
+import Head from 'next/head';
 
 const queryClient = new QueryClient()
 
@@ -53,6 +54,9 @@ export default function RootLayout({
         "min-h-screen bg-background font-sans antialiased",
         fontSans.variable
       )}>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        </Head>
         <div className="w-full min-h-screen bg-background">
           <QueryClientProvider client={queryClient}>
             <Provider>
