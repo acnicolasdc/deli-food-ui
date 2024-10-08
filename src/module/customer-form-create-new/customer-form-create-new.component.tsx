@@ -51,14 +51,14 @@ export function CustomerFormCreateNew() {
     };
 
     if (processSuccessAtom) {
-        return (<AnimationFadeIn code="process-success" className="flex flex-col gap-4 w-full items-center justify-center">
+        return (<AnimationFadeIn code="process-success" className="flex flex-col gap-4 w-full items-center justify-center px-6">
                <Image src={accept} alt='Picture of the author' width={0}
                 height={100}
               />
             <div className='rounded-full bg-[#E9FB73] px-6 py-4'>
-                <h1 className='text-[#786EEF] text-3xl font-semibold'>Te hemos registrado!</h1>
+                <h1 className='text-[#786EEF] text-xl md:text-3xl font-semibold'>Te hemos registrado!</h1>
             </div>
-            <p>Gracias por acompañarnos en este proceso de digitalizacion</p>
+            <p className='text-center'>Gracias por acompañarnos en este proceso de digitalizacion</p>
         </AnimationFadeIn>)
     }
 

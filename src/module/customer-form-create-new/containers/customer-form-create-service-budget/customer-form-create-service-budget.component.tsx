@@ -56,7 +56,7 @@ export function CustomerFormCreateServiceBudget() {
                 )
             })}
             <Separator />
-            <div className="flex flex-col w-full items-center flex-1 justify-center bg-slate-50 rounded-lg gap-4">
+            <div className="flex flex-col w-full items-center flex-1 justify-center bg-slate-50 rounded-lg gap-4 px-4 py-6">
                 <Label className="text-base">Tu precio promedio por persona es:</Label>
                 <p className="text-3xl font-medium text-[#786EEF]">{formatToCOP(totalCount)}</p>
             </div>
