@@ -8,6 +8,7 @@ import type { TTag } from "../tag/use-tag-find-many";
 import type { TCity } from "../city/use-city-find-many";
 import type { TServiceType } from "../service-type/use-service-type-find-many";
 import type { TAmenity } from "../amenity/use-amenity-find-many";
+import type { TPaymentMethod } from "../payment-method/use-payment-method-find-many";
 
 export type THeadquarter = {
     id: number;
@@ -29,7 +30,8 @@ export type THeadquarter = {
             id: number;
             name: string;
             address: string;
-        }[]
+        }[],
+        paymentMethods: TPaymentMethod[]
     };
     openingHours: THeadquarterOpeningHour[];
     zone: TZone & {

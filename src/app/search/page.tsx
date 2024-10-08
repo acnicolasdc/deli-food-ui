@@ -15,7 +15,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { redirect } from 'next/navigation';
 import { InstagramLogoIcon } from '@radix-ui/react-icons'
 import { Label } from '@/components/ui/label';
 import { CustomerListCustomFilters } from '@/module/customer-list-custom-filters';
@@ -24,11 +23,6 @@ import { CustomerCardList } from '@/containers/customer-card-list';
 import { TagToggleSelectFilter } from '@/containers/tag-toggle-select-filter';
 import { CustomerCategorySelectFilter } from '@/module/customer-category-select-filter';
 export default function Search() {
- if (
-    !process.env.NEXT_PUBLIC_DEV_MODE
-  ) {
-    redirect('/on-boarding');
-  } 
   return (
     <main className="flex min-h-screen flex-col relative pb-12">
       <div className='px-0'>

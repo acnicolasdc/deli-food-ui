@@ -1,0 +1,1 @@
+export { CustomerHeadquarterDetailItem, CustomerHeadquarterDetailItemList } from './customer-headquarter-detail-item-list.component';

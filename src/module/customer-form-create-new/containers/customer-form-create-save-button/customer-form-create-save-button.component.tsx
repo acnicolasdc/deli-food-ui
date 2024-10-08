@@ -38,17 +38,17 @@ export function CustomerFormCreateSaveButton() {
     const handleCreateCustomer = async () => {
         const formData = new FormData();
         const headquartersImages = headquarter.map(({ image }) => (image.file?.[0]));
-        const headquartersMapped = headquarter.map(({ id, image, categories, zoneId, openingHours, ...restValues }) => ({
+        const headquartersMapped = headquarter.map(({ id, image, categories, zoneId, openingHours, amenities,...restValues }) => ({
             ...restValues,
             categories: categories.map(Number),
             zoneId: parseInt(zoneId),
-            openingHours: openingHours.map(({ id, ...restValues }) => ({ ...restValues }))
+            openingHours: openingHours.map(({ id, ...restValues }) => ({ ...restValues })),
+            amenities: amenities.map(Number)
         }));
         formData.append('name', generalInformation.name);
         formData.append('tagId', String(generalInformation.tagId));
         formData.append('waitingTime', `De ${generalInformation.waitingTime[0]} a ${generalInformation.waitingTime[1]} Minutos`);
         formData.append('serviceBudgets', JSON.stringify(serviceBudgets.map(({ count, serviceTypeId }) => ({ count, serviceTypeId: parseInt(serviceTypeId as string) }))));
-        formData.append('amenities', JSON.stringify(generalInformation.amenities.map(Number)));
         formData.append('paymentMethods', JSON.stringify(generalInformation.paymentMethods.map(Number)));
         formData.append('productTypes', JSON.stringify(generalInformation.productTypes.map(Number)));
         formData.append('headquarters', JSON.stringify(headquartersMapped));
