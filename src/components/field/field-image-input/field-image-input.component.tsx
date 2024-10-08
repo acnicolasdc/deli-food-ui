@@ -54,6 +54,7 @@ export function FieldImageInput({ value, onValueChange }: IFieldImageInputProps)
         <Input
           type='file'
           placeholder='Selecciona una foto'
+          accept="image/png, image/jpeg, image/jpg"
           onChange={(event) => {
             if (!event.target.files?.length) return;
             const { files, displayUrl } = getImageData(event);
