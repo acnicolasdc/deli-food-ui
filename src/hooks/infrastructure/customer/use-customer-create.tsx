@@ -1,9 +1,14 @@
 import http from "@/lib/http";
-import { useAtom } from "jotai";
+import { useMutation } from "@tanstack/react-query";
 import { atomWithMutation } from "jotai-tanstack-query"
 
 export const queryKey = 'customer';
-const userCreateAtom = atomWithMutation(() => ({
+
+export type TUseCustomerCreateParams = {
+    onSuccess?: () => void;
+}
+
+export const useCustomerCreateAtom = atomWithMutation(() => ({
     mutationKey: [queryKey],
     mutationFn: async (formData: FormData) => {
         const res = await http.post(queryKey, formData, {
@@ -11,10 +16,16 @@ const userCreateAtom = atomWithMutation(() => ({
         });
         return res.data
     },
-}));
-
-
-export default function useCustomerCreate() {
-    const [atomMutate] = useAtom(userCreateAtom);
-    return atomMutate;
+}))
+export default function useCustomerCreate(params?: TUseCustomerCreateParams) {
+    return useMutation({
+        mutationKey: [queryKey],
+        mutationFn: async (formData: FormData) => {
+            const res = await http.post(queryKey, formData, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+            });
+            return res.data
+        },
+        ...params,
+    });
 }

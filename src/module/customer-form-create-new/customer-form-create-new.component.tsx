@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { toast } from "sonner";
 import { useLayoutEffect } from "react";
-import { useSetAtom, useAtom } from "jotai";
+import { useSetAtom, useAtom, useAtomValue } from "jotai";
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
 import type { TZodValidateFunctionReturn } from "@/core/types/zod";
 import {
@@ -22,11 +22,16 @@ import { CustomerFormNewStepperIndicator, CustomerFormNewStepper } from './compo
 import { CustomerFormCreateGeneralInfo, useCustomerFormCreateGeneralInfo } from "./containers/customer-form-create-general-info";
 import { customerFormCreateNewStepAtom, defaultCustomerFormCreateNewStep } from "./customer-form-create-new.constant";
 import { useCustomerFormCreateHeadquarter } from "./containers/customer-form-create-headquarter";
+import { CustomerFormCreateSaveButton, customerFormCreateSaveButtonDialogStatusAtom, customerFormCreateSaveButtonProcessSuccessAtom } from './containers/customer-form-create-save-button';
 import logoDeliFood from '../../../public/logo.png';
+import accept from '../../../public/accept.png';
+
 
 
 export function CustomerFormCreateNew() {
     const [step, setStep] = useAtom(customerFormCreateNewStepAtom);
+    const processSuccessAtom = useAtomValue(customerFormCreateSaveButtonProcessSuccessAtom);
+    const setSendDataAlertDialogStatus = useSetAtom(customerFormCreateSaveButtonDialogStatusAtom)
 
     const { validate: validateGeneralInfo } = useCustomerFormCreateGeneralInfo();
     const { validate: validateHeadquarter } = useCustomerFormCreateHeadquarter();
@@ -43,11 +48,10 @@ export function CustomerFormCreateNew() {
 
     const nextStep = () => setStep((prev) => Math.min(prev + 1, defaultCustomerFormCreateNewStep.length - 1));
     const prevStep = () => setStep((prev) => Math.max(prev - 1, 0));
-    const handleNextButton = (cb: () => TZodValidateFunctionReturn) => () => {
-        const value = cb();
+    const handleNextButton = (validation: () => TZodValidateFunctionReturn, cb: () => void) => () => {
+        const value = validation();
         if (value.valid) {
-            console.log('success')
-            return nextStep();
+            return cb();
         }
         toast("Upss! tenemos un problema", {
             description: "Los datos ingresados no son correctos o hay campos pendientes por completar.",
@@ -57,6 +61,18 @@ export function CustomerFormCreateNew() {
             },
         })
     };
+
+    if (processSuccessAtom) {
+        return (<AnimationFadeIn code="process-success" className="flex flex-col gap-4 w-full items-center justify-center">
+               <Image src={accept} alt='Picture of the author' width={0}
+                height={100}
+              />
+            <div className='rounded-full bg-[#E9FB73] px-6 py-4'>
+                <h1 className='text-[#786EEF] text-3xl font-semibold'>Te hemos registrado!</h1>
+            </div>
+            <p>Gracias por acompañarnos en este proceso de digitalizacion</p>
+        </AnimationFadeIn>)
+    }
 
     return (
         <div className="flex flex-col md:flex-row w-full items-stretch">
@@ -87,7 +103,7 @@ export function CustomerFormCreateNew() {
                         <CustomerFormCreateGeneralInfo />
                     </CardContent>
                     <CardFooter className='justify-end items-end'>
-                        <Button variant="delifood" onClick={handleNextButton(validateGeneralInfo)}>Siguiente</Button>
+                        <Button variant="cartoon" onClick={handleNextButton(validateGeneralInfo, nextStep)}>Siguiente</Button>
                     </CardFooter>
                 </AnimationFadeIn>
                 <AnimationFadeIn className="flex flex-1 flex-col" code="animation-service-type">
@@ -105,7 +121,7 @@ export function CustomerFormCreateNew() {
                             <ArrowLeftIcon className='mr-2' />
                             Atras
                         </Button>
-                        <Button variant="delifood" onClick={handleNextButton(validateServiceBudget)}>Siguiente</Button>
+                        <Button variant="cartoon" onClick={handleNextButton(validateServiceBudget, nextStep)}>Siguiente</Button>
                     </CardFooter>
                 </AnimationFadeIn>
                 <AnimationFadeIn className="flex flex-1 flex-col" code="animation-headquarter">
@@ -123,10 +139,11 @@ export function CustomerFormCreateNew() {
                             <ArrowLeftIcon className='mr-2' />
                             Atras
                         </Button>
-                        <Button variant="delifood" onClick={handleNextButton(validateHeadquarter)}>Siguiente</Button>
+                        <Button variant="cartoon" onClick={handleNextButton(validateHeadquarter, () => setSendDataAlertDialogStatus(true))}>Enviar datos</Button>
                     </CardFooter>
                 </AnimationFadeIn>
             </CustomerFormNewStepper>
+            <CustomerFormCreateSaveButton />
         </div>
     );
 }

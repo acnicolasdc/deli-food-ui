@@ -22,8 +22,14 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel"
 import { Button } from '@/components/ui/button';
+import { redirect } from 'next/navigation';
 
 export default function Customer() {
+    if (
+        !process.env.NEXT_PUBLIC_DEV_MODE
+    ) {
+        redirect('/on-boarding');
+    }
     return (
         <main className="flex min-h-screen flex-col pb-12">
             <div className='px-0'>
@@ -138,7 +144,7 @@ export default function Customer() {
                             </div>
                         </div>
                     </div>
-                    <Separator  className='md:hidden'/>
+                    <Separator className='md:hidden' />
                     <div className='w-full md:w-[380px] flex justify-center items-start flex-grow-0 relative'>
                         <div className='flex flex-col shadow-lg rounded-xl border w-full md:sticky top-5 px-6 py-8 gap-6'>
                             <div className='flex flex-col gap-4'>

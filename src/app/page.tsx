@@ -11,8 +11,14 @@ import burger from "../../public/burger.png";
 import hotdog from "../../public/hotdog.png";
 import popsicle from "../../public/popsicle.png";
 import { UserLocationFilter } from '@/module/user-location-filter'; 
+import { redirect } from 'next/navigation';
 
 export default function Home() {
+  if (
+    !process.env.NEXT_PUBLIC_DEV_MODE
+  ) {
+    redirect('/on-boarding');
+  }
   return (
     <main className="flex min-h-screen flex-col relative" style={{
       backgroundImage: `url(${mainBackground.src})`,

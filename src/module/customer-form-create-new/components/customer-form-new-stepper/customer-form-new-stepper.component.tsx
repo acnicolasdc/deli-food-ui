@@ -16,17 +16,20 @@ interface StepIndicatorProps {
     children: React.ReactNode;
 }
 export function CustomerFormNewStepperIndicator({ steps, currentStep, children }: StepIndicatorProps) {
-    const isDesktop = useMediaQuery("(min-width: 768px)");
-    if (!isDesktop) {
+    const isMobile = useMediaQuery("(max-width: 768px)");
+
+    if (isMobile) {
         const label = steps[currentStep];
-        return <div className="flex flex-col md:h-full bg-neutral-100 w-full md:w-[400px] px-8 py-8 gap-6">
-            {children}
-            <div className={cn("flex flex-row gap-2 py-2 px-2 rounded-lg w-full bg-[#786EEF] font-medium text-white",
-            )}>
-                <Badge className="bg-[#E9FB73] text-black size-6 flex justify-center items-center">{currentStep + 1}</Badge>
-                <p>Paso: {label}</p>
+        return (
+            <div className="flex flex-col md:h-full bg-neutral-100 w-full md:w-[400px] px-8 py-8 gap-6">
+                {children}
+                <div className={cn("flex flex-row gap-2 py-2 px-2 rounded-lg w-full bg-[#786EEF] font-medium text-white",
+                )}>
+                    <Badge className="bg-[#E9FB73] text-black size-6 flex justify-center items-center">{currentStep + 1}</Badge>
+                    <p>Paso: {label}</p>
+                </div>
             </div>
-        </div>
+        )
     }
     return (
         <div className="flex flex-col md:h-full bg-neutral-100  w-full md:w-[400px] px-8 py-8 gap-6">
