@@ -1,5 +1,6 @@
 'use client'
 import z from 'zod';
+import _ from 'lodash';
 import { atom, useAtom } from "jotai";
 import type { TZodValidateFunctionReturn } from '@/core/types/zod';
 import type { TFieldImageInputValue } from '@/components/field/field-image-input/field-image-input.component';
@@ -79,5 +80,62 @@ export function useCustomerFormCreateHeadquarter() {
             return { valid: false, error: result.error };
         }
     }
-    return { headquarter, setHeadquarter, validate: handleValidateForm };
+
+
+    const modifyHeadquarter = (id: string, property: keyof TCustomerFormCreateHeadquarterAtom,
+        newValue: any) => {
+        const index = _.findIndex(headquarter, { id });
+        if (index === -1) return headquarter;
+        const updatedHeadquarters = _.cloneDeep(headquarter);
+        updatedHeadquarters[index][property] = newValue;
+        if(property === 'cardinalPointId') {
+            updatedHeadquarters[index].zoneId = ''; 
+        }
+        setHeadquarter(updatedHeadquarters);
+    };
+
+    const modifyOpeningHour = ( 
+        headquarterId: string, 
+        hourId: string, 
+        property: keyof TCustomerFormCreateHeadquarterOpeningHours, 
+        newValue: string) => {
+        const headquarterIndex = _.findIndex(headquarter, { id: headquarterId });
+        if (headquarterIndex === -1) return headquarter;
+        const hourIndex = _.findIndex(headquarter[headquarterIndex].openingHours, { id: hourId });
+        if (hourIndex === -1) return headquarter;
+        const updatedHeadquarters = _.cloneDeep(headquarter);
+        updatedHeadquarters[headquarterIndex].openingHours[hourIndex][property] = newValue;
+        setHeadquarter(updatedHeadquarters);
+    };
+
+    const addOpeningHours = (headquarterId: string, ) => {
+        const headquarterIndex = _.findIndex(headquarter, { id: headquarterId });
+        if (headquarterIndex === -1) return headquarter;
+        const updatedHeadquarters = _.cloneDeep(headquarter);
+        const updatedHeadquartersOpeningHours = updatedHeadquarters[headquarterIndex].openingHours;
+        updatedHeadquarters[headquarterIndex].openingHours = [...updatedHeadquartersOpeningHours, { ...defaultHeadquarterOpeningHour, id: String(parseInt(updatedHeadquartersOpeningHours[updatedHeadquartersOpeningHours.length - 1].id) + 1) }]
+        setHeadquarter(updatedHeadquarters);
+    }
+
+    const removeOpeningHours = (headquarterId: string, openingHourId: string) => {
+        const headquarterIndex = _.findIndex(headquarter, { id: headquarterId });
+        if (headquarterIndex === -1) return headquarter;
+        const updatedHeadquarters = _.cloneDeep(headquarter);
+        updatedHeadquarters[headquarterIndex].openingHours = updatedHeadquarters[headquarterIndex].openingHours.filter((hour) => hour.id !== openingHourId)
+        setHeadquarter(updatedHeadquarters);
+    }
+
+    const removeHeadquarter = (headquarterId: string) => {
+        const headquarterIndex = _.findIndex(headquarter, { id: headquarterId });
+        if (headquarterIndex === -1) return headquarter;
+        const updatedHeadquarters = _.cloneDeep(headquarter).filter((headquarter) => headquarter.id !== headquarterId)
+        setHeadquarter(updatedHeadquarters);
+    }
+
+    const addHeadquarter = () => {
+        const updatedHeadquarters = _.concat(headquarter, { ...defaultHeadquarterAtomValue, id: String(parseInt(headquarter[headquarter.length - 1].id) + 1) });
+        setHeadquarter(updatedHeadquarters);
+    }
+
+    return { headquarter, setHeadquarter, validate: handleValidateForm, modifyHeadquarter, modifyOpeningHour, addOpeningHours, removeOpeningHours, removeHeadquarter, addHeadquarter };
 }

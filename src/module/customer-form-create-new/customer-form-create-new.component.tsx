@@ -1,7 +1,6 @@
 'use client'
 import Image from 'next/image';
 import { toast } from "sonner";
-import { useLayoutEffect } from "react";
 import { useSetAtom, useAtom, useAtomValue } from "jotai";
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
 import type { TZodValidateFunctionReturn } from "@/core/types/zod";
@@ -14,8 +13,6 @@ import {
 } from "@/components/ui/card"
 import { Button } from "@/components/ui/button";
 import { AnimationFadeIn } from '@/components/animation/animation-fade-in';
-import { zoneFindManyCardinalPointIdAtom } from "@/hooks/infrastructure/zone/use-zone-find-by-cardinal-point";
-import { cardinalPointFindManyCityIdAtom } from "@/hooks/infrastructure/cardinal-point/use-cardinal-point-find-by-city";
 import { CustomerFormCreateServiceBudget, useCustomerFormCreateServiceBudget } from "./containers/customer-form-create-service-budget";
 import { CustomerFormCreateHeadquarter } from "./containers/customer-form-create-headquarter";
 import { CustomerFormNewStepperIndicator, CustomerFormNewStepper } from './components/customer-form-new-stepper';
@@ -36,15 +33,6 @@ export function CustomerFormCreateNew() {
     const { validate: validateGeneralInfo } = useCustomerFormCreateGeneralInfo();
     const { validate: validateHeadquarter } = useCustomerFormCreateHeadquarter();
     const { validate: validateServiceBudget } = useCustomerFormCreateServiceBudget();
-
-    const setZoneCardinalPointId = useSetAtom(zoneFindManyCardinalPointIdAtom);
-    const setCardinalPointCityId = useSetAtom(cardinalPointFindManyCityIdAtom);
-
-    useLayoutEffect(() => {
-        setCardinalPointCityId('1');
-        setZoneCardinalPointId('1');
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     const nextStep = () => setStep((prev) => Math.min(prev + 1, defaultCustomerFormCreateNewStep.length - 1));
     const prevStep = () => setStep((prev) => Math.max(prev - 1, 0));

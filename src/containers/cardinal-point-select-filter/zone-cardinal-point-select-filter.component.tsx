@@ -9,7 +9,6 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { MultiSelect } from "@/components/ui/multi-select";
-import { FieldSlideSelect, EFieldSlideSelectType, FieldSlideSelectLoadingIndicator } from "@/components/field/field-slide-select";
 import { useCardinalPointSelectFilter } from "./use-cardinal-point-select-filter";
 
 export enum ECardinalPointSelectFilterMode {
@@ -22,11 +21,12 @@ export type TCardinalPointSelectFilterValue = { value: string | number, name: st
 export interface ICardinalPointSelectFilterProps {
     mode?: ECardinalPointSelectFilterMode;
     value?: string | null | number | string[];
-    onValueChange: (value?: TCardinalPointSelectFilterValue | string[]) => void
+    onValueChange: (value?: TCardinalPointSelectFilterValue | string[]) => void;
+    cityId?: string 
 }
 
-export function CardinalPointSelectFilter({ onValueChange, value, mode = ECardinalPointSelectFilterMode.select }: ICardinalPointSelectFilterProps) {
-    const { isFetching, data } = useCardinalPointSelectFilter();
+export function CardinalPointSelectFilter({ onValueChange, cityId, value, mode = ECardinalPointSelectFilterMode.select }: ICardinalPointSelectFilterProps) {
+    const { isFetching, data } = useCardinalPointSelectFilter(cityId);
 
     if (mode === ECardinalPointSelectFilterMode.multiSelect) {
         return <MultiSelect onValueChange={onValueChange} options={data} defaultValue={value as string[]} />

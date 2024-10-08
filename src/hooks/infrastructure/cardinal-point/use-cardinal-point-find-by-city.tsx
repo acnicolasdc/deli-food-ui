@@ -1,5 +1,6 @@
+import { atom } from "jotai";
 import http from "@/lib/http";
-import { atom, useAtom } from "jotai";
+import { useQuery } from "@tanstack/react-query";
 import { atomWithQuery } from "jotai-tanstack-query";
 
 
@@ -23,8 +24,19 @@ export const cardinalPointFindManyAtom = atomWithQuery((get) => ({
     },
 }))
 
-export default function useCardinalPointFindByCity() {
-    const [{ data, isPending, isError, isFetching }] = useAtom(cardinalPointFindManyAtom);
-    return { data, isPending, isError, isFetching }
+export default function useCardinalPointFindByCity(cityId?: string) {
+    return useQuery({
+        queryKey: [queryKey, cityId],
+        initialData: [],
+        refetchOnWindowFocus: false,
+        enabled: !!cityId,
+        queryFn: async ({ queryKey: [url, cityId] }): Promise<TCardinalPoint[]> => {
+            if (cityId === undefined) {
+                return [];
+            }
+            const res = await http.get(`${url}?cityId=${cityId}`);
+            return res.data
+        },
+    })
 }
 

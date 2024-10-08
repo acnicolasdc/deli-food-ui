@@ -24,11 +24,12 @@ export interface IZoneSelectFilterProps {
     mode?: EZoneSelectFilterMode;
     type?: EFieldSlideSelectType;
     value?: string | null | number | string[];
-    onValueChange: (value?: TZoneSelectFilterValue | string[]) => void
+    onValueChange: (value?: TZoneSelectFilterValue | string[]) => void;
+    cardinalPointId?: string;
 }
 
-export function ZoneSelectFilter({ onValueChange, value, type, mode = EZoneSelectFilterMode.slide }: IZoneSelectFilterProps) {
-    const { isFetching, data } = useZoneSelectFilter();
+export function ZoneSelectFilter({ onValueChange, value, cardinalPointId, type, mode = EZoneSelectFilterMode.slide }: IZoneSelectFilterProps) {
+    const { isFetching, data } = useZoneSelectFilter(cardinalPointId);
 
     if (mode === EZoneSelectFilterMode.multiSelect) {
         return <MultiSelect onValueChange={onValueChange} options={data} defaultValue={value as string[]} />

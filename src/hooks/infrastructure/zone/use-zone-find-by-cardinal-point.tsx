@@ -1,5 +1,6 @@
 import http from "@/lib/http";
-import { atom, useAtom } from "jotai";
+import { useQuery } from "@tanstack/react-query";
+import { atom } from "jotai";
 import { atomWithQuery } from "jotai-tanstack-query";
 
 
@@ -24,8 +25,19 @@ export const zoneFindManyAtom = atomWithQuery((get) => ({
     },
 }))
 
-export default function useZoneFindByCardinalPoint() {
-    const [{ data, isPending, isError, isFetching }] = useAtom(zoneFindManyAtom);
-    return { data, isPending, isError, isFetching }
+export default function useZoneFindByCardinalPoint(cardinalPointId?: string) {
+    return useQuery({
+        queryKey: [queryKey, cardinalPointId],
+        initialData: [],
+        refetchOnWindowFocus: false,
+        enabled: !!cardinalPointId,
+        queryFn: async ({ queryKey: [url, cardinalPointId] }): Promise<TZone[]> => {
+            if (cardinalPointId === undefined) {
+                return [];
+            }
+            const res = await http.get(`${url}?cardinalPointId=${cardinalPointId}`);
+            return res.data
+        },
+    })
 }
 

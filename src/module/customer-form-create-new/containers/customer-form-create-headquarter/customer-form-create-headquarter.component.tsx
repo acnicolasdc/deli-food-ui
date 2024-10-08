@@ -6,26 +6,15 @@ import { FieldImageInput } from "@/components/field/field-image-input";
 import { CategorySelectFilter, ECategorySelectFilterMode } from "@/containers/category-select-filter";
 import { EZoneSelectFilterMode, ZoneSelectFilter } from "@/containers/zone-select-filter";
 import { Cross1Icon } from "@radix-ui/react-icons";
-import { useSetAtom } from "jotai";
 import { Separator } from "@/components/ui/separator";
-import { zoneFindManyCardinalPointIdAtom } from "@/hooks/infrastructure/zone/use-zone-find-by-cardinal-point";
 import { CardinalPointSelectFilter } from "@/containers/cardinal-point-select-filter";
 import type { TCardinalPointSelectFilterValue } from "@/containers/cardinal-point-select-filter/zone-cardinal-point-select-filter.component";
-import { defaultHeadquarterAtomValue, defaultHeadquarterOpeningHour, useCustomerFormCreateHeadquarter } from "./use-customer-form-create-headquarter";
+import { useCustomerFormCreateHeadquarter } from "./use-customer-form-create-headquarter";
+
 
 export function CustomerFormCreateHeadquarter() {
-    const { headquarter, setHeadquarter } = useCustomerFormCreateHeadquarter();
-    const setZoneCardinalPointId = useSetAtom(zoneFindManyCardinalPointIdAtom);
-
-    const handleHeadquarterValues = (index: number, key: string, value: any) => {
-        let localHeadquarters = [...headquarter];
-        const localHead = { ...localHeadquarters[index] };
-        localHead[key as keyof typeof localHead] = value;
-        localHeadquarters[index] = localHead
-        setHeadquarter(localHeadquarters);
-    }
+    const { headquarter, modifyHeadquarter, modifyOpeningHour, addOpeningHours, removeOpeningHours, removeHeadquarter, addHeadquarter } = useCustomerFormCreateHeadquarter();
     return (
-
         <div className="flex flex-col gap-12">
             {headquarter.map((head, headIndex) => {
                 return (
@@ -40,14 +29,14 @@ export function CustomerFormCreateHeadquarter() {
                                         <Label>Nombre de la sede</Label>
                                         <Input placeholder="Ej: El Ingenio" value={head.name}
                                             onChange={(event) => {
-                                                handleHeadquarterValues(headIndex, 'name', event.target.value)
+                                                modifyHeadquarter(head.id, 'name', event.target.value)
                                             }} />
                                     </div>
                                     <div className="gap-2 flex flex-1 flex-col">
                                         <Label>Imagen</Label>
                                         <FieldImageInput
                                             onValueChange={(file) => {
-                                                handleHeadquarterValues(headIndex, 'image', file);
+                                                modifyHeadquarter(head.id, 'image', file);
                                             }}
                                             value={head.image}
                                         />
@@ -59,17 +48,17 @@ export function CustomerFormCreateHeadquarter() {
                                         <Input placeholder="Direccion"
                                             value={head.address}
                                             onChange={(event) => {
-                                                handleHeadquarterValues(headIndex, 'address', event.target.value)
+                                                modifyHeadquarter(head.id, 'address', event.target.value)
                                             }}
                                         />
                                     </div>
                                     <div className="gap-2 flex flex-1 flex-col">
                                         <Label>Sector</Label>
                                         <CardinalPointSelectFilter
+                                            cityId={head.cityId}
                                             onValueChange={(cardinalPoint) => {
                                                 const { value } = cardinalPoint as TCardinalPointSelectFilterValue;
-                                                handleHeadquarterValues(headIndex, 'cardinalPointId', value);
-                                                setZoneCardinalPointId(value as string);
+                                                modifyHeadquarter(head.id, 'cardinalPointId', value);
                                             }}
                                             value={head.cardinalPointId}
                                         />
@@ -77,9 +66,10 @@ export function CustomerFormCreateHeadquarter() {
                                     <div className="gap-2 flex flex-1 flex-col">
                                         <Label>Zona</Label>
                                         <ZoneSelectFilter
+                                            cardinalPointId={head.cardinalPointId}
                                             onValueChange={(zone) => {
                                                 const { value } = zone as TCardinalPointSelectFilterValue;
-                                                handleHeadquarterValues(headIndex, 'zoneId', value);
+                                                modifyHeadquarter(head.id, 'zoneId', value);
                                             }}
                                             mode={EZoneSelectFilterMode.select}
                                             value={head.zoneId}
@@ -90,7 +80,7 @@ export function CustomerFormCreateHeadquarter() {
                                     <Label>Categorias</Label>
                                     <CategorySelectFilter
                                         onValueChange={(categories) => {
-                                            handleHeadquarterValues(headIndex, 'categories', categories);
+                                            modifyHeadquarter(head.id, 'categories', categories);
                                         }}
                                         value={head.categories}
                                         maxSelect={3}
@@ -105,12 +95,12 @@ export function CustomerFormCreateHeadquarter() {
                                         size="sm"
                                         variant="cartoon"
                                         onClick={() => {
-                                            handleHeadquarterValues(headIndex, 'openingHours', [...head.openingHours, { ...defaultHeadquarterOpeningHour, id: String(parseInt(head.openingHours[head.openingHours.length - 1].id) + 1) }]);
+                                            addOpeningHours(head.id)
                                         }}>
                                         Añadir
                                     </Button>
                                 </div>
-                                {head.openingHours.map((value, index) => {
+                                {head.openingHours.map((value) => {
                                     return (
                                         <div className="flex flex-col md:flex-row w-full gap-4" key={value.id}>
                                             <div className="gap-2 flex flex-1 flex-col">
@@ -119,11 +109,7 @@ export function CustomerFormCreateHeadquarter() {
                                                     placeholder="Lunes a Viernes"
                                                     value={value.label}
                                                     onChange={(event) => {
-                                                        const openingHoursArray = [...head.openingHours];
-                                                        const openingCopied = { ...value };
-                                                        openingCopied.label = event.target.value;
-                                                        openingHoursArray[index] = openingCopied;
-                                                        handleHeadquarterValues(headIndex, 'openingHours', openingHoursArray);
+                                                        modifyOpeningHour(head.id, value.id, 'label', event.target.value);
                                                     }}
                                                 />
                                             </div>
@@ -133,11 +119,7 @@ export function CustomerFormCreateHeadquarter() {
                                                     placeholder="12:00 PM - 12:00 AM"
                                                     value={value.range}
                                                     onChange={(event) => {
-                                                        const openingHoursArray = [...head.openingHours];
-                                                        const openingCopied = { ...value };
-                                                        openingCopied.range = event.target.value;
-                                                        openingHoursArray[index] = openingCopied;
-                                                        handleHeadquarterValues(headIndex, 'openingHours', openingHoursArray);
+                                                        modifyOpeningHour(head.id, value.id, 'range', event.target.value);
                                                     }}
                                                 />
                                             </div>
@@ -147,8 +129,7 @@ export function CustomerFormCreateHeadquarter() {
                                                     variant="destructive"
                                                     onClick={() => {
                                                         if (head.openingHours.length === 1) return;
-                                                        const filtered = head.openingHours.filter((hour) => hour.id !== value.id)
-                                                        handleHeadquarterValues(headIndex, 'openingHours', filtered);
+                                                        removeOpeningHours(head.id, value.id);
                                                     }}
                                                 ><Cross1Icon /> <p className="block ml-2 md:hidden md:ml-0">Eliminar</p></Button>
                                             </div>
@@ -162,8 +143,7 @@ export function CustomerFormCreateHeadquarter() {
                                     variant="destructive"
                                     onClick={() => {
                                         if (headquarter.length === 1) return;
-                                        const filtered = headquarter.filter((headquarter) => headquarter.id !== head.id)
-                                        setHeadquarter(filtered);
+                                        removeHeadquarter(head.id);
                                     }}
                                 ><Cross1Icon /> <p className="block ml-2">Eliminar Sede</p></Button>
                             </div> : false}
@@ -175,9 +155,7 @@ export function CustomerFormCreateHeadquarter() {
                 <Separator />
                 <Button
                     variant="cartoon"
-                    onClick={() => {
-                        setHeadquarter([...headquarter, { ...defaultHeadquarterAtomValue, id: String(parseInt(headquarter[headquarter.length - 1].id) + 1) }]);
-                    }}
+                    onClick={addHeadquarter}
                 >Agergar Sede</Button>
             </div>
         </div>

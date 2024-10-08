@@ -21,7 +21,7 @@ export function UserZoneSlideSelectFilter({ type }: IUserZoneSlideSelectFilterPr
     return (
         <div className='space-y-4 w-full'>
             <Label>A que zona quieres ir?</Label>
-            <ZoneSelectFilter type={type} onValueChange={(value) => setZone(value as TUserZoneSlideAtom)} value={zone?.value} />
+            <ZoneSelectFilter type={type} onValueChange={(value) => setZone(value as TUserZoneSlideAtom)} value={zone?.value} cardinalPointId={cardinalPoint.value}/>
         </div>
     )
 }

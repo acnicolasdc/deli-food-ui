@@ -35,7 +35,7 @@ export const customerFormCreateGeneralInfoSchema = z.object({
     }),
     waitingTime: z.array(z.string()).length(2, "Waiting time must be an array of two strings"),
     tagId: z.number(),
-    amenities: z.array(z.string()).nonempty("Amenities cannot be empty"),
+    amenities: z.array(z.string()),
     productTypes: z.array(z.string()).nonempty("Product types cannot be empty"),
     paymentMethods: z.array(z.string()).nonempty("Payment methods cannot be empty"),
 });
