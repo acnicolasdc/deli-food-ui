@@ -301,7 +301,7 @@ export const MultiSelect = React.forwardRef<
                                 <CommandItem
                                     key="all"
                                     onSelect={toggleAll}
-                                    disabled={shouldDisable}
+                                    disabled={shouldDisable || !!maxSelect}
                                     className="cursor-pointer"
                                 >
                                     <div
@@ -314,7 +314,7 @@ export const MultiSelect = React.forwardRef<
                                     >
                                         <CheckIcon className="h-4 w-4" />
                                     </div>
-                                    <span>(Select All)</span>
+                                    <span>(Seleccionar todos)</span>
                                 </CommandItem>
                                 {options.map((option) => {
                                     const isSelected = selectedValues.includes(option.value);
