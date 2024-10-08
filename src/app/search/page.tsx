@@ -15,7 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
+import { redirect } from 'next/navigation';
 import { InstagramLogoIcon } from '@radix-ui/react-icons'
 import { Label } from '@/components/ui/label';
 import { CustomerListCustomFilters } from '@/module/customer-list-custom-filters';
@@ -23,8 +23,6 @@ import { UserLocationFilter } from '@/module/user-location-filter';
 import { CustomerCardList } from '@/containers/customer-card-list';
 import { TagToggleSelectFilter } from '@/containers/tag-toggle-select-filter';
 import { CustomerCategorySelectFilter } from '@/module/customer-category-select-filter';
-import { redirect } from 'next/navigation';
-
 export default function Search() {
   if (
     !process.env.NEXT_PUBLIC_DEV_MODE

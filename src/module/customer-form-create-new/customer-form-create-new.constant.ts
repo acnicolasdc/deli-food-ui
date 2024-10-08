@@ -6,4 +6,4 @@ export const defaultCustomerFormCreateNewStep = [
   "Sedes",
 ];
 
-export const customerFormCreateNewStepAtom = atom<number>(0);
+export const customerFormCreateNewStepAtom = atom<number>(2);

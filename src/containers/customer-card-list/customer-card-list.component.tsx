@@ -9,6 +9,7 @@ import { CardCustomerDetail } from '@/components/card/card-customer-detail';
 import Link from 'next/link';
 import { CustomerCardListLoadingIndicator } from './components/customer-card-list-loading-indicator';
 import { CustomerCardListEmptyIndicator } from './components/customer-card-list-empty-indicator';
+import useHeadquarterFindMany from '@/hooks/infrastructure/headquarter/use-headquarter-find-many';
 
 const MOCK_DATA = [
     {
@@ -57,17 +58,18 @@ const MOCK_DATA = [
 
 
 export function CustomerCardList() {
+    const { data, isFetching } = useHeadquarterFindMany();
     return (
         <CustomerCardListLoadingIndicator>
             <CustomerCardListEmptyIndicator>
                 <div className='grid grid-cols-2 md:grid-cols-4 gap-4 no-scrollbar px-4 md:px-8'>
-                    {MOCK_DATA.map(({ image, isFavorite, name, address, id }) => (
+                    {data.map(({ image, name, address, id, customer }) => (
                         <Link href="/customer" key={id}>
                             <CardCustomerDetail
                                 name={name}
                                 image={image}
                                 address={address}
-                                isFavorite={isFavorite}
+                                isFavorite={false}
                             />
                         </Link>
                     ))}

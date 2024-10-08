@@ -142,9 +142,9 @@ export function CustomerFormCreateHeadquarter() {
                                                 />
                                             </div>
                                             <div className="flex justify-center items-end">
-                                                <Button 
-                                                className="w-full md:w-auto"
-                                                variant="destructive"
+                                                <Button
+                                                    className="w-full md:w-auto"
+                                                    variant="destructive"
                                                     onClick={() => {
                                                         if (head.openingHours.length === 1) return;
                                                         const filtered = head.openingHours.filter((hour) => hour.id !== value.id)
@@ -156,6 +156,17 @@ export function CustomerFormCreateHeadquarter() {
                                     )
                                 })}
                             </div>
+                            {headquarter.length > 1 ? <div className="flex justify-end items-center">
+                                <Button
+                                    className="w-full md:w-auto"
+                                    variant="destructive"
+                                    onClick={() => {
+                                        if (headquarter.length === 1) return;
+                                        const filtered = headquarter.filter((headquarter) => headquarter.id !== head.id)
+                                        setHeadquarter(filtered);
+                                    }}
+                                ><Cross1Icon /> <p className="block ml-2">Eliminar Sede</p></Button>
+                            </div> : false}
                         </div>
                     </div>
                 )
