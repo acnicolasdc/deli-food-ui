@@ -7,102 +7,105 @@ import { BadgeCustomerTag } from '@/components/badge/badge-customer-tag';
 import { useCustomerHeadquarterDetail } from './use-customer-headquarter-detail';
 import { CustomerHeadquarterDetailItemList } from './components/customer-headquarter-detail-item-list';
 import _ from 'lodash';
+import { CustomerHeadquarterDetailLoading } from './components/customer-headquarter-detail-loading';
+import { AnimationFadeIn } from '@/components/animation/animation-fade-in';
 
 export function CustomerHeadquarterDetail() {
-    const { data } = useCustomerHeadquarterDetail();
+    const { data, isLoading } = useCustomerHeadquarterDetail();
     const amenities = _.get(data, 'amenities', []);
     const paymentMethods = _.get(data, 'paymentMethods', []);
     const tagName = _.get(data, 'customer.tag.name', '');
     const tagIcon = _.get(data, 'customer.tag.icon', '');
     return (
-        <div className='flex flex-col flex-1 px-4 gap-4 md:gap-6 md:px-[10%] py-2 md:py-12'>
-            <div className='flex flex-row w-full'>
-                <h1 className='md:text-2xl font-semibold'>{data?.topLabel}</h1>
-                {!!tagIcon ? <div className='flex flex-1 justify-end'> <BadgeCustomerTag icon={tagIcon} name={tagName} /></div> : false}
-            </div>
-            <div className='flex flex-col w-full h-[250px] md:h-[350px] rounded-xl overflow-hidden'
-                style={{
-                    backgroundImage: `url(${data?.image})`,
-                    backgroundSize: 'cover'
-                }}
-            >
-            </div>
-            <div className='flex flex-col md:flex-row md:gap-12 gap-6'>
-                <div className='flex flex-col flex-1 gap-6'>
-                    <div>
-                        <h2 className='text-xl font-semibold'>{data?.fullName}</h2>
-                        <p className='text-base'>{data?.address}</p>
-                    </div>
-                    <Separator />
-                    <div className='flex flex-col gap-4'>
-                        <Label className='text-base'>Informacion General</Label>
-                        <div className='flex flex-col gap-6'>
-                            <div className='flex flex-row gap-4'>
-                                <ClockIcon className='h-6 w-6' />
-                                <div>
-                                    <Label className='font-semibold'>Tiempo Estimado de Atencion</Label>
-                                    <p className='text-muted-foreground'>{data?.customer.waitingTime}</p>
-                                </div>
-                            </div>
-                            <div className='flex flex-row gap-4'>
-                                <ScissorsIcon className='h-6 w-6' />
-                                <div>
-                                    <Label className='font-semibold'>Precio Promedio por Persona</Label>
-                                    <p className='text-muted-foreground'>{data?.budget}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {!!paymentMethods.length ? (
-                        <>
-                            <Separator />
-                            <div className='flex flex-col gap-4'>
-                                <Label className='text-base'>Metodos de Pago</Label>
-                                <CustomerHeadquarterDetailItemList data={paymentMethods} />
-                            </div>
-                        </>
-                    ) : false}
-                    {!!amenities.length ? (
-                        <>
-                            <Separator />
-                            <div className='flex flex-col gap-4'>
-                                <Label className='text-base'>Amenidades</Label>
-                                <CustomerHeadquarterDetailItemList data={amenities} />
-                            </div>
-                        </>
-                    ) : false}
+        <CustomerHeadquarterDetailLoading isLoading={isLoading}>
+            <AnimationFadeIn className='flex flex-col flex-1 px-4 gap-4 md:gap-6 md:px-[10%] py-2 md:py-12' code="customer-detail-animation">
+                <div className='flex flex-row w-full'>
+                    <h1 className='md:text-2xl font-semibold'>{data?.topLabel}</h1>
+                    {!!tagIcon ? <div className='flex flex-1 justify-end'> <BadgeCustomerTag icon={tagIcon} name={tagName} /></div> : false}
                 </div>
-                <Separator className='md:hidden' />
-                <div className='w-full md:w-[450px] flex justify-center items-start flex-grow-0 relative'>
-                    <div className='flex flex-col shadow-lg rounded-xl border w-full md:sticky top-5 px-6 py-8 gap-6'>
-                        <div className='flex flex-col gap-4'>
-                            <Label className='text-base md:text-lg md:font-semibold'>Horarios de Servicio</Label>
-                            <div className='grid gap-4 grid-cols-2 md:gap-4'>
-                                {data?.openingHours.map(({ id, label, range }) => (
-                                    <div key={id}>
-                                        <Label className='font-semibold'>{label}</Label>
-                                        <p className='text-muted-foreground'>{range}</p>
-                                    </div>
-                                ))}
-                            </div>
+                <div className='flex flex-col w-full h-[250px] md:h-[350px] rounded-xl overflow-hidden'
+                    style={{
+                        backgroundImage: `url(${data?.image})`,
+                        backgroundSize: 'cover'
+                    }}
+                >
+                </div>
+                <div className='flex flex-col md:flex-row md:gap-12 gap-6'>
+                    <div className='flex flex-col flex-1 gap-6'>
+                        <div>
+                            <h2 className='text-xl font-semibold'>{data?.fullName}</h2>
+                            <p className='text-base'>{data?.address}</p>
                         </div>
                         <Separator />
                         <div className='flex flex-col gap-4'>
-                            <Label className='text-base md:text-lg md:font-semibold'>Sedes</Label>
-                            <div className='grid gap-4 grid-cols-1'>
-                                {data?.headquarters.map(({ id, address, name }) => (
-                                    <div className='flex flex-row justify-between items-center' key={id}>
-                                        <Label className='font-semibold'>{name}</Label>
-                                        <p className='text-muted-foreground'>{address}</p>
+                            <Label className='text-base'>Informacion General</Label>
+                            <div className='flex flex-col gap-6'>
+                                <div className='flex flex-row gap-4'>
+                                    <ClockIcon className='h-6 w-6' />
+                                    <div>
+                                        <Label className='font-semibold'>Tiempo Estimado de Atencion</Label>
+                                        <p className='text-muted-foreground'>{data?.customer.waitingTime}</p>
                                     </div>
-                                ))}
+                                </div>
+                                <div className='flex flex-row gap-4'>
+                                    <ScissorsIcon className='h-6 w-6' />
+                                    <div>
+                                        <Label className='font-semibold'>Precio Promedio por Persona</Label>
+                                        <p className='text-muted-foreground'>{data?.budget}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <Button variant="cartoon">Reservar</Button>
+                        {!!paymentMethods.length ? (
+                            <>
+                                <Separator />
+                                <div className='flex flex-col gap-4'>
+                                    <Label className='text-base'>Metodos de Pago</Label>
+                                    <CustomerHeadquarterDetailItemList data={paymentMethods} />
+                                </div>
+                            </>
+                        ) : false}
+                        {!!amenities.length ? (
+                            <>
+                                <Separator />
+                                <div className='flex flex-col gap-4'>
+                                    <Label className='text-base'>Amenidades</Label>
+                                    <CustomerHeadquarterDetailItemList data={amenities} />
+                                </div>
+                            </>
+                        ) : false}
+                    </div>
+                    <Separator className='md:hidden' />
+                    <div className='w-full md:w-[450px] flex justify-center items-start flex-grow-0 relative'>
+                        <div className='flex flex-col shadow-lg rounded-xl border w-full md:sticky top-5 px-6 py-8 gap-6'>
+                            <div className='flex flex-col gap-4'>
+                                <Label className='text-base md:text-lg md:font-semibold'>Horarios de Servicio</Label>
+                                <div className='grid gap-4 grid-cols-2 md:gap-4'>
+                                    {data?.openingHours.map(({ id, label, range }) => (
+                                        <div key={id}>
+                                            <Label className='font-semibold'>{label}</Label>
+                                            <p className='text-muted-foreground'>{range}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <Separator />
+                            <div className='flex flex-col gap-4'>
+                                <Label className='text-base md:text-lg md:font-semibold'>Sedes</Label>
+                                <div className='grid gap-4 grid-cols-1'>
+                                    {data?.headquarters.map(({ id, address, name }) => (
+                                        <div className='flex flex-row justify-between items-center' key={id}>
+                                            <Label className='font-semibold'>{name}</Label>
+                                            <p className='text-muted-foreground'>{address}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <Button variant="cartoon">Reservar</Button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {/* <div className='flex flex-col gap-4 mt-4 md:mt-8'>
+                {/* <div className='flex flex-col gap-4 mt-4 md:mt-8'>
                 <Label className='text-lg'>Promociones</Label>
                 <Carousel className="w-full">
                     <CarouselContent>
@@ -186,6 +189,7 @@ export function CustomerHeadquarterDetail() {
                     </div>
                 </div>
             </div> */}
-        </div>
+            </AnimationFadeIn>
+        </CustomerHeadquarterDetailLoading>
     );
 }

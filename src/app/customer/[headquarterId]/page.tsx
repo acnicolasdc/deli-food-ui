@@ -8,13 +8,12 @@ import { CustomerHeadquarterDetail } from '@/module/customer-headquarter-detail'
 import { redirect } from 'next/navigation';
 
 export default function Customer({ params }: { params: { headquarterId: string } }) {
+    const { isLoading, data } = useHeadquarterFindById(params.headquarterId);
     if (
-        !process.env.NEXT_PUBLIC_DEV_MODE
-      ) {
+        !process.env.NEXT_PUBLIC_DEV_MODE || (!data && !isLoading)
+    ) {
         redirect('/on-boarding');
-      }
-    const dd = useHeadquarterFindById(params.headquarterId);
-    console.log(dd.data)
+    }
     return (
         <main className="flex min-h-screen flex-col pb-12">
             <div className='px-0'>

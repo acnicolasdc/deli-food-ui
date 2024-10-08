@@ -1,0 +1,1 @@
+export { CustomerHeadquarterDetailLoading } from './customer-headquarter-detail-loading.component';
