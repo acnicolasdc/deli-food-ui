@@ -7,7 +7,6 @@ import type { TZodValidateFunctionReturn } from '@/core/types/zod';
 export type TCustomerFormCreateGeneralInfoAtom = {
     name: string;
     tagId: number;
-    amenities: string[];
     waitingTime: string[];
     productTypes: string[];
     paymentMethods: string[];
@@ -22,7 +21,6 @@ export const generalInformationAtom = atom<TCustomerFormCreateGeneralInfoAtom>({
     },
     waitingTime: ['', ''],
     tagId: 3,
-    amenities: [],
     productTypes: [],
     paymentMethods: []
 });
@@ -35,7 +33,6 @@ export const customerFormCreateGeneralInfoSchema = z.object({
     }),
     waitingTime: z.array(z.string()).length(2, "Waiting time must be an array of two strings"),
     tagId: z.number(),
-    amenities: z.array(z.string()),
     productTypes: z.array(z.string()).nonempty("Product types cannot be empty"),
     paymentMethods: z.array(z.string()).nonempty("Payment methods cannot be empty"),
 });

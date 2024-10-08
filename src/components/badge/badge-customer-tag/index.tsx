@@ -1,0 +1,1 @@
+export { BadgeCustomerTag } from './badge-customer-tag.component';

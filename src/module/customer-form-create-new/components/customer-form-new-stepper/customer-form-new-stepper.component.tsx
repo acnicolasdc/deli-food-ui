@@ -21,7 +21,7 @@ export function CustomerFormNewStepperIndicator({ steps, currentStep, children }
     if (isMobile) {
         const label = steps[currentStep];
         return (
-            <div className="flex flex-col md:h-full bg-neutral-100 w-full md:w-[400px] px-8 py-8 gap-6">
+            <div className="flex flex-col md:h-full bg-slate-50 w-full md:w-[400px] px-8 py-8 gap-6">
                 {children}
                 <div className={cn("flex flex-row gap-2 py-2 px-2 rounded-lg w-full bg-[#786EEF] font-medium text-white",
                 )}>
@@ -32,7 +32,7 @@ export function CustomerFormNewStepperIndicator({ steps, currentStep, children }
         )
     }
     return (
-        <div className="flex flex-col md:h-full bg-neutral-100  w-full md:w-[400px] px-8 py-8 gap-6">
+        <div className="flex flex-col md:h-full bg-slate-50  w-full md:w-[400px] px-8 py-8 gap-6">
             {children}
             {steps.map((step, index) => {
                 const isSelected = currentStep === index;

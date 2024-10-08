@@ -21,15 +21,15 @@ export function CustomerFilterModalTrigger({ className, ...props }: ICustomerFil
         return countFilter;
     }
     const shouldDisableButton = !amenities.length && allFilterValuesAreFalse({...restValues}) && !foodType && !paymentMethods.length;
-    const addClassName = `${className || ''}${shouldDisableButton ? '' : 'border-2 !border-[#E9FB73]'}`;
+    const addClassName = `${className || ''}${shouldDisableButton ? '' : 'border  !border-[#786EEF]'}`;
     return (
         <Button
             variant="outline"
             className={cn('rounded-full h-12 relative', addClassName)}
             {...props}
         >
-            {shouldDisableButton ? false : <Badge className="absolute -top-1 -right-1 px-2 bg-[#E9FB73] text-black">{countFilterBadge()}</Badge>}
-            <MixerHorizontalIcon />
+            {shouldDisableButton ? false : <Badge className="absolute -top-1 -right-1 px-2 bg-[#786EEF] text-white">{countFilterBadge()}</Badge>}
+            <MixerHorizontalIcon color={shouldDisableButton ? '#000' : '#786EEF'}/>
         </Button>
     )
 }

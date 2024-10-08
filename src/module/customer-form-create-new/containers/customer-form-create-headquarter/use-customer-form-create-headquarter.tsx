@@ -20,6 +20,7 @@ export type TCustomerFormCreateHeadquarterAtom = {
     cardinalPointId: string;
     zoneId: string;
     categories: string[];
+    amenities: string[];
     openingHours: TCustomerFormCreateHeadquarterOpeningHours[];
 }
 
@@ -40,6 +41,7 @@ export const defaultHeadquarterAtomValue = {
     cardinalPointId: '1',
     zoneId: '',
     categories: [],
+    amenities: [],
     openingHours: [defaultHeadquarterOpeningHour],
 }
 
@@ -60,6 +62,7 @@ export const customerFormCreateHeadquarterSchema = z.object({
     cityId: z.string().min(1),
     cardinalPointId: z.string().min(1),
     zoneId: z.string().min(1),
+    amenities: z.array(z.string()),
     categories: z.array(z.string().min(1)).min(1),
     openingHours: z
         .array(customerFormCreateHeadquarterOpeningHourSchema)

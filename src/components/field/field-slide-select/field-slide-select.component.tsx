@@ -8,13 +8,13 @@ import { AnimationFadeIn } from "@/components/animation/animation-fade-in";
 import empty from '../../../../public/empty-box.png';
 
 const fieldSlideSelectVariants = cva(
-    "flex items-center justify-center flex-col space-y-2 rounded-lg cursor-pointer h-20 min-w-24 md:h-20 md:min-w-24",
+    "flex items-center justify-center flex-col space-y-2 rounded-2xl cursor-pointer h-20 min-w-24 md:h-20 md:min-w-24",
     {
         variants: {
             variant: {
-                default: "bg-slate-50 hover:bg-slate-100",
+                default: "bg-slate-50 hover:bg-slate-50",
                 outline: "border border-slate-200 hover:bg-slate-50",
-                selected: "border-none font-semibold bg-[#786EEF] hover:bg-[#786EEF]/70 text-white"
+                selected: "border text-[#786EEF] bg-[#786EEF]/20 font-semibold border-[#786EEF] hover:bg-slate-50/70"
             },
         },
         defaultVariants: {
@@ -113,7 +113,7 @@ function FieldSlideSelectLoadingIndicator({ isLoading, className, type = EFieldS
 
 function FieldSlideSelectEmptyIndicator({ isEmpty, label, children }: IFieldSlideSelectEmptyIndicatorProps) {
     if (isEmpty) {
-        return (<div className="w-full gap-2 border border-dashed min-h-24 rounded-lg bg-neutral-50 flex flex-col items-center justify-center py-6 px-4">
+        return (<div className="w-full gap-2 border border-dashed min-h-24 rounded-lg bg-slate-50 flex flex-col items-center justify-center py-6 px-4">
                 <Image
                     src={empty}
                     className="h-16 w-16 opacity-70"

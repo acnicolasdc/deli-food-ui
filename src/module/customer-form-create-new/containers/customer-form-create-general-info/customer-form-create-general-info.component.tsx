@@ -31,7 +31,7 @@ export function CustomerFormCreateGeneralInfo() {
             </div>
             <div className="space-y-2">
                 <Label>Tiempo estimado de atencion</Label>
-                <div className="flex flex-row w-full items-center gap-4 bg-neutral-50 border rounded-xl p-4">
+                <div className="flex flex-row w-full items-center gap-4 bg-slate-50 rounded-xl p-4">
                     <p>De</p>
                     <Input
                         className="w-[70px]"
@@ -79,16 +79,6 @@ export function CustomerFormCreateGeneralInfo() {
                             setGeneralInformation({ ...generalInformation, paymentMethods: value })
                         }
                     }} mode={EPaymentMethodSelectFilterMode.multiSelect} />
-            </div>
-            <div className="space-y-2">
-                <Label>Amenidades</Label>
-                <AmenitySelectFilter
-                    value={generalInformation.amenities}
-                    onValueChange={(value) => {
-                        if (Array.isArray(value)) {
-                            setGeneralInformation({ ...generalInformation, amenities: value })
-                        }
-                    }} mode={EAmenitySelectFilterMode.multiSelect} />
             </div>
         </div>
     );

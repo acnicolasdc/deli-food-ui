@@ -1,46 +1,8 @@
 import http from "@/lib/http";
 import { useAtom } from "jotai";
 import { atomWithQuery } from "jotai-tanstack-query";
-import type { TCategory } from "../category/use-category-find-many";
-import type { TZone } from "../zone/use-zone-find-by-cardinal-point";
+import { THeadquarter } from "./use-headquarter-by-id";
 
-
-export type THeadquarter = {
-    id: number;
-    name: string;
-    address: string;
-    image: string;
-    customerId: number;
-    zoneId: number;
-    categories: TCategory[];
-    customer: THeadquarterCustomer;
-    openingHours: THeadquarterOpeningHour[];
-    zone: TZone;
-}
-
-export type Zone = {
-    id: number;
-    name: string;
-    icon: string;
-    cardinalPointId: number;
-}
-
-export type THeadquarterCustomer = {
-    id: number;
-    name: string;
-    logo: string;
-    waitingTime: string;
-    createdAt: Date;
-    updatedAt: Date;
-    tagId: number;
-}
-
-export type THeadquarterOpeningHour = {
-    id: number;
-    label: string;
-    range: string;
-    headquarterId: number;
-}
 
 export const queryKey = 'headquarter';
 

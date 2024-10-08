@@ -10,6 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import { CardinalPointSelectFilter } from "@/containers/cardinal-point-select-filter";
 import type { TCardinalPointSelectFilterValue } from "@/containers/cardinal-point-select-filter/zone-cardinal-point-select-filter.component";
 import { useCustomerFormCreateHeadquarter } from "./use-customer-form-create-headquarter";
+import { AmenitySelectFilter, EAmenitySelectFilterMode } from "@/containers/amenity-select-filter";
 
 
 export function CustomerFormCreateHeadquarter() {
@@ -87,8 +88,18 @@ export function CustomerFormCreateHeadquarter() {
                                         mode={ECategorySelectFilterMode.multiSelect}
                                     />
                                 </div>
+                                <div className="space-y-2">
+                                    <Label>Amenidades</Label>
+                                    <AmenitySelectFilter
+                                        value={head.amenities}
+                                        onValueChange={(value) => {
+                                            if (Array.isArray(value)) {
+                                                modifyHeadquarter(head.id, 'amenities', value);
+                                            }
+                                        }} mode={EAmenitySelectFilterMode.multiSelect} />
+                                </div>
                             </div>
-                            <div className="flex flex-col gap-4 flex-1 border w-full p-6 rounded-xl bg-neutral-50">
+                            <div className="flex flex-col gap-4 flex-1 border w-full p-6 rounded-xl bg-slate-50">
                                 <div className="flex flex-row justify-between items-center">
                                     <Label className="text-xl">Horarios de atencion</Label>
                                     <Button

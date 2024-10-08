@@ -18,7 +18,7 @@ export function CustomerFormCreateServiceBudget() {
 
     return (
         <div className="flex flex-col gap-4 flex-1">
-            <div className="flex flex-row gap-4 bg-neutral-50 py-4 px-4 rounded-lg">
+            <div className="flex flex-row gap-4 bg-slate-50 py-4 px-4 rounded-lg">
                 <div className="flex flex-1"><Label>Servicio</Label></div>
                 <Separator orientation="vertical" />
                 <div className="flex flex-1"><Label>Precio Promedio</Label></div>
@@ -56,7 +56,7 @@ export function CustomerFormCreateServiceBudget() {
                 )
             })}
             <Separator />
-            <div className="flex flex-col w-full items-center flex-1 justify-center bg-neutral-50 rounded-lg gap-4">
+            <div className="flex flex-col w-full items-center flex-1 justify-center bg-slate-50 rounded-lg gap-4">
                 <Label className="text-base">Tu precio promedio por persona es:</Label>
                 <p className="text-3xl font-medium text-[#786EEF]">{formatToCOP(totalCount)}</p>
             </div>
