@@ -25,7 +25,7 @@ import { CustomerCategorySelectFilter } from '@/module/customer-category-select-
 import { redirect } from 'next/navigation';
 export default function Search() {
   if (
-    process.env.NEXT_PUBLIC_DEV_MODE
+    !process.env.NEXT_PUBLIC_DEV_MODE
   ) {
     redirect('/on-boarding');
   }
