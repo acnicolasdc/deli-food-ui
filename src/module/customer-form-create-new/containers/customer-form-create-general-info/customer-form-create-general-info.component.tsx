@@ -2,7 +2,6 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FieldImageInput } from "@/components/field/field-image-input";
-import { AmenitySelectFilter, EAmenitySelectFilterMode } from "@/containers/amenity-select-filter";
 import { EFoodTypeSelectFilterMode, FoodTypeSelectFilter } from "@/containers/food-type-select-filter";
 import { PaymentMethodSelectFilter, EPaymentMethodSelectFilterMode } from "@/containers/payment-method-select-filter";
 import { useCustomerFormCreateGeneralInfo } from './use-customer-form-create-general-info';
@@ -30,7 +29,10 @@ export function CustomerFormCreateGeneralInfo() {
                 </div>
             </div>
             <div className="space-y-2">
-                <Label>Tiempo estimado de atencion</Label>
+                <div>
+                    <Label>Tiempo estimado de atencion</Label>
+                    <p className="text-sm text-muted-foreground">Es el tiempo que toma en entregar la orden al cliente.</p>
+                </div>
                 <div className="flex flex-row w-full items-center gap-4 bg-slate-50 rounded-xl p-4">
                     <p>De</p>
                     <Input
@@ -58,7 +60,7 @@ export function CustomerFormCreateGeneralInfo() {
             <div className="space-y-2">
                 <div>
                     <Label>Tipo de producto que vendes</Label>
-                    <p className="text-muted-foreground text-xs">Solo podras escoger maximo 2 tipos de productos</p>
+                    <p className="text-muted-foreground text-xs">Solo podras escoger maximo 3 tipos de productos</p>
                 </div>
                 <FoodTypeSelectFilter
                     value={generalInformation.productTypes}

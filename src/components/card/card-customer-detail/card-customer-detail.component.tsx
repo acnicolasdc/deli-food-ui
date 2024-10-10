@@ -16,7 +16,7 @@ export function CardCustomerDetail({ tag, name, address, image, logo }: ICardCus
     return (
         <div className='relative flex flex-col gap-2 cursor-pointer'>
             {tag ? <BadgeCustomerTag className='absolute left-2 top-2 md:left-5 md:top-5 shadow-lg z-50' name={tag.name} icon={tag.icon} /> : false}
-            <div className='w-full h-[150px] md:h-[250px] rounded-2xl overflow-hidden relative'>
+            <div className='w-full h-[150px] md:h-[250px] rounded-2xl overflow-hidden relative bg-slate-50'>
                 <Image
                     src={image}
                     alt="banner-image"
@@ -26,17 +26,20 @@ export function CardCustomerDetail({ tag, name, address, image, logo }: ICardCus
                     priority
                 />
             </div>
-            <div className='flex flex-row items-start px-2'>
-                <Image
-                    src={logo}
-                    alt='Picture of the customer'
-                    width={40}
-                    height={40}
-                    className='size-[35px] md:size-[40px] rounded-full'
-                />
-                <div className='px-2 flex flex-col max-w-[90%]'>
+            <div className='flex flex-row items-start px-2 w-full'>
+                <div className='flex size-[35px] md:size-[40px]  bg-slate-50 rounded-full overflow-hidden relative'>
+                    <Image
+                        src={logo}
+                        alt="banner-image-logo"
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="center"
+                        priority
+                    />
+                </div>
+                <div className='px-2 flex flex-col flex-1 truncate'>
                     <Label className='text-sm md:text-base font-medium truncate'>{name}</Label>
-                    <p className='text-xs md:text-sm text-muted-foreground'>{address}</p>
+                    <p className='text-xs md:text-sm text-muted-foreground truncate'>{address}</p>
                 </div>
             </div>
         </div>

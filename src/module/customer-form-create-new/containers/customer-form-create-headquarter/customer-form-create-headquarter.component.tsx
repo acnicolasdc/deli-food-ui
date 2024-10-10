@@ -27,7 +27,7 @@ export function CustomerFormCreateHeadquarter() {
                             <div className="space-y-4">
                                 <div className="flex flex-col md:flex-row w-full gap-4">
                                     <div className="gap-2 flex flex-1 flex-col">
-                                        <Label>Nombre de la sede</Label>
+                                        <Label>Nombre de la Sede</Label>
                                         <Input placeholder="Ej: El Ingenio" value={head.name}
                                             onChange={(event) => {
                                                 modifyHeadquarter(head.id, 'name', event.target.value)
