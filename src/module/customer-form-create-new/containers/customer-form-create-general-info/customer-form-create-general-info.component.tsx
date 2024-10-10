@@ -67,7 +67,7 @@ export function CustomerFormCreateGeneralInfo() {
                             setGeneralInformation({ ...generalInformation, productTypes: value })
                         }
                     }}
-                    maxSelect={2}
+                    maxSelect={3}
                     mode={EFoodTypeSelectFilterMode.multiSelect} />
             </div>
             <div className="space-y-2">

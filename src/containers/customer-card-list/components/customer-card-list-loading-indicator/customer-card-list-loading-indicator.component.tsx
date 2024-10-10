@@ -10,14 +10,14 @@ export function CustomerCardListLoadingIndicator({ isLoading, children }: ICusto
     if (isLoading) {
         return (
             <div className='grid grid-cols-2 md:grid-cols-4 gap-4 no-scrollbar px-4 md:px-8'>
-                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px]' />
-                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px]' />
-                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px]' />
-                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px]' />
-                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px]' />
-                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px]' />
-                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px]' />
-                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px]' />
+                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px] rounded-2xl' />
+                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px] rounded-2xl' />
+                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px] rounded-2xl' />
+                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px] rounded-2xl' />
+                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px] rounded-2xl' />
+                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px] rounded-2xl' />
+                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px] rounded-2xl' />
+                <Skeleton className='relative flex flex-col gap-2 cursor-pointer h-[150px] md:h-[250px] rounded-2xl' />
             </div>
         );
     }

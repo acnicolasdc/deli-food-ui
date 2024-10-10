@@ -80,6 +80,7 @@ export function TagToggleSelectFilter({ onValueChange, value, disabled, mode = E
                                     aria-label={`Toggle ${value}`}
                                     key={value}
                                     size="sm"
+                                    className="text-xs rounded-xl"
                                     variant="outline"
                                 >
                                     <Icon className="mr-2" /> {name}

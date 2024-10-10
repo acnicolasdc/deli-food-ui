@@ -25,7 +25,7 @@ import { CustomerCategorySelectFilter } from '@/module/customer-category-select-
 import { redirect } from 'next/navigation';
 export default function Search() {
   if (
-    !process.env.NEXT_PUBLIC_DEV_MODE
+    process.env.NEXT_PUBLIC_DEV_MODE
   ) {
     redirect('/on-boarding');
   }
@@ -53,7 +53,6 @@ export default function Search() {
             <Label className='hidden md:block font-semibold'>Filtros rapidos: </Label>
             <div className='flex flex-row overflow-hidden overflow-x-auto gap-2 no-scrollbar flex-1'>
               <TagToggleSelectFilter onValueChange={() => { }} />
-
             </div>
             <div className='hidden justify-end items-center gap-4 md:flex md:flex-1'>
               <Label className='hidden md:block font-semibold'>Ordenar por: </Label>

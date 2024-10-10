@@ -14,6 +14,7 @@ export function useCustomerHeadquarterDetail() {
         budget: `${formatToCOP(headquarter.data.customer.serviceBudgets.reduce((accumulator, currentItem) => {
             return accumulator + currentItem.count;
         }, 0))} COP`,
+        budgetList: headquarter.data?.customer.serviceBudgets.filter((head) => head.count !== 0),
         headquarters: headquarter.data?.customer.headquarters.filter((head) => head.id !== headquarter.data.id),
         amenities: headquarter.data.amenities.map(({ name, icon, id }) => ({
             id,
