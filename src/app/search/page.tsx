@@ -23,9 +23,9 @@ import { CustomerCardList } from '@/containers/customer-card-list';
 import { TagToggleSelectFilter } from '@/containers/tag-toggle-select-filter';
 import { CustomerCategorySelectFilter } from '@/module/customer-category-select-filter';
 import { redirect } from 'next/navigation';
-export default function Search() {
+export default function Search({ params }: { params: { code: string } }) {
   if (
-    !process.env.NEXT_PUBLIC_DEV_MODE
+    params.code !== '1144'
   ) {
     redirect('/on-boarding');
   }
