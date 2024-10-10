@@ -14,6 +14,7 @@ export type TCustomerFormCreateHeadquarterOpeningHours = {
 export type TCustomerFormCreateHeadquarterAtom = {
     id: string;
     name: string;
+    menuUrl: string;
     address: string;
     image: TFieldImageInputValue;
     cityId: string;
@@ -32,6 +33,7 @@ export const defaultHeadquarterOpeningHour = {
 export const defaultHeadquarterAtomValue = {
     id: '1',
     name: '',
+    menuUrl: '',
     address: '',
     image: {
         file: null,
@@ -54,6 +56,7 @@ export const customerFormCreateHeadquarterOpeningHourSchema = z.object({
 export const customerFormCreateHeadquarterSchema = z.object({
     id: z.string().min(1),
     name: z.string().min(1),
+    menuUrl: z.string().url().optional(),
     address: z.string().min(1),
     image: z.object({
         file: z.unknown().nullable(),

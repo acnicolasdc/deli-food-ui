@@ -78,6 +78,16 @@ export function CustomerFormCreateHeadquarter() {
                                     </div>
                                 </div>
                                 <div className="space-y-2">
+                                    <Label>Link del Menu (Opcional)</Label>
+                                    <Input
+                                        placeholder="https://example.com/menu"
+                                        value={head.menuUrl}
+                                        onChange={(event) => {
+                                            modifyHeadquarter(head.id, 'menuUrl', event.target.value)
+                                        }}
+                                    />
+                                </div>
+                                <div className="space-y-2">
                                     <Label>Categorias</Label>
                                     <CategorySelectFilter
                                         onValueChange={(categories) => {
