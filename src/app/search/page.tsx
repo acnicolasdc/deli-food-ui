@@ -22,10 +22,12 @@ import { UserLocationFilter } from '@/module/user-location-filter';
 import { CustomerCardList } from '@/containers/customer-card-list';
 import { TagToggleSelectFilter } from '@/containers/tag-toggle-select-filter';
 import { CustomerCategorySelectFilter } from '@/module/customer-category-select-filter';
-import { redirect } from 'next/navigation';
-export default function Search({ params }: { params: { code: string } }) {
+import { redirect, useSearchParams } from 'next/navigation';
+export default function Search() {
+  const searchParams = useSearchParams()
+  const search = searchParams.get('code')
   if (
-    params.code !== '1144'
+    search !== '1144'
   ) {
     redirect('/on-boarding');
   }
