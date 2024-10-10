@@ -56,7 +56,10 @@ export const customerFormCreateHeadquarterOpeningHourSchema = z.object({
 export const customerFormCreateHeadquarterSchema = z.object({
     id: z.string().min(1),
     name: z.string().min(1),
-    menuUrl: z.string().url().optional(),
+    menuUrl: z.union([
+        z.string().url("Invalid URL format"),
+        z.literal(''),
+      ]).optional(),
     address: z.string().min(1),
     image: z.object({
         file: z.unknown().nullable(),
